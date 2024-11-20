@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
+</head>
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center text-dark">Editar persona</h1>
+                <div class="card-body">
+                    <form th:action="@{/editarpersona/editPersona}" th:object="${persona}" method="POST">
+                        <input type="hidden" th:field="*{idPersonas}" />
+                        <div class="form-group">
+                            
+                            <div>
+                            <label>Primer Nombre</label>
+                            <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control">
+
+                        </div>
+                            <div>
+                            <label>Segundo Nombre</label>
+                            <input type="text" th:field="*{segundo_nombre}" name="segundo_nombre" class="form-control">
+                        </div>
+                            <div>
+                            <label>Primer Apellido</label>
+                            <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control">
+                        </div>
+                            <div>
+                            <label>Segundo Apellido</label>
+                            <input type="text" th:field="*{segundo_apellido}" name="segundo_apellido" class="form-control">
+                        </div>
+                            <div>
+                            <label>Número de Documento</label>
+                            <input type="text" th:field="*{numero_documento}" name="numero_documento" class="form-control">
+                        </div>
+                            <div>
+                            <label>Número de Contacto</label>
+                            <input type="text" th:field="*{numero_contacto}" name="numero_contacto" class="form-control">
+                        </div>
+                            <div>
+                            <label>Correo Electrónico</label>
+                            <input type="text" th:field="*{email}" name="email" class="form-control">
+                        </div>
+                            <div>
+                            <label>Roles</label>
+                            <select th:field="*{rol}" name="roles" class="form-control">
+                                <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombre_rol}"></option>
+                            </select>
+                            </div>
+                            <br>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Actualizar datos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/static/JS/formularios.js"></script>
+</body>
+</html>

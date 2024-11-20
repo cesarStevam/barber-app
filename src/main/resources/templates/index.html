@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>BarberApp</title>
+    <link rel="icon" href="Logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('./barberia6.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center 10%;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(22, 22, 22, 0.73);
+            color: #fff;
+            padding: 16px 28px;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        nav {
+            flex-grow: 1;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 9px 11px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container input {
+            width: 200px;
+            padding: 10px 40px 10px 30px;
+            border: 1px solid #110e0e;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .input-container .icon {
+            position: absolute;
+            left: 10px;
+            color: #666;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .btn {
+            background-color: rgba(27, 25, 25, 0.3);
+            color: #fff;
+            padding: 18px 25px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shadow__btn {
+            padding: 7px 18px;
+            border: none;
+            font-size: 14px;
+            color: #463a04;
+            border-radius: 8px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.5s;
+            transition-property: box-shadow;
+            background: rgb(8, 8, 8);
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+        }
+
+        .shadow__btn1 {
+            font-family: serif;
+            padding: 7px 18px;
+            border: none;
+            font-size: 14px;
+            color: #463a04;
+            border-radius: 8px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.5s;
+            transition-property: box-shadow;
+            background: rgb(8, 8, 8);
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            margin: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: rgba(153, 117, 34);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: rgba(22, 22, 22, 0.73);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="./Logo.jpeg" alt="Logo BarberApp">
+        </div>
+        
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="#" th:href="@{/roles}" class="shadow__btn1">Roles</a></li>
+                <li><a href="#" th:href="@{/personas}" class="shadow__btn1">Personas</a></li>
+                <li><a href="#" th:href="@{/compras}" class="shadow__btn1">Compras</a></li>
+                <li><a href="#" th:href="@{/productos}" class="shadow__btn1">Productos</a></li>
+                <li><a href="#" th:href="@{/facturas}" class="shadow__btn1">Facturas</a></li>
+                <li><a href="#" th:href="@{/login}" class="shadow__btn1">ACCEDER</a></li>
+            </ul>
+        </nav>
+        <li sec:authorize="isAuthenticated()">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn btn-danger">Salir</button>
+                    </form>
+                </li>
+        
+        <button class="btn">
+            <div class="sign">
+                <svg viewBox="0 0 512 512">
+                    <path d="M377.9 105.9L500.7 228.7c9.4 9.4 9.4 24.6 0 33.9l-99.5 99.5c-9.4 9.4-24.6 9.4-33.9 0L180.2 212.9c-9.4-9.4-9.4-24.6 0-33.9l99.5-99.5c9.4-9.4 24.6-9.4 33.9 0z"></path>
+                </svg>
+            </div>
+        </button>
+    </header>
+
+    <div class="content">
+        <h1>Proyecto</h1>
+        <p>La aplicación BarberShift mejorará la gestión de reservas, servicios y ventas en la barbería Kevin's. Se fijarán objetivos claros para abordar las necesidades del negocio, y se implementarán acciones para su lanzamiento. Además, se hará un seguimiento continuo para garantizar su éxito a largo plazo.</p>
+    </div>
+
+    <div class="content">
+        <h1>Alcance</h1>
+        <p>La app de la barbería Kevin's gestionará servicios en tiempo real, perfiles de empleados y ventas diarias. Los clientes podrán crear cuentas seguras, reservar y modificar citas, y disfrutar de descuentos por cortes.</p>
+    </div>
+
+    <div class="content">
+        <h1>Propósito</h1>
+        <p>El propósito de este proyecto es crear una aplicación que facilite las reservas en la barbería Kevin's, optimizando la coordinación entre clientes y empleados. La herramienta ofrecerá una plataforma intuitiva para gestionar horarios y citas de manera eficiente.</p>
+    </div>
+
+    <div class="content">
+        <h1>CORTES EN TENDENCIA</h1>
+        <table>
+            <tr>
+                <td>
+                    <center>TaperFade</center>
+                    <img src="TaperFade.jpg" alt="Taper Fade">
+                </td>
+                <td>
+                    <center>LowFade</center>
+                    <img src="Lowfadee.jpg" alt="Low Fade">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>Mohicano</center>
+                    <img src="Mohicano.jpg" alt="Mohicano">
+                </td>
+                <td>
+                    <center>Buzzcut</center>
+                    <img src="BuzzCut.jpeg" alt="Buzzcut">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content">
+        <h1>PRODUCTOS EN TENDENCIA</h1>
+        <table>
+            <tr>
+                <td>
+                    <center>Crema</center>
+                    <img src="Cremaparaelcabello.jpg" alt="Crema para el cabello">
+                </td>
+                <td>
+                    <center>Gel</center>
+                    <img src="Gelparaelcabello.jpg" alt="Gel para el cabello">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>Cera</center>
+                    <img src="Ceradecabello.jpg" alt="Cera para el cabello">
+                </td>
+                <td>
+                    <center>Afeitar</center>
+                    <img src="Cremadeafeitar.jpg" alt="Shampoo">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BarberApp. Todos los derechos reservados.</p>
+        <p>Desarrollado por el Scrum 6 de la Ficha 2922089 para mejorar la experiencia de los clientes.</p>
+        <div>
+            <p><strong>Contacto:</strong> info@barbershop.com | Tel: +57 3056594520</p>
+            <p><strong>Dirección:</strong> Calle 12, Barrio El Oro, Bogotá, Colombia</p>
+        </div>
+    </footer>
+</body>
+</html>
