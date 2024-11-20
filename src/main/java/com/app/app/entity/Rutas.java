@@ -18,6 +18,7 @@ import com.app.app.services.CompraService;
 import com.app.app.services.FacturaService;
 import com.app.app.services.PersonaService;
 import com.app.app.services.ProductoService;
+import com.app.app.services.ReservaService;
 import com.app.app.services.RolService;
 
 @Controller
@@ -28,6 +29,9 @@ public class Rutas {
 
     @Autowired
     private RolService rolService;
+
+    @Autowired
+    private ReservaService reservaService;
 
     @Autowired
     private CompraService compraService;
@@ -274,4 +278,51 @@ public class Rutas {
         return "redirect:/login"; 
     }
 
+
+
+
+    @GetMapping("/reservas")
+    public String mostrarReservas(Model model){
+        List<Reserva> reservas = reservaService.getReservas();
+        model.addAttribute("reservas", reservas);
+        return "listaReserva";
+    }
+
+    @GetMapping("/agregarreserva")
+	public String AgregarReserva(ModelMap model) {
+		model.addAttribute("reserva", new Reserva());
+		model.addAttribute("personas", personaService.getPersonas());
+		return "agregarreserva";
+	}
+
+    @PostMapping("/agregarreserva")
+	public String saveReserva(@ModelAttribute("reserva") Reserva reserva) {
+		reservaService.saveOrUpdate(reserva);
+		System.out.println("Se registró la compra!!!!" + reserva);
+		return "redirect:/reservas";
+	}
+
+    //editarreserva
+    @GetMapping("/editarreserva/{idReservas}")
+    public String editarReserva(@PathVariable("idReservas") Long idReservas,ModelMap Model){
+    Model.addAttribute("reserva", new Reserva());   
+    Optional<Reserva> reservas = reservaService.getReservaById(idReservas);
+    Model.addAttribute("reserva", reservas.orElse(null));
+    List<Persona> personas = personaService.getPersonas();
+    Model.addAttribute("personas", personas);
+    return "editarreserva";
+    }
+
+    //editarreserva
+    @PostMapping("/editarreserva/editReserva")
+    public String metodPostEdit(@ModelAttribute("reserva") Reserva reserva){
+    reservaService.saveOrUpdate(reserva);
+    return "redirect:/reservas";
+    }
+
+    @PostMapping("/eliminarreserva/{idReservas}")
+    public String eliminarReserva(@PathVariable("idReservas") Long idReservas) {
+        reservaService.eliminarReserva(idReservas);
+        return "redirect:/reservas";
+    }
 }
