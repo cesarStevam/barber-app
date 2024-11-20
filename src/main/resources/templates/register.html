@@ -82,11 +82,18 @@
                         <label>Segundo Apellido</label>
                         <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control">
                         <br>
-                        <label>Número de Documento</label>
-                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control">
+                        <label for="numeroDocumento">Número de Documento</label>
+                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
+                        <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         <br>
-                        <label>Número de Contacto</label>
-                        <input type="text" id="numero_contacto" name="numero_contacto" class="form-control">
+
+                        <label for="numero_contacto">Número de Contacto</label>
+                        <input type="text" id="numero_contacto" name="numero_contacto" class="form-control" required pattern="\d{10}" maxlength="10" title="Debe ingresar exactamente 10 dígitos.">
+                        <small class="form-text text-muted">Ingrese un número de contacto de 10 dígitos.</small>
+                        <br>
+
+                        <label>Correo</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
                         <br>
                             <div>
                                 <label for="contraseña">Contraseña</label>
