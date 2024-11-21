@@ -10,8 +10,8 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            margin-top: 20px;  /* Espacio arriba */
-            margin-bottom: 20px;  /* Espacio abajo */
+    margin-top: 20px;  /* Espacio arriba */
+    margin-bottom: 20px;  /* Espacio abajo */
         }
         
         body {
@@ -107,24 +107,9 @@
         }
 
         /* Estilo para el botón "Volver al Inicio" */
-        .btn-top {
-            position: fixed;
-            top: 5px;
-            left: 10px;
-            background-color: rgb(153, 117, 34);
-            color: rgb(0, 0, 0);
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+        
 
-        .btn-top:hover {
-            background-color: #000000;
-            color: white;
-        }
+        
 
         .input-group{
             color: white;
@@ -145,16 +130,36 @@
         background-color: white;
         color: #000000;
     }
+    .btn-index{
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(153, 117, 34);
+        color:rgb(0, 0, 0);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-index:hover {
+        background-color: #000000;
+        color: white;
+    }
     </style>
 </head>
 <body>
     <!-- Botón "Volver al Inicio" -->
-    <a th:href="@{/}" class="btn-top">Volver al Inicio</a>
+    
 
     <div class="login-container">
+        <div class="btn-group"></div>
+                <a th:href="@{/}" class="btn-index">Inicio</a>
         <h2>Iniciar Sesión</h2>
+        
+           
         <!-- Imagen añadida -->
         <center><img src="Logo.jpeg" alt="Imagen de inicio de sesión"></center>
+    
         
         <form th:action="@{/login}" method="POST">
             <div class="input-group">
@@ -173,6 +178,7 @@
             </div>
             
             <center><a th:href="@{/register}" class="btn-register">Registrarse</a></center>
+        </div>
         </form>
     </div>
 </body>

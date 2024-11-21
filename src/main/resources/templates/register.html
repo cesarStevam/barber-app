@@ -88,24 +88,26 @@
         font-size: 16px;
     }
 
-    .btn-top {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            background-color: rgb(153, 117, 34);
-            color: rgb(0, 0, 0);
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    .btn-index:hover {
+        background-color: #000000;
+        color: white;
+    }
 
-        .btn-top:hover {
-            background-color: #000000;
-            color: white;
-        }
+    .btn-index{
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(153, 117, 34);
+        color:rgb(0, 0, 0);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-index:hover {
+        background-color: #000000;
+        color: white;
+    }
 
     .h1{
         text-align: center;
@@ -115,21 +117,24 @@
 </style>
 </head>
 <body>
-    <a th:href="@{/}" class="btn-top">Volver al Inicio</a>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
+                <a th:href="@{/}" class="btn-index">Inicio</a>
                 <h1><center>Registrar</center></h1>
+                <div class="btn-group"></div>
+                
+            </div>
                 <div class="card-body">
                     <form th:action="@{/register}" method="post">
                         <label>Nombre</label>
-                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" required>
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" maxlength="10" required>
                         <br>
                         <label>Apellido</label>
-                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" required>
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
                         <br>
                         <label for="numeroDocumento">Número de Documento</label>
                         <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
