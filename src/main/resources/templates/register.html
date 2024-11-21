@@ -71,13 +71,13 @@
                     </div>
                     <form th:action="@{/register}" method="post">
                         <label>Primer Nombre</label>
-                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control">
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" required>
                         <br>
                         <label>Segundo Nombre</label>
                         <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control">
                         <br>
                         <label>Primer Apellido</label>
-                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control">
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" required>
                         <br>
                         <label>Segundo Apellido</label>
                         <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control">
@@ -87,7 +87,7 @@
                         <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         <br>
 
-                    
+                
                         <label for="numero_contacto">Número de Contacto</label>
                         <input 
                             type="text" 
@@ -128,12 +128,7 @@
                                 <label for="contraseña">Contraseña</label>
                                 <input type="password" id="contraseña" name="contraseña" required>
                             </div>
-                            <div>
-                                <label>Roles</label>
-                                <select id="roles" name="idRol" class="form-control">
-                                    <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombreRol}"></option>
-                                </select>
-                            </div> 
+                             
                             <br>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Guardar Registro</button>
