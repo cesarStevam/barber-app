@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarberApp</title>
     <link rel="icon" href="Logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="/style.css">
@@ -133,12 +133,24 @@
             align-items: center;
         }
 
-        .content {
+        .content1 {
             margin: 20px;
             background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 20px;
             border-radius: 10px;
+            float: right;
+            width: 45%;
+        }
+
+        .content2 {
+            margin: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            float: left;
+            width: 45%;
         }
 
         h1 {
@@ -183,7 +195,7 @@
             <img src="./Logo.jpeg" alt="Logo BarberApp">
         </div>
         
-        <nav> 
+        <nav>
             <ul class="nav-links">
                 <li><a href="#" th:href="@{/roles}" class="shadow__btn1">Roles</a></li>
                 <li><a href="#" th:href="@{/personas}" class="shadow__btn1">Personas</a></li>
@@ -214,8 +226,8 @@
         </p>
     </div>
 
-    <div class="content">
-        <h1>CORTES EN TENDENCIA</h1>
+    <div class="content1">
+        <h1><center>CORTES EN TENDENCIA</center></h1>
         <table>
             <tr>
                 <td>
@@ -240,8 +252,8 @@
         </table>
     </div>
 
-    <div class="content">
-        <h1>PRODUCTOS EN TENDENCIA</h1>
+    <div class="content2">
+        <h1><center>PRODUCTOS EN TENDENCIA</center></h1>
         <table>
             <tr>
                 <td>

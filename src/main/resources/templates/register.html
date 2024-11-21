@@ -8,106 +8,138 @@
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: url('Logo.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            height: 105vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        margin: 11%;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+        background-image: url('barberia6.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 105vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .container {
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad para el formulario */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 800px;
-            position: relative;
-        }
+    .container {
+        background-color: rgba(0, 0, 0, 0.73);
+        padding: 20px;
+        width: 500px;
+        color: white;
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
 
-        .card {
-            background: none; /* Sin fondo para la tarjeta */
-        }
+    .h1{
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
 
-        .card-body {
-            padding: 20px;
-        }
+    .card {
+        background: none; /* Sin fondo para la tarjeta */
+    }
 
-        .form-group label {
-            font-weight: bold;
-        }
+    .card-body {
+        padding: 30px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
 
-        .box-footer {
-            text-align: center;
-        }
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
 
-        .img-container {
-            text-align: center;
-            margin-bottom: 15px;
-        }
+    .box-footer {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
 
-        .img-container img {
-            max-width: 100px; /* Ajusta el tamaño de la imagen aquí */
-            height: auto;
-        }
-    </style>
+    .btn-register{
+        width: 80%;
+        padding: 10px;
+        background-color: rgb(153, 117, 34);
+        color:rgb(0, 0, 0);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-register:hover {
+        background-color: #000000;
+        color: white;
+    }
+
+    .btn-index{
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(153, 117, 34);
+        color:rgb(0, 0, 0);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-index:hover {
+        background-color: #000000;
+        color: white;
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <h1 class="text-center text-dark">Registro Personas</h1>
-                <div class="btn-group"></div>
-                    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
-                </div>
-                <div class="card-body">
-                    <!-- Imagen añadida aquí -->
-                    <div class="img-container">
-                        <img src="Logo.jpeg" alt="Imagen Ejemplo">
-                    </div>
-                    <form th:action="@{/register}" method="post">
-                        <label>Primer Nombre</label>
-                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control">
-                        <br>
-                        <label>Segundo Nombre</label>
-                        <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control">
-                        <br>
-                        <label>Primer Apellido</label>
-                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control">
-                        <br>
-                        <label>Segundo Apellido</label>
-                        <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control">
-                        <br>
-                        <label>Número de Documento</label>
-                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control">
-                        <br>
-                        <label>Número de Contacto</label>
-                        <input type="text" id="numero_contacto" name="numero_contacto" class="form-control">
-                        <br>
-                            <div>
-                                <label for="contraseña">Contraseña</label>
-                                <input type="password" id="contraseña" name="contraseña" required>
-                            </div>
-                            <div>
-                                <label>Roles</label>
-                                <select id="roles" name="idRol" class="form-control">
-                                    <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombreRol}"></option>
-                                </select>
-                            </div> 
-                            <br>
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Guardar Registro</button>
-                            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1 class="text-center">Registrar</h1>
+            <div class="btn-group"></div>
+                <a th:href="@{/}" class="btn-index">Inicio</a>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/editarpersona/editPersona}" th:object="${persona}" method="POST">
+                    <input type="hidden" th:field="*{idPersonas}" />
+                    <div class="form-group">
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control"   required>
                         </div>
-                    </form>
-                </div>
+                        <div>
+                            <label>Apellido</label>
+                            <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control"  required>
+                        </div>
+                        <div>
+                            <label>Número de Documento</label>
+                            <input type="number" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control"  required>
+                        </div>
+                        <div>
+                            <label>Número de Contacto</label>
+                            <input type="number" th:field="*{numero_contacto}" name="numero_contacto" class="form-control"  required>
+                        </div>
+                        <div>
+                            <label>Correo Electrónico</label>
+                            <input type="email" th:field="*{email}" name="email" class="form-control"  required>
+                        </div>
+                        <div>
+                            <label>Contraseña</label>
+                            <input type="text" th:field="*{contraseña}" name="contraseña" class="form-control"  required>
+                        </div>
+                        <br>
+                        <div class="box-footer">
+                            <button type="submit" class="btn-register">Acceder</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
