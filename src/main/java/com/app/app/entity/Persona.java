@@ -46,7 +46,7 @@ public class Persona {
     private String contraseña;
 
     @ManyToOne
-    @JoinColumn(name = "idRol")
+    @JoinColumn(name = "idRol")  
     private Rol rol;
 
     public void setRol(Rol rol) {

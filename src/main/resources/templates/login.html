@@ -37,6 +37,18 @@
             color: #ffffff;
         }
         
+        h3 {
+        margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+        margin-bottom: 20px;
+        color: #fafafac4; /* Cambia el color si lo deseas */
+        font-size: 17px; /* Ajusta el tamaño de la fuente */
+     
+        }
+
+        a {
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        }
+        
         .input-group {
             margin-bottom: 15px;
             text-align: left;
@@ -132,7 +144,7 @@
                 <p>Usuario o contraseña incorrectos. Por favor, intente de nuevo.</p>
             </div>
             
-            <a th:href="@{/register}">Registrarse</a>
+            <a th:href="@{/register}"><h3>Registrarse</h3></a>
         </form>
     </div>
 </body>

@@ -109,6 +109,83 @@
                         <div>
                             <label>Nombre</label>
                             <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control"   required>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h1 class="text-center text-dark">Registro Personas</h1>
+                <div class="btn-group"></div>
+                    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
+                </div>
+                <div class="card-body">
+                    <!-- Imagen añadida aquí -->
+                    <div class="img-container">
+                        <img src="Logo.jpeg" alt="Imagen Ejemplo">
+                    </div>
+                    <form th:action="@{/register}" method="post">
+                        <label>Primer Nombre</label>
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" required>
+                        <br>
+                        <label>Segundo Nombre</label>
+                        <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control">
+                        <br>
+                        <label>Primer Apellido</label>
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" required>
+                        <br>
+                        <label>Segundo Apellido</label>
+                        <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control">
+                        <br>
+                        <label for="numeroDocumento">Número de Documento</label>
+                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
+                        <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
+                        <br>
+
+                
+                        <label for="numero_contacto">Número de Contacto</label>
+                        <input 
+                            type="text" 
+                            id="numero_contacto" 
+                            name="numero_contacto" 
+                            class="form-control" 
+                            required 
+                            maxlength="10" 
+                            title="Debe ingresar un número de celular colombiano válido que comience con 3 y tenga 10 dígitos.">
+                        <small class="form-text text-muted">Ingrese un número de celular colombiano válido (ejemplo: 3XX XXX XXXX).</small>
+                        <br>
+                        
+                        <script>
+                            const inputNumero = document.getElementById("numero_contacto");
+                        
+                            inputNumero.addEventListener("input", function () {
+                                // Eliminar caracteres no numéricos
+                                this.value = this.value.replace(/[^0-9]/g, "");
+                        
+                                // Limitar la longitud a 10 caracteres
+                                if (this.value.length > 10) {
+                                    this.value = this.value.slice(0, 10);
+                                }
+                        
+                                // Validar que el número comience con "3"
+                                if (!this.value.startsWith("3")) {
+                                    this.value = ""; // Borra todo si no comienza con 3
+                                }
+                            });
+                        </script>
+                        
+
+
+                        <label>Correo</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <br>
+                            <div>
+                                <label for="contraseña">Contraseña</label>
+                                <input type="password" id="contraseña" name="contraseña" required>
+                            </div>
+                             
+                            <br>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Guardar Registro</button>
+                            </div>
+>>>>>>> f8e2c394585b8edd23bf9c5164e807351234d6e3
                         </div>
                         <div>
                             <label>Apellido</label>
