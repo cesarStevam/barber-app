@@ -32,7 +32,10 @@ public class SecurityConfig {
                                                                 "/Gelparaelcabello.jpg",
                                                                 "/TaperFade.jpg", "/Lowfadee.jpg", "/Mohicano.jpg",
                                                                 "/templates", "/register",
-                                                                "/style.css", "/public/**")
+                                                                "/style.css", "/Barberia-moderna-ia-.webp",
+                                                                "/youtube.png", "/whatsapp.png", "/instagram.png",
+                                                                "/facebook.png",
+                                                                "/public/**")
                                                 .permitAll()
 
                                                 // Rutas para administrador

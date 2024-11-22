@@ -84,4 +84,7 @@ public class PersonaService {
         personaRepository.save(persona);
     }
 
+    public boolean verificarCorreoExistente(String email) {
+        return personaRepository.existsByEmail(email);
+    }
 }

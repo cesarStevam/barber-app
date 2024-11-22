@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.app.app.entity.Persona;
 
 @Repository("personaRepository")
-public interface PersonaRepository extends JpaRepository<Persona, Long>{ //llama a la clase a la que va a trabajar, se puede con id
+public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
-   Optional <Persona> findByNumeroDocumento(String numeroDocumento);
+   Optional<Persona> findByNumeroDocumento(String numeroDocumento);
+
+   // Método para verificar si un correo ya existe
+   boolean existsByEmail(String email);
 }

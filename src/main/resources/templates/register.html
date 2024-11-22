@@ -155,6 +155,24 @@
                         <label>Correo</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                         <br>
+                        <script>
+                            async function validarCorreo() {
+                                const emailInput = document.getElementById("email");
+                                const correoIngresado = emailInput.value;
+                    
+                                // Llama al endpoint para verificar el correo
+                                const response = await fetch(`/home/Personas/verificarCorreo?email=${correoIngresado}`);
+                                const existe = await response.json();
+                    
+                                if (existe) {
+                                    alert("Este correo ya existe. Por favor, ingresa otro.");
+                                    emailInput.value = ""; // Limpia el campo
+                                    emailInput.focus();    // Enfoca nuevamente
+                                    return false;
+                                }
+                                return true; // Permite continuar si no existe
+                            }
+                        </script>
                             <div>
                                 <label for="contraseña">Contraseña</label>
                                 <input type="password" id="contraseña" name="contraseña" required minlength="5" maxlength="10" pattern="\d+">
