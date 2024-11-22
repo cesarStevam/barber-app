@@ -27,8 +27,8 @@
         .container {
             display: flex;
             justify-content: center;
-            flex-direction: column; 
-            min-height: 100vh; 
+            flex-direction: column;
+            min-height: 100vh;
             padding: 20px;
             max-width: 90%;
         }
@@ -156,14 +156,13 @@
                             <th scope="col">Contraseña</th>
                             <th scope="col">Rol</th>
                             <th scope="col">Acciones</th>
-                           
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="persona : ${personas}">
                             <td th:text="${persona.idPersonas}"></td>
-                            <td th:text="${persona.primer_nombre}"></td>
+                            <td th:text="${persona.Nombre}"></td>
                             <td th:text="${persona.segundo_nombre}"></td>
                             <td th:text="${persona.primer_apellido}"></td>
                             <td th:text="${persona.segundo_apellido}"></td>

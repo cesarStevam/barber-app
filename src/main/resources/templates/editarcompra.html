@@ -8,34 +8,28 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Editar Compra</h2>
+        <h2 class="text-center">EDITAR COMPRA</h2>
         <div class="btn-group">
-            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Inicio</a>
         </div>
         <form th:action="@{/editarcompra/editCompra}" th:object="${compra}" method="POST">
             <input type="hidden" th:field="*{idCompras}" />
                         <div class="form-group">
                             <div>
             <div class="mb-3">
-                <label for="primer_nombre" class="form-label">Primer Nombre</label>
+                <label for="primer_nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" th:value="${compra.primer_nombre}" required>
             </div>
             <div class="mb-3">
-                <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" th:value="${compra.segundo_nombre}">
-            </div>
-            <div class="mb-3">
-                <label for="primer_apellido" class="form-label">Primer Apellido</label>
+                <label for="primer_apellido" class="form-label">Apellido</label>
                 <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" th:value="${compra.primer_apellido}" required>
             </div>
-            <div class="mb-3">
-                <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" th:value="${compra.segundo_apellido}">
-            </div>
-            <div class="mb-3">
-                <label for="numero_documento" class="form-label">Número de Documento</label>
-                <input type="text" class="form-control" id="numero_documento" name="numero_documento" th:value="${compra.numero_documento}" required>
-            </div>
+            <label for="numeroDocumento">Número de Documento</label>
+                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
+                        <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
+                        <br>
+                        <div class="alert alert-danger" th:if="${error}" th:text="${error}">
+                        </div>
             <div class="mb-3">
                 <label for="descripcion_producto" class="form-label">Descripción del Producto</label>
                 <input type="text" class="form-control" id="descripcion_producto" name="descripcion_producto" th:value="${compra.descripcion_producto}" required>
