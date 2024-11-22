@@ -126,7 +126,6 @@ public class Rutas {
         model.addAttribute("rol", new Rol());
         Optional<Rol> rol = rolService.getRolById(idRol);
         model.addAttribute("rol", rol.orElse(null));
-        // Puedes agregar más atributos al modelo si es necesario
         return "editarRol";
     }
 
