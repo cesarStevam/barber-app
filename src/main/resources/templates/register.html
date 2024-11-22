@@ -117,6 +117,7 @@
                         <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
                         <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         <br>
+                        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
 
                 
                         <label for="numero_contacto">Número de Contacto</label>
@@ -161,9 +162,11 @@
                             </div>
                             
                         <br>
+    
                         <div class="box-footer">
                             <button type="submit" class="btn-register">Guardar</button>
                         </div>
+                        
                     </div>
                 </form>
             </div>
