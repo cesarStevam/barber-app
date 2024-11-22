@@ -37,7 +37,7 @@ public class SecurityConfig {
 
                                                 // Rutas para administrador
                                                 .requestMatchers("/admin/**", "/agregarreserva", "/personas",
-                                                                "/reservas")
+                                                                "/reservas", "/roles", "/editarRol/idRol")
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario

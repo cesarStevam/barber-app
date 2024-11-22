@@ -21,7 +21,6 @@ public class PersonaService {
     @Autowired
     private RolRepository rolRepository;
 
-
     @Autowired
     private PasswordEncoder passwordEncoder; // Inyectar el PasswordEncoder
 
@@ -73,18 +72,16 @@ public class PersonaService {
         // Recupera el rol "usuario" desde la base de datos
         Rol rolUsuario = rolRepository.findByNombreRol("usuario")
                 .orElseThrow(() -> new RuntimeException("Rol 'usuario' no encontrado"));
-    
+
         // Asigna el rol a la persona
         persona.setRol(rolUsuario);
-    
+
         // Cifra la contraseña antes de guardar
         String contraseñaCifrada = passwordEncoder.encode(persona.getContraseña());
         persona.setContraseña(contraseñaCifrada);
-    
+
         // Guarda la persona con el rol asignado
         personaRepository.save(persona);
     }
-    
-    
 
 }

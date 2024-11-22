@@ -20,7 +20,6 @@ import com.app.app.services.PersonaService;
 
 public class PersonaController {
 
-
     @Autowired
     PersonaService personaService;
 
@@ -41,7 +40,4 @@ public class PersonaController {
         redirectAttributes.addFlashAttribute("mensaje", "Persona eliminada con éxito");
         return "redirect:/personas";
     }
-
-
-
 }

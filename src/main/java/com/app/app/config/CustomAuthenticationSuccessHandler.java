@@ -18,7 +18,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             Authentication authentication) throws IOException, ServletException {
         // Verifica el rol del usuario autenticado y redirige según corresponda
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_administrador"))) {
-            response.sendRedirect("/personas");
+            response.sendRedirect("/index");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_usuario"))) {
             response.sendRedirect("/index");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_barbero"))) {
