@@ -217,6 +217,8 @@
         .ul:hover {
             text-decoration: none;
         }
+       
+
     </style>
 </head>
 <body>
@@ -311,7 +313,7 @@
         </div>
         
         <!-- Contenedor de la información centrado -->
-        <div style="flex: 2;">
+        <div style="flex: 2; position: relative; text-align: center;" id="info-container">
             <p style="margin: 0;">&copy; 2024 BarberApp. Todos los derechos reservados.</p>
             <p style="margin: 10px 0;">Desarrollado por el Scrum 6 de la Ficha 2922089 para mejorar la experiencia de los clientes.</p>
             <div>
@@ -323,7 +325,39 @@
                 </p>
             </div>
         </div>
+        
+        <!-- Controles para cambiar la alineación -->
+        <div style="margin-top: 10px; text-align: center;">
+            <button onclick="alignText('center')" style="padding: 10px 20px; margin-right: 10px; cursor: pointer;">Centrar</button>
+            <button onclick="alignText('left')" style="padding: 15px 30px; cursor: pointer;">Alinear a la izquierda</button>
+        </div>
+        
+        <script>
+            // Función para cambiar la alineación del texto
+            function alignText(alignment) {
+                const container = document.getElementById("info-container");
+                container.style.textAlign = alignment;
+            }
+        </script>
+        
+            <!-- Redes sociales -->
+            <div style="position: absolute; bottom: 0px; right: 10px; text-align: right;">
+                <a href="https://facebook.com" target="_blank" style="margin: 0 5px;">
+                    <img src="facebook.png" alt="Facebook" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://instagram.com" target="_blank" style="margin: 0 5px;">
+                    <img src="instagram.png" alt="Instagram" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://whatsapp.com" target="_blank" style="margin: 0 5px;">
+                    <img src="whatsapp.png" alt="WhatsApp" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://youtube.com" target="_blank" style="margin: 0 5px;">
+                    <img src="youtube.png" alt="YouTube" style="width: 40px; height: 40px;">
+                </a>
+            </div>
+        </div>
     </footer>
+    
     
     
     
