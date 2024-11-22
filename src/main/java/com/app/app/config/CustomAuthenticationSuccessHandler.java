@@ -14,15 +14,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response,
-                                        Authentication authentication) throws IOException, ServletException {
+            HttpServletResponse response,
+            Authentication authentication) throws IOException, ServletException {
         // Verifica el rol del usuario autenticado y redirige según corresponda
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_administrador"))) {
-            response.sendRedirect("/home");
+            response.sendRedirect("/personas");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_usuario"))) {
-            response.sendRedirect("/user/home");
+            response.sendRedirect("/index");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_barbero"))) {
-            response.sendRedirect("/barbero/schedule");
+            response.sendRedirect("/reservas");
         } else {
             response.sendRedirect("/login?error"); // Caso de rol no esperado
         }
