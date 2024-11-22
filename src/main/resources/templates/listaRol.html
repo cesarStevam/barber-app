@@ -9,43 +9,164 @@
         body {
             background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
             background-size: cover;
-            color: #d4e211;
         }
         .card {
             background-color: rgba(0, 0, 0, 0.7);
         }
         .btn-group a {
-            margin-right: 10px;
+            margin-right: 20px;
         }
         .table thead th {
-            background-color: #007bff; /* Color de fondo para los encabezados */
-            color: #ffffff; /* Color del texto de los encabezados */
+            background-color: rgb(0, 0, 0); /* Color de fondo para los encabezados */
+            color: rgb(153, 117, 34); /* Color del texto de los encabezados */
         }
         .table tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(0, 0, 0, 0.075);
+            color: white;
         }
         .table tbody td {
-            color: #f8f9fa; /* Color del texto de las celdas */
+            color: #ffffff; /* Color del texto de las celdas */
         }
-        .action-buttons a {
-            margin: 0 5px; /* Espacio entre los botones de acción */
+
+        .btn-edit{
+            width: 80%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
+
+        .btn-edit:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .text-title{
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 20px;
+            color: #fafafa; /* Cambia el color si lo deseas */
+            font-size: 40px; /* Ajusta el tamaño de la fuente */
+            text-align: center;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
     <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <h1 class="text-center text-light">Lista de Roles</h1>
-                <div class="btn-group">
-                    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
+                <h1 class="text-title">Lista de Roles</h1>
+                <center><div class="btn-group">
+                    <a th:href="@{/}" class="btn1">Inicio</a>
                 </div>
                 
                 <div class="btn-group">
-                    <a href="#" th:href="@{/AgregarRol}" class="btn btn-primary btn-sm">Agregar Rol</a>
-                    <a href="#" class="btn btn-success btn-sm">Reporte en Excel</a>
-                    <a href="#" class="btn btn-danger btn-sm">Reporte en PDF</a>
+                    <a href="#" th:href="@{/AgregarRol}" class="btn2">Agregar Rol</a>
                 </div>
+                <div class="btn-group">
+                    <a href="#" class="btn3">Reporte Excel</a>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn4">Reporte PDF</a>
+                </div>
+            </center>
 
                 <table class="table table-hover text-center">
                     <thead>
@@ -60,9 +181,7 @@
                             <td th:text="${rol.idRol}"></td>
                             <td th:text="${rol.nombreRol}"></td>
                             <td>
-                                <a th:href="@{/editarRol/{idRol}(idRol=${rol.idRol})}" class="btn btn-warning btn-sm">Editar</a>
-
-                                <!-- Otros botones como eliminar pueden añadirse aquí -->
+                                <a th:href="@{/editarRol/{idRol}(idRol=${rol.idRol})}" class="btn-edit"><h>Editar</h></a>
                             </td>
                         </tr>
                     </tbody>

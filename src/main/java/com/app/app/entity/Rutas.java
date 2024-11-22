@@ -69,7 +69,7 @@ public class Rutas {
         model.addAttribute("personas", personas);
         return "listaPersona";
     }
-     @PostMapping("/AgregarPersona")
+    @PostMapping("/AgregarPersona")
     public String savePersona(@ModelAttribute("persona") Persona persona) {
         personaService.saveOrUpdate(persona);
 
@@ -82,7 +82,7 @@ public class Rutas {
         model.addAttribute("persona", new Persona());
         model.addAttribute("roles", rolService.getRoles());
         return "Agregarpersona";
-    } 
+    }
 
     // editarpersona
     @GetMapping("/editarpersona/{idPersonas}")
@@ -265,7 +265,7 @@ public class Rutas {
     public String showRegisterForm(Model model) {
         model.addAttribute("persona", new Persona());
         model.addAttribute("roles", rolService.getRoles());
-        return "register"; 
+        return "register";
     }
 
 
@@ -276,10 +276,9 @@ public class Rutas {
         if (personaRepository.findByNumeroDocumento(persona.getNumeroDocumento()).isPresent()) {
         model.addAttribute("error", "El número de documento ya está en uso.");
         return "register";
-    } 
+    }
 
     // Busca el rol de usuario
-   
     Rol rolUsuario = rolRepository.findByNombreRol("Usuario")
             .orElseThrow(() -> new RuntimeException("Rol de usuario no encontrado"));
 

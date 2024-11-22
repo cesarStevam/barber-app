@@ -9,10 +9,11 @@
         body {
             background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
             background-size: cover;
-            color: #d4e211;
+            margin-top: 290px;
         }
         .card {
             background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semi-transparente */
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
         .form-group label {
             display: flex;
@@ -26,8 +27,90 @@
         .white-box {
             background-color: #fff; /* Fondo blanco */
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 30px;
             border-radius: 5px;
+        }
+
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover {
+        background-color: #000000;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+    }
+
+        .btn2{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2:hover {
+        background-color: #000000;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+    }
+
+        .btn3{
+            width: 25%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 0px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .btn3:hover {
+        background-color: rgb(153, 117, 34);
+        color: rgb(0, 0, 0);
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+    }
+
+    .text-title{
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 30px;
+            color: #fafafa; /* Cambia el color si lo deseas */
+            font-size: 40px; /* Ajusta el tamaño de la fuente */
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-group{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-group{
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -37,10 +120,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                <h1 class="text-center text-light">AGREGAR ROL</h1>
-                <div class="btn-group">
-                    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
-                </div>
+                <h1 class="text-title">AGREGAR ROL</h1>
+                <center><div class="btn-group"></div>
+                    <a th:href="@{/}" class="btn1">Inicio</a>
+                
+                <div class="btn-group"></div>
+                    <a href="#" th:href="@{/roles}" class="btn2">Lista Rol</a>
+                </center>
+
                 <div class="black-box">
                     <form th:action="@{/AgregarRol}" th:object="${rol}" method="POST">
                         <div class="form-group">
@@ -48,9 +135,9 @@
                             <input type="text" id="nombreRol" name="nombreRol" class="form-control" th:value="${rol.nombreRol}">
                         </div>
                         
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">GUARDAR ROL</button>
-                        </div>
+                        <center><div class="box-footer"></div>
+                            <button type="submit" class="btn3">GUARDAR ROL</button>
+                        </center>
                     </form>
                 </div>
             </div>
