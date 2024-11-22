@@ -36,15 +36,20 @@ public class SecurityConfig {
                                                 .permitAll()
 
                                                 // Rutas para administrador
-                                                .requestMatchers("/admin/**", "/agregarreserva", "/editarRol/1","/editarRol/{idRol}","/personas","/editarRol","/agregarrol",
-                                                                "/reservas", "/roles", "/editarRol/idRol")
+                                                .requestMatchers("/admin/**", "/agregarreserva", "/editarRol/1",
+                                                                "/editarRol/{idRol}", "/personas", "/Agregarpersona",
+                                                                "/editarRol", "/agregarrol",
+                                                                "/reservas", "/roles", "/editarRol/idRol"
+
+                                                )
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
                                                 .requestMatchers("/user/**").hasRole("usuario")
 
                                                 // Rutas para barbero
-                                                .requestMatchers("/barbero/**","/agregarrol","/agregarreserva", "/reservas")
+                                                .requestMatchers("/barbero/**", "/agregarrol", "/agregarreserva",
+                                                                "/reservas")
                                                 .hasRole("barbero")
 
                                                 // Cualquier otra ruta debe ser autenticada
