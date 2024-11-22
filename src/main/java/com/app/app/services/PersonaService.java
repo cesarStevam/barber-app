@@ -8,13 +8,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.app.app.entity.Persona;
+import com.app.app.entity.Rol;
 import com.app.app.repository.PersonaRepository;
+import com.app.app.repository.RolRepository;
 
 @Service("personaService")
 public class PersonaService {
 
     @Autowired
     private PersonaRepository personaRepository;
+
+    @Autowired
+    private RolRepository rolRepository;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder; // Inyectar el PasswordEncoder
@@ -63,5 +69,22 @@ public class PersonaService {
         }
     }
 
+    public void registrarUsuario(Persona persona) {
+        // Recupera el rol "usuario" desde la base de datos
+        Rol rolUsuario = rolRepository.findByNombreRol("usuario")
+                .orElseThrow(() -> new RuntimeException("Rol 'usuario' no encontrado"));
+    
+        // Asigna el rol a la persona
+        persona.setRol(rolUsuario);
+    
+        // Cifra la contraseña antes de guardar
+        String contraseñaCifrada = passwordEncoder.encode(persona.getContraseña());
+        persona.setContraseña(contraseñaCifrada);
+    
+        // Guarda la persona con el rol asignado
+        personaRepository.save(persona);
+    }
+    
+    
 
 }

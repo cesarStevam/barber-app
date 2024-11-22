@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.app.repository.PersonaRepository;
+import com.app.app.repository.RolRepository;
 import com.app.app.services.CompraService;
 import com.app.app.services.FacturaService;
 import com.app.app.services.PersonaService;
@@ -26,6 +27,9 @@ public class Rutas {
 
     @Autowired
     private PersonaService personaService;
+
+    @Autowired
+    RolRepository rolRepository;
 
     @Autowired
     private RolService rolService;
@@ -264,19 +268,30 @@ public class Rutas {
         return "register"; 
     }
 
+
+
     @PostMapping("/register")
     public String registerPersona(@ModelAttribute("persona") Persona persona, Model model) {
-        // Verifica si el correo ya está registrado
+
         if (personaRepository.findByNumeroDocumento(persona.getNumeroDocumento()).isPresent()) {
-            model.addAttribute("error", "El numero de documento ya está en uso.");
-            return "register"; 
-        }
-        
-        // Cifra la contraseña antes  guardar
-        persona.setContraseña(passwordEncoder.encode(persona.getContraseña()));
-        personaService.saveOrUpdate(persona); // Guarda el usuario en la base de datos
-        return "redirect:/login"; 
-    }
+        model.addAttribute("error", "El número de documento ya está en uso.");
+        return "register";
+    } 
+
+    // Busca el rol de usuario
+   
+    Rol rolUsuario = rolRepository.findByNombreRol("Usuario")
+            .orElseThrow(() -> new RuntimeException("Rol de usuario no encontrado"));
+
+    // Asigna el rol al usuario
+    persona.setRol(rolUsuario);
+
+    // Guarda la persona en la base de datos
+    personaService.saveOrUpdate(persona);
+
+    return "redirect:/login";
+}
+    
 
 
 
