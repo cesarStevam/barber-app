@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
         body {
-            margin: 0;
+            margin: 0%;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: url('Logo.jpeg') no-repeat center center fixed;
+            background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
             background-size: cover;
             height: 105vh;
             display: flex;
@@ -20,13 +20,17 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad para el formulario */
+            background-color: rgba(0, 0, 0, 0.73);
+            color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 800px;
+            max-width: 500px;
             position: relative;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
 
         .card {
@@ -35,24 +39,99 @@
 
         .card-body {
             padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
             font-weight: bold;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .form-control{
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
 
         .box-footer {
             text-align: center;
         }
 
-        .img-container {
+        .text-title{
+            margin-top: 10px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            color: #fafafa; /* Cambia el color si lo deseas */
+            font-size: 40px; /* Ajusta el tamaño de la fuente */
             text-align: center;
-            margin-bottom: 15px;
+            text-decoration: none;
         }
 
-        .img-container img {
-            max-width: 100px; /* Ajusta el tamaño de la imagen aquí */
-            height: auto;
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover {
+        background-color: #000000;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+    }
+
+        .btn2{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2:hover {
+        background-color: #000000;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+    }
+
+    .btn3{
+            width: 40%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 10px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: -20px;
+            text-decoration: none;
+        }
+
+        .btn3:hover {
+        background-color: rgb(153, 117, 34);
+        color: rgb(0, 0, 0);
+        box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+        .text-alert{
+            color: rgb(255, 255, 255);
+            font-size: 16px;
         }
     </style>
 </head>
@@ -60,33 +139,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h1 class="text-center text-dark">Agregar Persona</h1>
+                <h1 class="text-title">AGREGAR PERSONA</h1>
+                <center><div class="btn-group"></div>
+                    <a th:href="@{/}" class="btn1">Inicio</a>
+                
                 <div class="btn-group"></div>
-                    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3 mr-2">Volver al Inicio</a>
-                </div>
-                <div class="card-body">
-                    <!-- Imagen añadida aquí -->
-                    <div class="img-container">
-                        <img src="Logo.jpeg" alt="Imagen Ejemplo">
-                    </div>
+                    <a href="#" th:href="@{/personas}" class="btn2">Lista Personas</a>
+                </center>
+
                     <form th:action="@{/editarpersona/editPersona}" th:object="${persona}" method="POST">
                         <input type="hidden" th:field="*{idPersonas}" />
                         <div class="form-group">
                             <div>
-                                <label>Primer Nombre</label>
+                                <label>Nombre</label>
                                 <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control"   required>
                             </div>
                             <div>
-                                <label>Segundo Nombre</label>
-                                <input type="text" th:field="*{segundo_nombre}" name="segundo_nombre" class="form-control"  required>
-                            </div>
-                            <div>
-                                <label>Primer Apellido</label>
+                                <label>Apellido</label>
                                 <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control"  required>
-                            </div>
-                            <div>
-                                <label>Segundo Apellido</label>
-                                <input type="text" th:field="*{segundo_apellido}" name="segundo_apellido" class="form-control"  required>
                             </div>
                             <div>
                                 <label>Número de Documento</label>
@@ -105,15 +175,15 @@
                                 <input type="text" th:field="*{contraseña}" name="contraseña" class="form-control"  required>
                             </div>
                             <div>
-                                <label>Roles</label>
+                                <label>Rol</label>
                                 <select th:field="*{rol}" name="roles" class="form-control">
                                     <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombreRol}"></option>
                                 </select>
                             </div>
                             <br>
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Guardar Persona</button>
-                            </div>
+                            <center><div class="box-footer"></div>
+                                <button type="submit" class="btn3">GUARDAR</button>
+                            </center>
                         </div>
                     </form>
                 </div>
