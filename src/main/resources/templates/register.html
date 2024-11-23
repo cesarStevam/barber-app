@@ -108,19 +108,28 @@
                 <div class="card-body">
                     <form th:action="@{/register}" method="post">
                         <label>Nombre</label>
-                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" maxlength="10" required>
-                        <br>
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" 
+                        maxlength="10" required 
+                        placeholder="Ingresa tu nombre" 
+                        style="height: 40px; font-size: 16px; padding: 8px;">
+
                         <label>Apellido</label>
-                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
-                        <br>
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" 
+                        maxlength="10" required 
+                        placeholder="Ingresa tu apellido" 
+                        style="height: 40px; font-size: 16px; padding: 8px;">
+
                         <div class="mb-3">
                             <label for="numeroDocumento">Número de Documento</label>
                             <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" 
-                                   required minlength="5" maxlength="10" pattern="\d+"
-                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                   required minlength="5" maxlength="10" pattern="\d+" 
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                   placeholder="Ingresa tu número de documento" 
+                                   style="height: 40px; font-size: 16px; padding: 8px;">
                             <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         </div>
                         <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+                        
                         
                         <label for="numero_contacto">Número de Contacto</label>
                         <input
@@ -128,6 +137,8 @@
                             id="numero_contacto"
                             name="numero_contacto"
                             class="form-control"
+                            placeholder="Ingresa tu número de contacto" 
+                            style="height: 40px; font-size: 16px; padding: 8px;"
                             required
                             maxlength="10"
                             title="Debe ingresar un número de celular colombiano válido que comience con 3 y tenga 10 dígitos.">
@@ -156,11 +167,17 @@
 
 
                         <label>Correo</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+                        <input type="email" id="email" name="email" class="form-control" 
+                        required
+                        placeholder="Ingresa tu correo electrónico" 
+                        style="height: 40px; font-size: 16px; padding: 8px;">
                         <br>
                             <div>
                                 <label for="contraseña">Contraseña</label>
-                                <input type="password" id="contraseña" name="contraseña" required minlength="5" maxlength="10" pattern="\d+">
+                                <input type="password" id="contraseña" name="contraseña" 
+                                required minlength="5" maxlength="10" pattern="\d+"
+                                placeholder="Ingresa tu contraseña" 
+                                style="height: 40px; font-size: 16px; padding: 8px;">
                             </div>
                             
                         <br>
