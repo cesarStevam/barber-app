@@ -157,12 +157,23 @@
         <form th:action="@{/login}" method="POST">
             <div class="input-group">
                 <label for="username">Número de Documento</label>
-                <input type="text" id="username" name="username" required minlength="5" maxlength="10" pattern="\d+">
+                <input type="text" id="username" name="username" class="form-control" 
+                       required minlength="5" maxlength="10" pattern="\d+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                       placeholder="Ingresa tu número de documento"
+                       style="height: 40px; font-size: 16px; padding: 8px;">
+                <small class="form-text text-muted"></small>
             </div>
+            
+            
             <div class="input-group">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required minlength="5" maxlength="10" pattern="\d+">
+                <input type="password" id="password" name="password" 
+                       required minlength="5" maxlength="10" 
+                       placeholder="Ingresa tu contraseña"
+                       style="height: 40px; font-size: 16px; padding: 8px;">
             </div>
+            
             <button type="submit" class="btn-login">Ingresar</button>
             
             <!-- Mensaje de validación de login -->
@@ -170,7 +181,13 @@
                 <p>Usuario o contraseña incorrectos. Por favor, intente de nuevo.</p>
             </div>
             
-            <center><a th:href="@{/register}" class="btn-register">Registrarse</a></center>
+            <div style="display: flex; align-items: center;">
+                <p style="margin-left: 20px; margin-right: 10px;">¿Aún no tienes cuenta?</p>
+                <center>
+                    <a th:href="@{/register}" class="btn-register">Registrarse</a>
+                </center>
+            </div>
+            
         </div>
         </form>
     </div>

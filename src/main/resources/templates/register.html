@@ -113,12 +113,15 @@
                         <label>Apellido</label>
                         <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
                         <br>
-                        <label for="numeroDocumento">Número de Documento</label>
-                        <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
-                        <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
-                        <br>
-                        <div class="alert alert-danger" th:if="${error}" th:text="${error}">
+                        <div class="mb-3">
+                            <label for="numeroDocumento">Número de Documento</label>
+                            <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" 
+                                   required minlength="5" maxlength="10" pattern="\d+"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         </div>
+                        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+                        
                         <label for="numero_contacto">Número de Contacto</label>
                         <input
                             type="text"
@@ -161,11 +164,21 @@
                             </div>
                             
                         <br>
-    
-                        <div class="box-footer">
-                            <button type="submit" class="btn-register">Guardar</button>
-                        </div>
+                        <form action="/enviar" method="POST">
+                            <!-- Otros campos del formulario -->
                         
+                            <div class="mb-3" style="margin-left: 40px;"> <!-- Puedes ajustar el valor de margin-left -->
+                                <input type="checkbox" id="terms" name="terms" required style="width: 20px; height: 20px;">
+                                <label for="terms">
+                                    Acepto los <a href="/terminos-y-condiciones" target="_blank">términos y condiciones</a>
+                                </label>
+                            </div>
+                            
+                            <div class="box-footer">
+                            <button type="submit" class="btn-register">Guardar</button>
+                        </form>
+    
+                       
                     </div>
                 </form>
             </div>
