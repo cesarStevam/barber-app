@@ -9,63 +9,196 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
-        .container {
-            margin-top: 20px;
+        body {
+            background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
+            background-size: cover;
         }
-
-
-		body {
-   		background-image: url('fotobarberia.jpg');
-    	background-position: center;
-		}
-        .table thead {
-            background-color: #343a40;
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .btn-group a {
+            margin-right: 20px;
+        }
+        .table thead th {
+            background-color: rgb(0, 0, 0); /* Color de fondo para los encabezados */
+            color: rgb(153, 117, 34); /* Color del texto de los encabezados */
+        }
+        .table tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075);
             color: white;
         }
+        .table tbody td {
+            color: #ffffff; /* Color del texto de las celdas */
+        }
 
-        h1 {
+        .btn-edit{
+            width: 80%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-edit:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(0, 255, 0);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-delete{
+            width: 80%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-delete:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .text-title{
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
             margin-bottom: 20px;
-            font-size: 36px;
+            color: #fafafa; /* Cambia el color si lo deseas */
+            font-size: 40px; /* Ajusta el tamaño de la fuente */
             text-align: center;
-			color: white;
+            text-decoration: none;
         }
 
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .btn-group a, .btn-group button {
-            margin-right: 10px;
-        }
-
-        .btn-group a:last-child, .btn-group button:last-child {
-            margin-right: 0;
-        }
-
-        .table td, .table th {
-            text-align: center;
-            vertical-align: middle;
-			color: rgb(0, 0, 0);
+        .td{
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 
 <body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-title">LISTA RESERVAS</h1>
+                <center><div class="btn-group">
+                    <a th:href="@{/}" class="btn1">Inicio</a>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="#" th:href="@{/AgregarReserva}" class="btn2">Agregar Reserva</a>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn3">Reporte Excel</a>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn4">Reporte PDF</a>
+                </div>
+            </center>
+            </div>
 
-    <div class="container">
-        <h1>Reservas</h1>
-
-        <div class="btn-group">
-            <a th:href="@{/index}" class="btn btn-primary btn-sm">Inicio</a>
-            <a th:href="@{/agregarreserva}" class="btn btn-primary btn-sm">Agregar Reserva</a>
-            <a th:href="@{/Agregarrol}" class="btn btn-primary btn-sm">Agregar Rol</a>
-            <a href="#" class="btn btn-success btn-sm">Reporte en Excel</a>
-            <a href="#" class="btn btn-danger btn-sm">Reporte en PDF</a>
-        </div>
-
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover text-center">
             <thead>
                 <tr>
                     <th scope="col">ID Reservas</th>
@@ -78,11 +211,8 @@
                     <td th:text="${reserva.idReservas}"></td>
                     <td th:text="${reserva.FechaHora}"></td>
                     <td>
-                        <a class="btn btn-info btn-sm"
-                            th:href="@{/editarreserva/{idReservas}(idReservas=${reserva.idReservas})}">Editar</a>
-                        <form th:action="@{/eliminarreserva/{idReservas}(idReservas=${reserva.idReservas})}" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
+                        <a th:href="@{/editarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-edit">EDITAR</a>
+                        <a th:href="@{/eliminarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-delete">ELIMINAR</a>
                     </td>
                 </tr>
             </tbody>
