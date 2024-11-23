@@ -42,7 +42,8 @@ public class SecurityConfig {
                                                 .requestMatchers("/admin/**", "/agregarreserva", "/editarRol/1",
                                                                 "/editarRol/{idRol}", "/personas", "/Agregarpersona",
                                                                 "/editarRol", "/agregarrol",
-                                                                "/reservas", "/roles", "/editarRol/idRol"
+                                                                "/reservas", "/roles", "/editarRol/idRol",
+                                                                "/AgregarReserva"
 
                                                 )
                                                 .hasRole("administrador")
