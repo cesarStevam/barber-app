@@ -20,7 +20,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: rgba(22, 22, 22, 0.73);
+            background-color: rgba(0, 0, 0, 0.726);
             color: #fff;
             padding: 16px 28px;
         }
@@ -89,6 +89,7 @@
             color: rgb(153, 117, 34);
             font: inherit;
             cursor: pointer;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
 
         .btn {
@@ -103,6 +104,7 @@
         }
         
         .shadow__btn {
+            font-family: serif;
             padding: 7px 18px;
             border: none;
             font-size: 14px;
@@ -114,10 +116,10 @@
             text-transform: uppercase;
             transition: 0.5s;
             transition-property: box-shadow;
-            background: rgb(8, 8, 8);
-            box-shadow: 0 0 15px rgb(0, 0, 0);
             display: flex;
             align-items: center;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
 
         .shadow__btn1 {
@@ -133,17 +135,17 @@
             text-transform: uppercase;
             transition: 0.5s;
             transition-property: box-shadow;
-            background: rgb(8, 8, 8);
-            box-shadow: 0 0 15px rgb(0, 0, 0);
             display: flex;
             align-items: center;
             text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
+
         .shadow__btn1:hover {
-        background-color: #000000;
-        color: white;
-        text-decoration: none;
-    }
+            background-color: #000000;
+            color: white;
+            text-decoration: none;
+        }
 
         .content1 {
             margin: 20px;
@@ -201,23 +203,33 @@
             margin: 0;
         }
 
-        .btn-danger{
-            width: 100%;
-            padding: 10px;
+        .btn-delete{
+            width: 80%;
+            padding: 11px;
             background-color: rgb(0, 0, 0);
-            color: rgb(153, 117, 34);
+            color: rgb(255, 255, 255);
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
+
+        .btn-delete:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+        
         h6 {
         font-size: 16px; /* Aumenta el tamaño de la fuente de todo el cuerpo de la página */
         }
         .ul:hover {
             text-decoration: none;
         }
-       
 
     </style>
 </head>
@@ -240,7 +252,7 @@
         </nav>
         <li sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
-                        <button type="submit" class="btn-danger">Salir</button>
+                        <button type="submit" class="btn-delete">Salir</button>
                     </form>
                 </li>
     </header>
@@ -304,7 +316,7 @@
     </div>
 
 
-    <footer style="padding: 20px; background-color: #000; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 12px; position: relative; box-sizing: border-box;">
+    <footer style="padding: 20px; background-color: #000000e8; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 12px; position: relative; box-sizing: border-box;">
         <!-- Contenedor del mapa -->
         <div style="flex: 1; min-width: 300px; text-align: left; margin-right: 20px;">
             <h4 style="margin-bottom: 10px; font-size: 16px;">Ubicación de Bogotá</h4>

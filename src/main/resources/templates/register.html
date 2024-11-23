@@ -61,7 +61,7 @@
     }
 
     .btn-register{
-        width: 80%;
+        width: 50%;
         padding: 10px;
         background-color: rgb(153, 117, 34);
         color:rgb(0, 0, 0);
@@ -100,7 +100,7 @@
                     <div class="form-group">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <a th:href="@{/}" class="btn-index">Inicio</a>
+                <a th:href="@{/}" class="btn-index">INICIO</a>
                 <h1><center>Registrar</center></h1>
                 <div class="btn-group"></div>
                 
@@ -108,24 +108,24 @@
                 <div class="card-body">
                     <form th:action="@{/register}" method="post">
                         <label>Nombre</label>
-                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" 
-                        maxlength="10" required 
-                        placeholder="Ingresa tu nombre" 
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control"
+                        maxlength="10" required
+                        placeholder="Ingresa tu nombre"
                         style="height: 40px; font-size: 16px; padding: 8px;">
 
                         <label>Apellido</label>
-                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" 
-                        maxlength="10" required 
-                        placeholder="Ingresa tu apellido" 
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control"
+                        maxlength="10" required
+                        placeholder="Ingresa tu apellido"
                         style="height: 40px; font-size: 16px; padding: 8px;">
 
                         <div class="mb-3">
                             <label for="numeroDocumento">Número de Documento</label>
-                            <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" 
-                                   required minlength="5" maxlength="10" pattern="\d+" 
-                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
-                                   placeholder="Ingresa tu número de documento" 
-                                   style="height: 40px; font-size: 16px; padding: 8px;">
+                            <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control"
+                                required minlength="5" maxlength="10" pattern="\d+"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                placeholder="Ingresa tu número de documento"
+                                style="height: 40px; font-size: 16px; padding: 8px;">
                             <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         </div>
                         <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
@@ -137,7 +137,7 @@
                             id="numero_contacto"
                             name="numero_contacto"
                             class="form-control"
-                            placeholder="Ingresa tu número de contacto" 
+                            placeholder="Ingresa tu número de contacto"
                             style="height: 40px; font-size: 16px; padding: 8px;"
                             required
                             maxlength="10"
@@ -167,16 +167,16 @@
 
 
                         <label>Correo</label>
-                        <input type="email" id="email" name="email" class="form-control" 
+                        <input type="email" id="email" name="email" class="form-control"
                         required
-                        placeholder="Ingresa tu correo electrónico" 
+                        placeholder="Ingresa tu correo electrónico"
                         style="height: 40px; font-size: 16px; padding: 8px;">
                         <br>
                             <div>
                                 <label for="contraseña">Contraseña</label>
-                                <input type="password" id="contraseña" name="contraseña" 
+                                <input type="password" id="contraseña" name="contraseña"
                                 required minlength="5" maxlength="10" pattern="\d+"
-                                placeholder="Ingresa tu contraseña" 
+                                placeholder="Ingresa tu contraseña"
                                 style="height: 40px; font-size: 16px; padding: 8px;">
                             </div>
                             
@@ -192,10 +192,8 @@
                             </div>
                             
                             <div class="box-footer">
-                            <button type="submit" class="btn-register">Guardar</button>
+                            <button type="submit" class="btn-register">GUARDAR</button>
                         </form>
-    
-                       
                     </div>
                 </form>
             </div>

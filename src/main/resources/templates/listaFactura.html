@@ -10,6 +10,20 @@
             background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
             background-size: cover;
         }
+        .container {
+            background-color: rgba(0, 0, 0, 0.73);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 2000px;
+            position: relative;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+            margin-top: 0px;
+            margin-bottom: 0px;
+            }
+
         .card {
             background-color: rgba(0, 0, 0, 0.7);
         }
@@ -181,7 +195,7 @@
             <div class="card-body">
                 <h1 class="text-title">LISTA FACTURAS</h1>
                 <center><div class="btn-group">
-                    <a th:href="@{/}" class="btn1">Inicio</a>
+                    <a th:href="@{/}" class="btn1">INICIO</a>
                 </div>
                 
                 <div class="btn-group">
@@ -211,8 +225,8 @@
                             <td th:text="${factura.Fecha}"></td>
                             <td th:text="${factura.Hora}"></td>
                             <td>
-                                <a th:href="@{/editarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-edit">Editar</a>
-                                <a th:href="@{/eliminarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-delete">Eliminar</a>
+                                <a th:href="@{/editarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-edit">EDITAR</a>
+                                <a th:href="@{/eliminarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-delete">ELIMINAR</a>
                             </td>
                         </tr>
                     </tbody>
