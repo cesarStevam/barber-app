@@ -44,7 +44,7 @@
 
         .btn-edit:hover{
             background-color: rgb(0, 0, 0);
-            color: rgb(153, 117, 34);
+            color: rgb(0, 255, 0);;
             text-decoration: none;
             box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
@@ -180,7 +180,7 @@
                             <td th:text="${rol.idRol}"></td>
                             <td th:text="${rol.nombreRol}"></td>
                             <td>
-                                <a th:href="@{/editarRol/{idRol}(idRol=${rol.idRol})}" class="btn-edit"><h>Editar</h></a>
+                                <a th:href="@{/editarRol/{idRol}(idRol=${rol.idRol})}" class="btn-edit"><h>EDITAR</h></a>
                             </td>
                         </tr>
                     </tbody>
