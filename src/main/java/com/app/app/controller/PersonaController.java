@@ -42,8 +42,4 @@ public class PersonaController {
         return "redirect:/personas";
     }
 
-    @GetMapping("/verificarCorreo")
-    public boolean verificarCorreo(@RequestParam String email) {
-        return personaService.verificarCorreoExistente(email);
-    }
 }

@@ -12,6 +12,4 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
    Optional<Persona> findByNumeroDocumento(String numeroDocumento);
 
-   // Método para verificar si un correo ya existe
-   boolean existsByEmail(String email);
 }
