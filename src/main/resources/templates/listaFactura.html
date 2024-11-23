@@ -7,51 +7,212 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: url('cliente-haciendo-corte-pelo-salon-barberia_148840-10585.avif') no-repeat center center fixed;
+            background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
             background-size: cover;
-            color: #ffffff;
         }
         .card {
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semi-transparente */
+            background-color: rgba(0, 0, 0, 0.7);
         }
-        .table {
-            color: #ffffff;
+        .btn-group a {
+            margin-right: 20px;
         }
-        .table th, .table td {
-            color: #ffffff;
+        .table thead th {
+            background-color: rgb(0, 0, 0); /* Color de fondo para los encabezados */
+            color: rgb(153, 117, 34); /* Color del texto de los encabezados */
+        }
+        
+        .table tbody td {
+            background-color: rgba(0, 0, 0, 0.562);
+            color: rgb(255, 255, 255);
+        }
+
+        .table tbody tr:hover {
+            color: white;
+        }
+
+        .btn-edit{
+            width: 80%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-edit:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(72, 255, 0);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-delete{
+            width: 80%;
+            padding: 11px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn-delete:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn2:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn3:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 10px; /* Agregar espacio entre los botones */
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 40px;
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn4:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .text-title{
+            margin-top: 20px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-bottom: 20px;
+            color: #fafafa; /* Cambia el color si lo deseas */
+            font-size: 40px; /* Ajusta el tamaño de la fuente */
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .td{
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header text-center">
-                <h2>Lista de Facturas</h2>
-                <div class="text-center">
-                    <a th:href="@{/}" class="btn btn-primary">Volver al Inicio</a>
-                    <a th:href="@{/AgregarFactura}" class="btn btn-primary btn-sm">Agregar Factura</a>
-                </div>
-            </div>
             <div class="card-body">
-                <table class="table table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th>ID Factura</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <!-- Agrega otros campos según sea necesario -->
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
+                <h1 class="text-title">LISTA FACTURAS</h1>
+                <center><div class="btn-group">
+                    <a th:href="@{/}" class="btn1">Inicio</a>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="#" th:href="@{/AgregarFactura}" class="btn2">Agregar Factura</a>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn3">Reporte Excel</a>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn4">Reporte PDF</a>
+                </div>
+            </center>
+            </div>
+
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Factura</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
                     <tbody>
                         <tr th:each="factura : ${facturas}">
                             <td th:text="${factura.idFactura}"></td>
                             <td th:text="${factura.Fecha}"></td>
                             <td th:text="${factura.Hora}"></td>
-                            <!-- Agrega otros campos según sea necesario -->
                             <td>
-                                <a th:href="@{/editarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn btn-warning btn-sm">Editar</a>
-                                <a th:href="@{/eliminarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn btn-danger btn-sm">Eliminar</a>
+                                <a th:href="@{/editarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-edit">Editar</a>
+                                <a th:href="@{/eliminarfactura/{idFactura}(idFactura=${factura.idFactura})}" class="btn-delete">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>
