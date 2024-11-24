@@ -15,7 +15,7 @@ public class FacturaService {
     @Autowired
     FacturaRepository facturaRepository;
 
-    public List<Factura> getFacturas() {
+    public List<Factura> getFactura() {
         return facturaRepository.findAll();
     }
 
@@ -23,13 +23,13 @@ public class FacturaService {
         facturaRepository.save(factura);
     }
 
-    public Optional<Factura> getFacturaById(Long idFacturas) {
-        return facturaRepository.findById(idFacturas);
+    public Optional<Factura> getFacturaById(Long idFactura) {
+        return facturaRepository.findById(idFactura);
     }
 
-    public void eliminarFactura(Long idFacturas) {
-        if (facturaRepository.existsById(idFacturas)) {
-            facturaRepository.deleteById(idFacturas);
+    public void eliminarFactura(Long idFactura) {
+        if (facturaRepository.existsById(idFactura)) {
+            facturaRepository.deleteById(idFactura);
         }
     }
 }

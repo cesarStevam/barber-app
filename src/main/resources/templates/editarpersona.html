@@ -75,7 +75,7 @@
                             </div>
                             <div>
                                 <label>Número de Documento</label>
-                                <input type="text" th:field="*{numero_documento}" name="numero_documento" class="form-control">
+                                <input type="text" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control">
                             </div>
                             <div>
                                 <label>Número de Contacto</label>
@@ -88,7 +88,7 @@
                             <div>
                                 <label>Roles</label>
                                 <select th:field="*{rol}" name="roles" class="form-control">
-                                    <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombre_rol}"></option>
+                                    <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombreRol}"></option>
                                 </select>
                             </div>
                             <br>

@@ -13,13 +13,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "facturas")
+@Table(name = "factura")
 public class Factura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFacturas")
-    private long idFacturas;
+    @Column(name = "idFactura")
+    private long idFactura;
 
     @Column(name = "Fecha")
     private String Fecha; // Cambiado a String
@@ -27,40 +27,53 @@ public class Factura {
     @Column(name = "Hora")
     private String Hora; // Cambiado a String
 
-    @ManyToMany(mappedBy = "facturas")
+    @ManyToMany(mappedBy = "factura")
     private Set<Compra> compras;
 
     public Factura() {
     }
 
-    public Factura(long idFacturas, String Fecha, String Hora) { // Cambiado a String
-        this.idFacturas = idFacturas;
+
+    public Factura(long idFactura, String Fecha, String Hora, Set<Compra> compras) {
+        this.idFactura = idFactura;
         this.Fecha = Fecha;
         this.Hora = Hora;
+        this.compras = compras;
     }
 
-    public long getIdFacturas() {
-        return this.idFacturas;
+
+    public long getIdFactura() {
+        return this.idFactura;
     }
 
-    public void setIdFacturas(long idFacturas) {
-        this.idFacturas = idFacturas;
+    public void setIdFactura(long idFactura) {
+        this.idFactura = idFactura;
     }
 
-    public String getFecha() { // Cambiado a String
+    public String getFecha() {
         return this.Fecha;
     }
 
-    public void setFecha(String Fecha) { // Cambiado a String
+    public void setFecha(String Fecha) {
         this.Fecha = Fecha;
     }
 
-    public String getHora() { // Cambiado a String
+    public String getHora() {
         return this.Hora;
     }
 
-    public void setHora(String Hora) { // Cambiado a String
+    public void setHora(String Hora) {
         this.Hora = Hora;
     }
+
+    public Set<Compra> getCompras() {
+        return this.compras;
+    }
+
+    public void setCompras(Set<Compra> compras) {
+        this.compras = compras;
+    }
+
+
 
 }

@@ -30,7 +30,7 @@ public class Ventas {
     private Date Hora;
 
     @OneToOne
-    @JoinColumn(name = "IdFacturas")
+    @JoinColumn(name = "IdFactura")
     private Factura factura;
 
     public Ventas() {

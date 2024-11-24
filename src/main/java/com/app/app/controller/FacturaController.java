@@ -1,5 +1,7 @@
 package com.app.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,17 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.app.entity.Factura;
 import com.app.app.services.FacturaService;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/home/Facturas")
+@RequestMapping("/home/Factura")
 public class FacturaController {
     @Autowired
     FacturaService facturaService;
 
     @GetMapping
     public List<Factura> getAll() {
-        return facturaService.getFacturas();
+        return facturaService.getFactura();
     }
 
     @GetMapping("/{idFactura}")

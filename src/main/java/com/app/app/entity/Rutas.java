@@ -183,10 +183,10 @@ public class Rutas {
         return "redirect:/compras";
     }
 
-    @GetMapping("/facturas")
-    public String mostrarFacturas(Model model) {
-        List<Factura> facturas = facturaService.getFacturas();
-        model.addAttribute("facturas", facturas);
+    @GetMapping("/factura")
+    public String mostrarFactura(Model model) {
+        List<Factura> factura = facturaService.getFactura();
+        model.addAttribute("factura", factura);
         return "listaFactura"; // Asegúrate de que este sea el nombre correcto de la vista (archivo HTML).
     }
 
@@ -199,14 +199,13 @@ public class Rutas {
     @PostMapping("/AgregarFactura")
     public String guardarFactura(@ModelAttribute("factura") Factura factura) {
         facturaService.saveOrUpdate(factura);
-        return "redirect:/facturas"; // Redirige a la lista de facturas después de guardar
+        return "redirect:/factura"; // Redirige a la lista de facturas después de guardar
     }
 
-    @GetMapping("/editarfactura/{idFacturas}")
-    public String editarFactura(@PathVariable("idFactura") Long idCompras, ModelMap model) {
+    @GetMapping("/editarfactura/{idFactura}")
+    public String editarFactura(@PathVariable("idFactura") Long idFactura, ModelMap model) {
         model.addAttribute("factura", new Factura());
-        Optional<Factura> factura = facturaService.getFacturaById(idCompras); // Supone que tienes este método en tu
-                                                                              // service
+        Optional<Factura> factura = facturaService.getFacturaById(idFactura); // Supone que tienes este método en tu  service
         model.addAttribute("compra", factura.orElse(null));
         return "editarfactura"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
     }
@@ -215,7 +214,7 @@ public class Rutas {
     @PostMapping("/editarfactura/editFactura")
     public String metodPostEdit(@ModelAttribute("factura") Factura factura) {
         facturaService.saveOrUpdate(factura); // Guardar o actualizar la compra
-        return "redirect:/facturas"; // Redirigir de vuelta a la lista de compras
+        return "redirect:/factura"; // Redirigir de vuelta a la lista de compras
     }
 
     @GetMapping("/productos")
