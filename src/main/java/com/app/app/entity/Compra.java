@@ -1,12 +1,17 @@
 package com.app.app.entity;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,26 +25,11 @@ public class Compra {
     @Column(name = "idCompras")
     private long idCompras;
 
-    @Column(name = "primer_nombre")
-    private String primer_nombre;
-
-    @Column(name = "segundo_nombre")
-    private String segundo_nombre;
-
-    @Column(name = "primer_apellido")
-    private String primer_apellido;
-
-    @Column(name = "segundo_apellido")
-    private String segundo_apellido;
-
-    @Column(name = "numero_documento")
-    private String numero_documento;
+    @Column(name = "cantidad")
+    private Integer cantidad;
 
     @Column(name = "descripcion_producto")
     private String descripcion_producto;
-
-    @Column(name = "Cantidad")
-    private String Cantidad;
 
     @Column(name = "valor_unitario")
     private String valor_unitario;
@@ -47,28 +37,30 @@ public class Compra {
     @Column(name = "valor_total")
     private String valor_total;
 
-    @ManyToOne
-    @JoinColumn(name = "idPersonas")
-    private Persona persona;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime fecha_compra;
 
+    @Column(name = "estado_compra")
+    private String estado_compra;
+
+    @ManyToMany(mappedBy = "compras")
+    private Set<Proveedor> proveedores = new HashSet<>();
 
     public Compra() {
     }
 
-    public Compra(long idCompras, String primer_nombre, String segundo_nombre, String primer_apellido,
-            String segundo_apellido, String numero_documento, String descripcion_producto, String Cantidad,
-            String valor_unitario, String valor_total) {
+
+
+    public Compra(long idCompras, Integer cantidad, String descripcion_producto, String valor_unitario, String valor_total, LocalDateTime fecha_compra, String estado_compra) {
         this.idCompras = idCompras;
-        this.primer_nombre = primer_nombre;
-        this.segundo_nombre = segundo_nombre;
-        this.primer_apellido = primer_apellido;
-        this.segundo_apellido = segundo_apellido;
-        this.numero_documento = numero_documento;
+        this.cantidad = cantidad;
         this.descripcion_producto = descripcion_producto;
-        this.Cantidad = Cantidad;
         this.valor_unitario = valor_unitario;
         this.valor_total = valor_total;
+        this.fecha_compra = fecha_compra;
+        this.estado_compra = estado_compra;
     }
+
 
     public long getIdCompras() {
         return this.idCompras;
@@ -78,44 +70,12 @@ public class Compra {
         this.idCompras = idCompras;
     }
 
-    public String getPrimer_nombre() {
-        return this.primer_nombre;
+    public Integer getCantidad() {
+        return this.cantidad;
     }
 
-    public void setPrimer_nombre(String primer_nombre) {
-        this.primer_nombre = primer_nombre;
-    }
-
-    public String getSegundo_nombre() {
-        return this.segundo_nombre;
-    }
-
-    public void setSegundo_nombre(String segundo_nombre) {
-        this.segundo_nombre = segundo_nombre;
-    }
-
-    public String getPrimer_apellido() {
-        return this.primer_apellido;
-    }
-
-    public void setPrimer_apellido(String primer_apellido) {
-        this.primer_apellido = primer_apellido;
-    }
-
-    public String getSegundo_apellido() {
-        return this.segundo_apellido;
-    }
-
-    public void setSegundo_apellido(String segundo_apellido) {
-        this.segundo_apellido = segundo_apellido;
-    }
-
-    public String getNumero_documento() {
-        return this.numero_documento;
-    }
-
-    public void setNumero_documento(String numero_documento) {
-        this.numero_documento = numero_documento;
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getDescripcion_producto() {
@@ -124,14 +84,6 @@ public class Compra {
 
     public void setDescripcion_producto(String descripcion_producto) {
         this.descripcion_producto = descripcion_producto;
-    }
-
-    public String getCantidad() {
-        return this.Cantidad;
-    }
-
-    public void setCantidad(String Cantidad) {
-        this.Cantidad = Cantidad;
     }
 
     public String getValor_unitario() {
@@ -150,13 +102,21 @@ public class Compra {
         this.valor_total = valor_total;
     }
 
-    public Persona getPersona() {
-        return this.persona;
+    public LocalDateTime getFecha_compra() {
+        return this.fecha_compra;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setFecha_compra(LocalDateTime fecha_compra) {
+        this.fecha_compra = fecha_compra;
     }
 
+    public String getEstado_compra() {
+        return this.estado_compra;
+    }
+
+    public void setEstado_compra(String estado_compra) {
+        this.estado_compra = estado_compra;
+    }
+    
 
 }

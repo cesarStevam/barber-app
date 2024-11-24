@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Compra</title>
+    <title>Editar Proveedor</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
@@ -149,56 +149,44 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-        <h1 class="text-title">EDITAR COMPRA</h1>
+        <h1 class="text-title">EDITAR PROOVEDOR</h1>
         <center><div class="btn-group">
             <a th:href="@{/}" class="btn1">INICIO</a>
         </div>
         <div class="btn-group">
-            <a th:href="@{/compras}" class="btn2">Lista Compras</a>
+            <a th:href="@{/inventario}" class="btn2">Lista Inventario</a>
         </div></center>
 
         <div class="card-body">
-                    <form th:action="@{/editarcompra/editCompra}" th:object="${compra}" method="POST">
-                        <input type="hidden" th:field="*{idCompras}" />
+                    <form th:action="@{/editarinventario/editInventario}" th:object="${inventario}" method="POST">
+                        <input type="hidden" th:field="*{idInventario}" />
                         <div class="form-group">
                             <div>
-                                <div class="form-group">
-                                    <label>Id Compra</label>
-                            <input type="text" id="idCompras" name="idCompras" class="form-control" th:value="${compra.idCompras}">
+
+                            <div>
+                                <label>Producto</label>
+                                <input type="text" th:field="*{producto}" name="producto" class="form-control" maxlength="25" required>
                             </div>
                             <div>
                                 <label>Cantidad</label>
                                 <input type="number" th:field="*{cantidad}" name="cantidad" class="form-control" maxlength="10" required>
-                                </div>
-                            <div>
-                                <label>Descripción producto</label>
-                                <input type="text" th:field="*{descripcion_producto}" name="descripcion_producto" class="form-control" maxlength="70" required>
                             </div>
 
                             <div>
-                                <label>Valor Unitario</label>
-                                <input type="number" th:field="*{valor_unitario}" name="valor_unitario" class="form-control" maxlength="10" required>
-                            </div>
-                            <div>
-                                <label>Valor Total</label>
-                                <input type="number" th:field="*{valor_total}" name="valor_total" class="form-control" maxlength="10" required>
+                                <label>Fecha de Ingreso</label>
+                                <input type="datetime-local" th:field="*{fecha_ingreso}" name="fecha_ingreso" class="form-control" maxlength="10" required>
                             </div>
 
                             <div>
-                                <label>Fecha compra</label>
-                                <input type="datetime-local" th:field="*{fecha_compra}" name="fecha_compra-" class="form-control" maxlength="10" required>
+                                <label>Fecha de Vencimiento</label>
+                                <input type="datetime-local" th:field="*{fecha_vencimiento}" name="fecha_vencimiento" class="form-control" maxlength="10" required>
                             </div>
 
-                            <div class="form-group">
-                                <label for="estado_compra">Estado de compra</label>
-                                <select th:field="*{estado_compra}" name="estado_compra" class="form-control" required>
-                                    <option value="">Seleccione un estado</option>
-                                    <option value="Solicitado">Solicitado</option>
-                                    <option value="Devuelto">Devuelto</option>
-                                    <option value="Completado">Completado</option>
-                                    <option value="Cancelado">Cancelado</option>
-                                </select>
+                            <div>
+                                <label>Fecha de Salida</label>
+                                <input type="datetime-local" th:field="*{fecha_salida}" name="fecha_salida" class="form-control" maxlength="10" required>
                             </div>
+
                             <br>
                             <center><div class="btn-group">
                                 <button type="submit" class="btn-edit">GUARDAR</button>

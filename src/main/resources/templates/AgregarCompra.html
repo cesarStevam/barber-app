@@ -157,40 +157,41 @@
                         </div>
                 
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" maxlength="10" required>
-                        </div>
-                
-                        <div class="form-group">
-                            <label>Apellido</label>
-                            <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
-                        </div>
-                
-                        <div class="form-group">
-                            <label for="numeroDocumento">Número de Documento</label>
-                            <input type="text" id="numero_documento" name="numero_documento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
-                            <small class="text-alert">Ingrese un número de documento entre 5 y 10 dígitos.</small>
-                        </div>
-                
-                        <div class="form-group">
-                            <label>Descripción Producto</label>
-                            <input type="text" th:field="*{descripcion_producto}" name="descripcion_producto" class="form-control" required>
-                        </div>
-                
-                        <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" th:field="*{Cantidad}" name="Cantidad" class="form-control" required>
+                            <input type="number" id="cantidad" name="cantidad" class="form-control" maxlength="10" required>
                         </div>
                 
                         <div class="form-group">
-                            <label>Valor Unitario</label>
-                            <input type="number" th:field="*{valor_unitario}" name="valor_unitario" class="form-control" required>
+                            <label>Descripcion Producto</label>
+                            <input type="text" id="descripcion_producto" name="descripcion_producto" class="form-control" maxlength="70" required>
                         </div>
                 
                         <div class="form-group">
-                            <label>Valor Total</label>
-                            <input type="number" th:field="*{valor_total}" name="valor_total" class="form-control" required>
+                            <label>Valor unitario</label>
+                            <input type="number" id="valor_unitario" name="valor_unitario" class="form-control" maxlength="10" required>
                         </div>
+                  
+                        <div class="form-group">
+                            <label>Valor total</label>
+                            <input type="number" id="valor_total" name="valor_total" class="form-control" maxlength="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fecha compra</label>
+                            <input type="datetime-local" id="fecha_compra" name="fecha_compra" class="form-control" maxlength="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estado_compra">Estado de compra</label>
+                            <select id="estado_compra" name="estado_compra" class="form-control" required>
+                                <option value="">Seleccione un estado</option>
+                                <option value="Solicitado">Solicitado</option>
+                                <option value="Devuelto">Devuelto</option>
+                                <option value="Completado">Completado</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                
                             <div class="alert alert-danger" th:if="${error}" th:text="${error}">
                             </div>
                             <br>
