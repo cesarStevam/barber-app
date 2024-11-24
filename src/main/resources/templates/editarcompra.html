@@ -166,7 +166,21 @@
                                     <label>Id Compra</label>
                             <input type="text" id="idCompras" name="idCompras" class="form-control" th:value="${compra.idCompras}">
                             </div>
-                                    
+                            <div>
+                            <label>Nombre</label>
+                            <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" maxlength="10" required>
+                            </div>
+                            <div>
+                            <label>Apellido</label>
+                            <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
+                            </div>
+                            <div>
+                            <label for="numeroDocumento">Número de Documento</label>
+                            <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
+                            <small class="text-alert">Ingrese un número de documento entre 5 y 10 dígitos.</small>
+                            </div>
+                            <div class="alert alert-danger" th:if="${error}" th:text="${error}">
+                            </div>
                             <div>
                                 <label>Descripción Producto</label>
                                 <input type="text" th:field="*{descripcion_producto}" name="descripcion_producto" class="form-control" required>
@@ -183,23 +197,7 @@
                                 <label>Valor Total</label>
                                 <input type="number" th:field="*{valor_total}" name="valor_total" class="form-control" required>
                             </div>
-                            <div>
-                            <label>Nombre</label>
-                            <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" maxlength="10" required>
-                            </div>
-                            <div>
-                            <label>Apellido</label>
-                            <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" maxlength="10" required>
-                            </div>
-                            <div>
-                            <label for="numeroDocumento">Número de Documento</label>
-                            <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required minlength="5" maxlength="10" pattern="\d+">
-                            <small class="text-alert">Ingrese un número de documento entre 5 y 10 dígitos.</small>
-                            </div>
-                            <div class="alert alert-danger" th:if="${error}" th:text="${error}">
-                            </div>
                             <br>
-
                             <center><div class="btn-group">
                                 <button type="submit" class="btn-edit">GUARDAR</button>
                             </div></center>
