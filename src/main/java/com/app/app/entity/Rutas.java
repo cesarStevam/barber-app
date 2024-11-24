@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.app.app.repository.PersonaRepository;
 import com.app.app.repository.RolRepository;
 import com.app.app.services.CompraService;
-import com.app.app.services.FacturaService;
+
 import com.app.app.services.PersonaService;
 import com.app.app.services.ProductoService;
 import com.app.app.services.ReservaService;
@@ -40,8 +40,7 @@ public class Rutas {
     @Autowired
     private CompraService compraService;
 
-    @Autowired
-    private FacturaService facturaService;
+
 
     @Autowired
     private ProductoService productoService;
@@ -183,39 +182,7 @@ public class Rutas {
         return "redirect:/compras";
     }
 
-    @GetMapping("/factura")
-    public String mostrarFactura(Model model) {
-        List<Factura> factura = facturaService.getFactura();
-        model.addAttribute("factura", factura);
-        return "listaFactura"; // Asegúrate de que este sea el nombre correcto de la vista (archivo HTML).
-    }
 
-    @GetMapping("/AgregarFactura")
-    public String agregarFactura(Model model) {
-        model.addAttribute("factura", new Factura());
-        return "AgregarFactura"; // Nombre de la plantilla HTML para agregar una factura
-    }
-
-    @PostMapping("/AgregarFactura")
-    public String guardarFactura(@ModelAttribute("factura") Factura factura) {
-        facturaService.saveOrUpdate(factura);
-        return "redirect:/factura"; // Redirige a la lista de facturas después de guardar
-    }
-
-    @GetMapping("/editarfactura/{idFactura}")
-    public String editarFactura(@PathVariable("idFactura") Long idFactura, ModelMap model) {
-        model.addAttribute("factura", new Factura());
-        Optional<Factura> factura = facturaService.getFacturaById(idFactura); // Supone que tienes este método en tu  service
-        model.addAttribute("compra", factura.orElse(null));
-        return "editarfactura"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
-    }
-
-    // Método POST para actualizar la compra
-    @PostMapping("/editarfactura/editFactura")
-    public String metodPostEdit(@ModelAttribute("factura") Factura factura) {
-        facturaService.saveOrUpdate(factura); // Guardar o actualizar la compra
-        return "redirect:/factura"; // Redirigir de vuelta a la lista de compras
-    }
 
     @GetMapping("/productos")
     public String listProductos(Model model) {

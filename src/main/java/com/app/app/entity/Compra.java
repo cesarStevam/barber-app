@@ -1,15 +1,11 @@
 package com.app.app.entity;
 
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -55,9 +51,6 @@ public class Compra {
     @JoinColumn(name = "idPersonas")
     private Persona persona;
 
-    @ManyToMany
-    @JoinTable(name = "compra_factura", joinColumns = @JoinColumn(name = "idCompras"), inverseJoinColumns = @JoinColumn(name = "idFacturas"))
-    private Set<Factura> facturas;
 
     public Compra() {
     }
@@ -165,12 +158,5 @@ public class Compra {
         this.persona = persona;
     }
 
-    public Set<Factura> getFacturas() {
-        return this.facturas;
-    }
-
-    public void setFacturas(Set<Factura> facturas) {
-        this.facturas = facturas;
-    }
 
 }
