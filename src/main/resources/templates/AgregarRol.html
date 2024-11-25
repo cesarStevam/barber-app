@@ -132,7 +132,7 @@
                     <form th:action="@{/AgregarRol}" th:object="${rol}" method="POST">
                         <div class="form-group">
                             <label>Nombre del Rol</label>
-                            <input type="text" id="nombreRol" name="nombreRol" class="form-control" th:value="${rol.nombreRol}">
+                            <input type="text" id="nombreRol" name="nombreRol" class="form-control" th:value="${rol.nombreRol}"  maxlength="15" required>
                         </div>
                         
                         <center><div class="box-footer"></div>
