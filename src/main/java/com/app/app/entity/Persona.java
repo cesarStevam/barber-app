@@ -1,5 +1,7 @@
 package com.app.app.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +47,10 @@ public class Persona {
     @Column(name = "contraseña")
     private String contraseña;
 
+    private String tokenRecuperacion; // Token único para la recuperación de contraseña
+
+    private LocalDateTime tokenExpiracion; // Fecha y hora de expiración del token
+
     @ManyToOne
     @JoinColumn(name = "idRol", nullable = false)  
     private Rol rol;
@@ -57,7 +63,7 @@ public class Persona {
     }
 
 
-    public Persona(long idPersonas, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, String numeroDocumento, String numero_contacto, String email, String contraseña, Rol rol) {
+    public Persona(long idPersonas, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, String numeroDocumento, String numero_contacto, String email, String contraseña, String tokenRecuperacion, LocalDateTime tokenExpiracion, Rol rol) {
         this.idPersonas = idPersonas;
         this.primer_nombre = primer_nombre;
         this.segundo_nombre = segundo_nombre;
@@ -67,6 +73,8 @@ public class Persona {
         this.numero_contacto = numero_contacto;
         this.email = email;
         this.contraseña = contraseña;
+        this.tokenRecuperacion = tokenRecuperacion;
+        this.tokenExpiracion = tokenExpiracion;
         this.rol = rol;
     }
 
@@ -144,9 +152,27 @@ public class Persona {
         this.contraseña = contraseña;
     }
 
+    public String getTokenRecuperacion() {
+        return this.tokenRecuperacion;
+    }
+
+    public void setTokenRecuperacion(String tokenRecuperacion) {
+        this.tokenRecuperacion = tokenRecuperacion;
+    }
+
+    public LocalDateTime getTokenExpiracion() {
+        return this.tokenExpiracion;
+    }
+
+    public void setTokenExpiracion(LocalDateTime tokenExpiracion) {
+        this.tokenExpiracion = tokenExpiracion;
+    }
+
     public Rol getRol() {
         return this.rol;
     }
+
+    
 
 
 }

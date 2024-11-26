@@ -12,4 +12,9 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
    Optional<Persona> findByNumeroDocumento(String numeroDocumento);
 
+   Optional<Persona> findByEmail(String email);
+
+   // Buscar un usuario por su token de recuperación
+   Optional<Persona> findByTokenRecuperacion(String token);
+
 }
