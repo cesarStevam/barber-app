@@ -96,19 +96,19 @@ public class PersonaService {
         System.out.println("Token recibido (sin modificar): [" + token + "]");
         token = token.trim();
         System.out.println("Token después de trim(): [" + token + "]");
-    
+
         // Encuentra la persona asociada al token
         Optional<Persona> personaOpt = personaRepository.findByTokenRecuperacion(token);
-    
+
         if (personaOpt.isPresent()) {
             Persona persona = personaOpt.get();
             System.out.println("Token válido para el usuario: " + persona.getEmail());
-    
+
             if (persona.getTokenExpiracion().isAfter(LocalDateTime.now())) {
                 persona.setContraseña(passwordEncoder.encode(nuevaPassword));
                 persona.setTokenRecuperacion(null);
                 persona.setTokenExpiracion(null);
-    
+
                 personaRepository.save(persona);
                 personaRepository.flush();
                 System.out.println("Contraseña actualizada y token eliminado para: " + persona.getEmail());
@@ -121,29 +121,27 @@ public class PersonaService {
         }
         return false;
     }
-    
-    
+
     public boolean enviarEmailRecuperacion(String email) {
         Optional<Persona> personaOpt = personaRepository.findByEmail(email);
         if (personaOpt.isPresent()) {
             Persona persona = personaOpt.get();
-    
+
             // Generar y asignar el token
             String token = UUID.randomUUID().toString();
             persona.setTokenRecuperacion(token);
             persona.setTokenExpiracion(LocalDateTime.now().plusHours(1));
             personaRepository.save(persona); // Guardar los cambios en la base de datos
-    
+
             // Enviar correo
             String enlace = "http://localhost:8080/recuperar-password/reset?token=" + token;
             String mensaje = "Haz clic en el siguiente enlace para restablecer tu contraseña: " + enlace;
             emailService.enviarEmail(email, "Recuperación de contraseña", mensaje);
-    
+
             return true;
         }
         return false;
     }
-    
 
     public boolean validarToken(String token) {
         System.out.println("Validando token recibido: " + token);
@@ -154,7 +152,6 @@ public class PersonaService {
             System.out.println("Token válido para el usuario: " + persona.getEmail());
 
             System.out.println("Token en la base de datos: " + persona.getTokenRecuperacion());
-
 
             // Verificar la expiración
             if (persona.getTokenExpiracion().isAfter(LocalDateTime.now())) {
@@ -168,11 +165,15 @@ public class PersonaService {
         return false;
 
     }
-    
-    
 
-    
-    
-    
+    public boolean existeEmail(String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'existeEmail'");
+    }
+
+    public void guardar(Persona persona) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'guardar'");
+    }
 
 }

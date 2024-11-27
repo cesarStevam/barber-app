@@ -122,28 +122,34 @@
                         <div class="mb-3">
                             <label for="numeroDocumento">Número de Documento</label>
                             <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control"
-                                required minlength="5" maxlength="10" pattern="\d+"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                                placeholder="Ingresa tu número de documento"
-                                style="height: 40px; font-size: 16px; padding: 8px;">
+                                   required minlength="5" maxlength="10" pattern="\d{5,10}"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   placeholder="Ingresa tu número de documento"
+                                   style="height: 40px; font-size: 16px; padding: 8px;"
+                                   title="Debe ingresar un numero de documento minimo de 5 cifras">
                             <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                         </div>
                         <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
                         
                         
-                        <label for="numero_contacto">Número de Contacto</label>
-                        <input
-                            type="text"
-                            id="numero_contacto"
-                            name="numero_contacto"
-                            class="form-control"
-                            placeholder="Ingresa tu número de contacto"
-                            style="height: 40px; font-size: 16px; padding: 8px;"
-                            required
-                            maxlength="10"
-                            title="Debe ingresar un número de celular colombiano válido que comience con 3 y tenga 10 dígitos.">
-                        <small class="form-text text-muted">Ingrese un número de celular colombiano válido (ejemplo: 3XX XXX XXXX).</small>
-                        <br>
+                        
+                        <div class="mb-3">
+                            <label for="numero_contacto">Número de Contacto</label>
+                            <input
+                                type="text"
+                                id="numero_contacto"
+                                name="numero_contacto"
+                                class="form-control"
+                                placeholder="Ingresa tu número de contacto"
+                                style="height: 40px; font-size: 16px; padding: 8px;"
+                                required
+                                minlength="10"
+                                maxlength="10"
+                                pattern="3\d{9}"
+                                title="Debe ingresar un número de celular colombiano válido que comience con 3 y tenga 10 dígitos."
+                            >
+                            <small class="form-text text-muted">Ingrese un número de celular colombiano válido (ejemplo: 3XX XXX XXXX).</small>
+                        </div>
                         
                         <script>
                             const inputNumero = document.getElementById("numero_contacto");
@@ -152,17 +158,18 @@
                                 // Eliminar caracteres no numéricos
                                 this.value = this.value.replace(/[^0-9]/g, "");
                         
-                                // Limitar la longitud a 10 caracteres
+                                // Validar que comience con "3"
+                                if (this.value && !this.value.startsWith("3")) {
+                                    this.value = ""; // Borra todo si no comienza con 3
+                                }
+                        
+                                // Limitar la longitud exacta a 10 caracteres
                                 if (this.value.length > 10) {
                                     this.value = this.value.slice(0, 10);
                                 }
-                        
-                                // Validar que el número comience con "3"
-                                if (!this.value.startsWith("3")) {
-                                    this.value = ""; // Borra todo si no comienza con 3
-                                }
                             });
                         </script>
+                        
                         
 
 
@@ -172,6 +179,7 @@
                         placeholder="Ingresa tu correo electrónico"
                         style="height: 40px; font-size: 16px; padding: 8px;">
                         <br>
+                        
                             <div>
                                 <label for="contraseña">Contraseña</label>
                                 <input type="password" id="contraseña" name="contraseña"

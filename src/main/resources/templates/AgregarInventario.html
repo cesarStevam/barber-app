@@ -173,13 +173,32 @@
                 
                         <div class="form-group">
                             <label>Fecha de Ingreso</label>
-                            <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" class="form-control" maxlength="10" required>
+                            <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" class="form-control" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label>Fecha de Vencimiento</label>
-                            <input type="datetime-local" id="fecha_vencimiento" name="fecha_vencimiento" class="form-control" maxlength="10" required>
+                            <input type="datetime-local" id="fecha_vencimiento" name="fecha_vencimiento" class="form-control" required>
                         </div>
+                        
+                        <script>
+                            // Referencias a los campos de fecha
+                            const fechaIngreso = document.getElementById("fecha_ingreso");
+                            const fechaVencimiento = document.getElementById("fecha_vencimiento");
+                        
+                            // Actualiza la fecha mínima de vencimiento al seleccionar una fecha de ingreso
+                            fechaIngreso.addEventListener("change", function () {
+                                const fechaSeleccionada = fechaIngreso.value;
+                                if (fechaSeleccionada) {
+                                    // Establece la fecha mínima para el campo de vencimiento
+                                    fechaVencimiento.min = fechaSeleccionada;
+                                } else {
+                                    // Limpia la restricción si no hay fecha de ingreso
+                                    fechaVencimiento.min = "";
+                                }
+                            });
+                        </script>
+                        
                   
                         <div class="form-group">
                             <label>Fecha de Salida</label>

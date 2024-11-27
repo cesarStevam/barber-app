@@ -302,6 +302,17 @@
                 display: none;
             }
         }
+        .bienvenido {
+        flex: 1; /* Ocupa el espacio disponible */
+        text-align: center;
+    }
+
+    .bienvenido h5 {
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+    }
     </style>
 </head>
 <body>
@@ -309,6 +320,10 @@
         <div class="logo">
             <h4>BarberApp</h4>
         </div>
+        <div class="bienvenido">
+            <h5>¡Bienvenido de nuevo, te estabamos esperando!</h5>
+        </div>
+    
         
             <nav class="navbar">
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>

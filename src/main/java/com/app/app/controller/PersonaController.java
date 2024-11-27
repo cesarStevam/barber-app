@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.app.app.entity.Persona;
 import com.app.app.services.PersonaService;
 
+import ch.qos.logback.core.model.Model;
+
 @RestController
 @RequestMapping("/home/Personas")
 
@@ -22,7 +25,6 @@ public class PersonaController {
 
     @Autowired
     PersonaService personaService;
-
 
     @GetMapping
     public List<Persona> getAll() {
@@ -41,8 +43,6 @@ public class PersonaController {
         return "redirect:/personas";
     }
 
-
-
     @PostMapping("/recuperar-password")
     public String enviarCorreoRecuperacion(@RequestParam String email) {
         boolean enviado = personaService.enviarEmailRecuperacion(email); // Usa el método existente
@@ -52,6 +52,5 @@ public class PersonaController {
             return "error-envio"; // Página de error si el correo no se encuentra
         }
     }
-    
 
 }

@@ -298,6 +298,30 @@
                 display: none;
             }
         }
+        .letrero {
+        flex: 1; /* Ocupa el espacio disponible */
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .letrero p {
+        color: #fff;
+        font-size: 21px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: letreroDeslizante 8s linear infinite;
+        margin-top: 37px; /* Ajusta para bajar el letrero */
+    }
+
+    @keyframes letreroDeslizante {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
     </style>
 </head>
 <body>
@@ -305,6 +329,12 @@
         <div class="logo">
             <h4>BarberApp</h4>
         </div>
+        
+        <div class="letrero">
+            <p>¡Bienvenido a BarberApp! Reserva tu turno ahora para lucir increíble.</p>
+        </div>
+        
+        
         
             <nav class="navbar">
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>

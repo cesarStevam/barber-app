@@ -302,6 +302,17 @@
                 display: none;
             }
         }
+        .bienvenido-barbero {
+        flex: 1; /* Ocupa el espacio disponible */
+        text-align: center;
+    }
+
+    .bienvenido-barbero h5 {
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+    }
     </style>
 </head>
 <body>
@@ -309,7 +320,9 @@
         <div class="logo">
             <h4>BarberApp</h4>
         </div>
-        
+        <div class="bienvenido-barbero">
+            <h5>¡Listo para crear estilos únicos, barbero!</h5>
+        </div>
             <nav class="navbar">
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>
                 <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
@@ -317,7 +330,7 @@
                 <li><a href="#" th:href="@{/inventario}">Inventario</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
-                        <button type="submit" class="btn btn-danger">Salir</button>
+                        <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </li>
                 
