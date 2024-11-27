@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <title>BarberApp</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+        }
+
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .head{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            background: #101010;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .navbar{
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .logo{
+            padding: 12px 20px;
+            color: rgb(214, 157, 0);
+            font-size: 25px;
+            text-decoration: none;
+        }
+
+        .navbar a{
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 15px;
+            background: #101010;
+        }
+
+        .navbar a:hover{
+            background: rgba(214, 157, 0, 0.603);
+        }
+
+        .navbar h5 a{
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 15px;
+            background: rgba(214, 157, 0, 0.603);
+        }
+
+        .navbar h5 a:hover{
+            background: rgba(214, 157, 0, 0.603);
+            color: black;
+        }
+
+        .header{
+            margin-top: 0;
+            padding: 20px;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header{
+            height: 80vh !important;
+            background-size: cover;
+        }
+
+        .title{
+            margin-bottom: 40px;
+            font-size: 60px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        p{
+            margin-bottom: 40px;
+            font-size: 18px;
+            color: #fff;
+            padding: 0 100px;
+        }
+
+        .btn{
+            display: inline-block;
+            margin-top: 0;
+            padding: 10px 40px;
+            border: 0 solid rgb(214, 157, 0);
+            color: #171717;
+            text-decoration: none;
+            background: rgb(214, 157, 0);
+        }
+
+        .btn:hover{
+            background: none;
+        }
+
+        .btn-home{
+            display: flex;
+        }
+
+        .btn-home a{
+            margin: 0 10px;
+        }
+
+        .content{
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .sau{
+            margin-top: 0;
+            padding: 30px;
+            background: #1f1d1d;
+            margin-bottom: 0;
+        }
+
+        .nos{
+            padding-top: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .capa{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0000009f;
+            opacity: 0.5;
+            mix-blend-mode: overlay;
+        }
+
+        .box-container{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .box-container .box{
+            height: 10rem;
+            width: 14rem;
+            background: #101010;
+            text-align: center;
+            border-radius: 1rem;
+            box-shadow: 0 .3rem 5rem rgb(214, 157, 0);
+            margin: 2rem;
+        }
+
+        .about{
+            margin-top: 0;
+            padding: 50px;
+            margin-bottom: 0;
+            background: #171717;
+        }
+
+        .price{
+            margin-top: 0;
+            padding: 50px;
+            margin-bottom: 0;
+            background: url(Productos.webp) no-repeat center;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .contact{
+            flex-direction: column;
+            justify-content: left;
+            align-items: center;
+            color: #fff;
+            height: 40vh !important;
+            padding-top: 20px;
+            background: #171717;
+            margin-top: 0;
+            padding: 50px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .box{
+            margin: 10px;
+        }
+
+        img{
+            max-width: 100%; /* Asegura que las imágenes se ajusten dentro de su contenedor */
+            height: auto; /* Mantiene la proporción de las imágenes */
+            border-radius: 8px; /* Opcional: puedes agregar un borde redondeado a las imágenes */
+        }
+
+        .box-cortes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .box-cortes .box1{
+            height: 12rem;
+            width: 12rem;
+            background: #101010;
+            text-align: center;
+            border-radius: 1rem;
+            box-shadow: 0 .3rem 5rem rgb(214, 157, 0);
+            margin: 2rem;
+        }
+
+        .box-productos{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .box-productos .box2{
+            height: 12rem;
+            width: 12rem;
+            background: #101010;
+            border-radius: 1rem;
+            box-shadow: 0 .3rem 5rem rgb(214, 157, 0);
+            margin: 2rem;
+        }
+
+        .btn1{
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 40px;
+            border: 2px solid rgb(0, 0, 0);
+            color: #171717;
+            text-decoration: none;
+            background: rgb(214, 157, 0);
+        }
+
+        @media (max-widht: 768px){
+            .title{
+                margin-bottom: 0;
+                font-size: 40px;
+            }
+
+            .sau{
+                height: 120vh;
+            }
+
+            .navbar{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="logo">
+            <h4>BarberApp</h4>
+        </div>
+        
+            <nav class="navbar">
+                <li><a href="#" th:href="@{/productos}">Productos</a></li>
+                <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
+                <li><a href="#" th:href="@{/proveedores}">Proveedores</a></li>
+                <li><a href="#" th:href="@{/inventario}">Inventario</a></li>
+                <li><h5><a href="#" th:href="@{/login}">ACCEDER</a></h5></li>
+            </nav>
+    </div>
+
+    <header class="content header">
+        <div class="nos">
+        <h2 class="title">NOSOTROS</h2>
+        <p>
+            Somos una barbería dedicada a ofrecer cortes de cabello y servicios
+            de afeitado de calidad, con un enfoque personalizado para cada cliente.
+            Nos apasiona el arte de la barbería y buscamos brindarte una experiencia
+            única, en un ambiente cómodo y moderno, donde la tradición y las últimas
+            tendencias se fusionan para resaltar tu estilo.
+        </p>
+        </div>
+        <div>
+            <video muted autoplay loop class="video">
+                <source src="Barberia~3.mp4" type="video/mp4">
+            </video>
+            <div class="capa"></div>
+        </div>
+    </header>
+
+    <section class="content sau">
+        <h2 class="title">BARBEROS</h2>
+        <p>
+            Nuestros barberos se encargarán de brindarte la mejor experiencia, ofreciéndote
+            cortes precisos, afeitados impecables y el cuidado personalizado que mereces.
+            Con su habilidad y atención al detalle, te asegurarán un estilo único y adecuado
+            a tus preferencias. Además, te proporcionarán consejos y recomendaciones para el
+            mantenimiento de tu look, siempre con un enfoque profesional y amigable. Ven y
+            disfruta de un servicio de alta calidad en manos expertas.
+        </p>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="Barbero1.jpg"></img>
+            </div>
+            <div class="box-container">
+            <div class="box">
+                <img src="Barbero2.jpg"></img>
+            </div>
+            <div class="box-container"></div>
+            <div class="box">
+                <img src="Barbero1.jpg"></img>
+            </div>
+    </section>
+
+    <section class="content about">
+        <h2 class="title">CORTES</h2>
+        <p>
+            En nuestra barbería, te ofrecemos una variedad de cortes de pelo personalizados para resaltar
+            tu estilo único. Nuestros barberos te ayudarán a elegir el corte que mejor se adapte a tu
+            forma de rostro, personalidad y preferencias. Ya sea un corte clásico, moderno o de tendencia,
+            garantizamos precisión y atención al detalle para que salgas con un look fresco y renovado.
+            Ven y disfruta de un corte de calidad, hecho a tu medida.
+        </p>
+
+        <div class="box-cortes">
+            <div class="box1">
+                <img src="BuzzCut.jpeg"></img>
+            </div>
+            <div class="box-cortes">
+            <div class="box1">
+                <img src="Mohicano.jpg"></img>
+            </div>
+            <div class="box-cortes"></div>
+            <div class="box1">
+                <img src="Lowfadee.jpg"></img>
+            </div>
+    </section>
+
+    <section class="content price">
+        <article class="contain">
+            <h2 class="title">PRODUCTOS</h2>
+            <p>
+                En nuestra barbería, te ofrecemos productos diseñados para cuidar tu estética personal.
+                Contamos con champú y acondicionador para limpiar y suavizar tu cabello, geles y
+                pomadas para fijar y dar estilo. También tenemos aceites y bálsamos para barba que hidratan
+                y suavizan, y cera para bigote que da forma y control. Para el afeitado, ofrecemos
+                aftershave que calma la piel y cremas que facilitan un afeitado suave. Además, nuestros
+                tónicos capilares estimulan la circulación y fortalecen el cabello. Todo lo que necesitas
+                para el cuidado de tu cabello, barba y piel masculina.
+            </p>
+
+            <div class="box-productos">
+                <div class="box2">
+                    <img src="Ceradecabello.jpg"></img>
+                </div>
+                <div class="box-productos">
+                <div class="box2">
+                    <img src="Cremadeafeitar.jpg"></img>
+                </div>
+                <div class="box-productos"></div>
+                <div class="box2">
+                    <img src="Cremaparaelcabello.jpg"></img>
+                </div>
+        </article>
+    </section>
+
+    <section class="contact">
+        <h2 class="title">Contacto</h2>
+            <p>
+            <footer style="color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 12px; position: relative; box-sizing: border-box;">
+                <!-- Contenedor del mapa -->
+                <div style="flex: 10; min-width: 300px; text-align: left; margin-right: 10;">
+                    <iframe src="https://www.google.com/maps?q=Plaza+de+Bolívar,+Bogotá,+Colombia&hl=es&z=14&output=embed"
+                            width="80%" height="100" style="border:0;"></iframe>
+                </div>
+
+                <!-- Contenedor de la información centrado -->
+                <div>
+                    <p style="flex: 2; position: relative; text-align: right;" id="info-container">
+                    <p style="margin: 0;">&copy; 2024 BarberApp. Todos los derechos reservados.
+                    </p>
+                    <p style="flex: 2; position: relative; text-align: left;" id="info-container">
+                        <strong>Contacto:</strong> info@barbershop.com | Tel: +57 3056594520
+                        <br>
+                        <strong>Dirección:</strong> Calle 12, Barrio El Oro, Bogotá, Colombia
+                    </p>
+                </div>
+        </p>
+        </div>
+    </section>
