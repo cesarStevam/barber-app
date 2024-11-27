@@ -121,6 +121,10 @@
             text-decoration: none;
             background: rgb(214, 157, 0);
         }
+        .btn-danger{
+            color: white;
+            background:rgb(214, 157, 0) ;
+        }
 
         .btn:hover{
             background: none;
@@ -309,8 +313,15 @@
             <nav class="navbar">
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>
                 <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                </li>
             </nav>
+            
     </div>
+   
 
     <header class="content header">
         <div class="nos">

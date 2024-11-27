@@ -50,14 +50,13 @@ public class Rutas {
 
     @Autowired
     private ProductoService productoService;
-    
+
     @Autowired
     private InventarioService inventarioService;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    
     @Autowired
     private PersonaRepository personaRepository;
 
@@ -66,17 +65,34 @@ public class Rutas {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-        
+    @GetMapping("/indexA")
+    public String indexA() {
+        return "indexA";
     }
+
+    @GetMapping("/indexB")
+    public String indexB() {
+        return "indexB";
+    }
+
+    @GetMapping("/indexU")
+    public String indexU() {
+        return "indexU";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+
+    }
+
     @GetMapping("/personas")
     public String mostrarPersonas(Model model) {
         List<Persona> personas = personaService.getPersonas();
         model.addAttribute("personas", personas);
         return "listaPersona";
     }
+
     @PostMapping("/AgregarPersona")
     public String savePersona(@ModelAttribute("persona") Persona persona) {
         personaService.saveOrUpdate(persona);
@@ -191,8 +207,6 @@ public class Rutas {
         return "redirect:/compras";
     }
 
-
-
     @GetMapping("/productos")
     public String listProductos(Model model) {
         List<Producto> productos = productoService.getProductos();
@@ -234,7 +248,6 @@ public class Rutas {
         return "redirect:/productos";
     }
 
-
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("persona", new Persona());
@@ -242,70 +255,64 @@ public class Rutas {
         return "register";
     }
 
-
-
     @PostMapping("/register")
     public String registerPersona(@ModelAttribute("persona") Persona persona, Model model) {
 
         if (personaRepository.findByNumeroDocumento(persona.getNumeroDocumento()).isPresent()) {
-        model.addAttribute("error", "El número de documento ya está en uso.");
-        return "register";
+            model.addAttribute("error", "El número de documento ya está en uso.");
+            return "register";
+        }
+
+        // Busca el rol de usuario
+        Rol rolUsuario = rolRepository.findByNombreRol("Usuario")
+                .orElseThrow(() -> new RuntimeException("Rol de usuario no encontrado"));
+
+        // Asigna el rol al usuario
+        persona.setRol(rolUsuario);
+
+        // Guarda la persona en la base de datos
+        personaService.saveOrUpdate(persona);
+
+        return "redirect:/login";
     }
 
-    // Busca el rol de usuario
-    Rol rolUsuario = rolRepository.findByNombreRol("Usuario")
-            .orElseThrow(() -> new RuntimeException("Rol de usuario no encontrado"));
-
-    // Asigna el rol al usuario
-    persona.setRol(rolUsuario);
-
-    // Guarda la persona en la base de datos
-    personaService.saveOrUpdate(persona);
-
-    return "redirect:/login";
-}
-    
-
-
-
-
     @GetMapping("/reservas")
-    public String mostrarReservas(Model model){
+    public String mostrarReservas(Model model) {
         List<Reserva> reservas = reservaService.getReservas();
         model.addAttribute("reservas", reservas);
         return "listaReserva";
     }
 
     @GetMapping("/agregarreserva")
-	public String AgregarReserva(ModelMap model) {
-		model.addAttribute("reserva", new Reserva());
-		model.addAttribute("personas", personaService.getPersonas());
-		return "agregarreserva";
-	}
-
-    @PostMapping("/agregarreserva")
-	public String saveReserva(@ModelAttribute("reserva") Reserva reserva) {
-		reservaService.saveOrUpdate(reserva);
-		System.out.println("Se registró la compra!!!!" + reserva);
-		return "redirect:/reservas";
-	}
-
-    //editarreserva
-    @GetMapping("/editarreserva/{idReservas}")
-    public String editarReserva(@PathVariable("idReservas") Long idReservas,ModelMap Model){
-    Model.addAttribute("reserva", new Reserva());   
-    Optional<Reserva> reservas = reservaService.getReservaById(idReservas);
-    Model.addAttribute("reserva", reservas.orElse(null));
-    List<Persona> personas = personaService.getPersonas();
-    Model.addAttribute("personas", personas);
-    return "editarreserva";
+    public String AgregarReserva(ModelMap model) {
+        model.addAttribute("reserva", new Reserva());
+        model.addAttribute("personas", personaService.getPersonas());
+        return "agregarreserva";
     }
 
-    //editarreserva
+    @PostMapping("/agregarreserva")
+    public String saveReserva(@ModelAttribute("reserva") Reserva reserva) {
+        reservaService.saveOrUpdate(reserva);
+        System.out.println("Se registró la compra!!!!" + reserva);
+        return "redirect:/reservas";
+    }
+
+    // editarreserva
+    @GetMapping("/editarreserva/{idReservas}")
+    public String editarReserva(@PathVariable("idReservas") Long idReservas, ModelMap Model) {
+        Model.addAttribute("reserva", new Reserva());
+        Optional<Reserva> reservas = reservaService.getReservaById(idReservas);
+        Model.addAttribute("reserva", reservas.orElse(null));
+        List<Persona> personas = personaService.getPersonas();
+        Model.addAttribute("personas", personas);
+        return "editarreserva";
+    }
+
+    // editarreserva
     @PostMapping("/editarreserva/editReserva")
-    public String metodPostEdit(@ModelAttribute("reserva") Reserva reserva){
-    reservaService.saveOrUpdate(reserva);
-    return "redirect:/reservas";
+    public String metodPostEdit(@ModelAttribute("reserva") Reserva reserva) {
+        reservaService.saveOrUpdate(reserva);
+        return "redirect:/reservas";
     }
 
     @PostMapping("/eliminarreserva/{idReservas}")
@@ -313,7 +320,6 @@ public class Rutas {
         reservaService.eliminarReserva(idReservas);
         return "redirect:/reservas";
     }
-
 
     @GetMapping("/proveedores")
     public String mostrarProveedor(Model model) {
@@ -338,7 +344,8 @@ public class Rutas {
     @GetMapping("/editarproveedor/{idProveedor}")
     public String editarProveedor(@PathVariable("idProveedor") Long idProveedor, ModelMap model) {
         model.addAttribute("proveedor", new Proveedor());
-        Optional<Proveedor> proveedor = proveedorService.getProveedorById(idProveedor); // Supone que tienes este método en tu service
+        Optional<Proveedor> proveedor = proveedorService.getProveedorById(idProveedor); // Supone que tienes este método
+                                                                                        // en tu service
         model.addAttribute("proveedor", proveedor.orElse(null));
         return "editarproveedor"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
     }
@@ -355,9 +362,6 @@ public class Rutas {
         proveedorService.eliminarproveedor(idProveedor);
         return "redirect:/proveedores";
     }
-
-
-
 
     @GetMapping("/recibos")
     public String mostrarRecibo(Model model) {
@@ -400,8 +404,6 @@ public class Rutas {
         return "redirect:/recibos";
     }
 
-
-
     @GetMapping("/inventario")
     public String mostrarInventario(Model model) {
         List<Inventario> inventario = inventarioService.getInventario();
@@ -425,7 +427,8 @@ public class Rutas {
     @GetMapping("/editarinventario/{idInventario}")
     public String editarInventario(@PathVariable("idInventario") Long idInventario, ModelMap model) {
         model.addAttribute("inventario", new Inventario());
-        Optional<Inventario> inventario = inventarioService.getInventarioById(idInventario); // Supone que tienes este método en tu service
+        Optional<Inventario> inventario = inventarioService.getInventarioById(idInventario); // Supone que tienes este
+                                                                                             // método en tu service
         model.addAttribute("inventario", inventario.orElse(null));
         return "editarinventario"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
     }
@@ -442,5 +445,5 @@ public class Rutas {
         inventarioService.eliminarinventario(idInventario);
         return "redirect:/inventario";
     }
-    
+
 }

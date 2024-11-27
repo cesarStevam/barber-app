@@ -18,11 +18,11 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             Authentication authentication) throws IOException, ServletException {
         // Verifica el rol del usuario autenticado y redirige según corresponda
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_administrador"))) {
-            response.sendRedirect("/index");
+            response.sendRedirect("/indexA");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_usuario"))) {
-            response.sendRedirect("/index");
+            response.sendRedirect("/indexU");
         } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_barbero"))) {
-            response.sendRedirect("/reservas");
+            response.sendRedirect("/indexB");
         } else {
             response.sendRedirect("/login?error"); // Caso de rol no esperado
         }

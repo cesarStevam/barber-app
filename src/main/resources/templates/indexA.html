@@ -125,6 +125,7 @@
             color: white;
             background:rgb(214, 157, 0) ;
         }
+        
 
         .btn:hover{
             background: none;
@@ -302,6 +303,8 @@
                 display: none;
             }
         }
+        
+
     </style>
 </head>
 <body>
@@ -311,18 +314,22 @@
         </div>
         
             <nav class="navbar">
+                <li><a href="#" th:href="@{/roles}">Roles</a></li>
+                <li><a href="#" th:href="@{/personas}">Personas</a></li>
+                <li><a href="#" th:href="@{/compras}">Compras</a></li>
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>
                 <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
                 <li><a href="#" th:href="@{/proveedores}">Proveedores</a></li>
+                <li><a href="#" th:href="@{/recibos}">Recibos</a></li>
                 <li><a href="#" th:href="@{/inventario}">Inventario</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
-                        <button type="submit" class="btn btn-danger">Salir</button>
+                        <button type="submit" class="btn btn-danger"><h6>Logout</h6></button>
                     </form>
                 </li>
                 
             </nav>
-            
+              
     </div>
     
 

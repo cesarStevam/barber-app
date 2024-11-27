@@ -15,7 +15,7 @@ import com.app.app.services.ProveedorService;
 @RestController
 @RequestMapping("/home/Proveedor")
 public class ProveedorController {
-    
+
     @Autowired
     ProveedorService proveedorService;
 
@@ -25,7 +25,8 @@ public class ProveedorController {
     }
 
     @GetMapping("/eliminarproveedor/{idProveedor}")
-    public String eliminarproveedor(@PathVariable("idProveedor") Long idProveedor, RedirectAttributes redirectAttributes) {
+    public String eliminarproveedor(@PathVariable("idProveedor") Long idProveedor,
+            RedirectAttributes redirectAttributes) {
         proveedorService.eliminarproveedor(idProveedor);
         redirectAttributes.addFlashAttribute("mensaje", "Persona eliminada con éxito");
         return "redirect:/proveedores";

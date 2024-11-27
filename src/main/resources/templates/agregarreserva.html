@@ -139,9 +139,20 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h1 class="text-title">AGREGAR RESERVA</h1>
-                <center><div class="btn-group"></div>
-                    <a th:href="@{/}" class="btn1">INICIO</a>
-                
+                <center><div class="btn-group">
+                    <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
+                </div>
+                <script>
+                    function goBack(element) {
+                        const steps = parseInt(element.getAttribute("data-steps"), 10);
+                        if (!isNaN(steps)) {
+                            window.history.go(steps); // Retrocede las páginas según "data-steps"
+                        } else {
+                            console.error("Número de pasos inválido en el botón VOLVER");
+                        }
+                    }
+                </script>
+
                 <div class="btn-group"></div>
                     <a href="#" th:href="@{/reservas}" class="btn2">Lista Reservas</a>
                 </center>

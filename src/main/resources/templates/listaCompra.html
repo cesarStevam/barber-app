@@ -192,8 +192,18 @@
             <div class="card-body">
                 <h1 class="text-title">LISTA COMPRAS</h1>
                 <center><div class="btn-group">
-                    <a th:href="@{/}" class="btn1">INICIO</a>
+                    <a href="javascript:void(0);" class="btn1" data-steps="-1" onclick="goBack(this)">VOLVER</a>
                 </div>
+                <script>
+                    function goBack(element) {
+                        const steps = parseInt(element.getAttribute("data-steps"), 10);
+                        if (!isNaN(steps)) {
+                            window.history.go(steps); // Retrocede las páginas según "data-steps"
+                        } else {
+                            console.error("Número de pasos inválido en el botón VOLVER");
+                        }
+                    }
+                </script>
                 
                 <div class="btn-group">
                     <a href="#" th:href="@{/AgregarCompra}" class="btn2">Agregar Compra</a>

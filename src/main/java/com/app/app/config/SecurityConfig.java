@@ -24,17 +24,20 @@ public class SecurityConfig {
                 return http
                                 .csrf(AbstractHttpConfigurer::disable)
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/", "/index.html", "/barberia6.jpg", "/Logo.jpeg",
+                                                .requestMatchers("/", "/index.html", "/indexA.html", "/indexB.html",
+                                                                "/indexU.html", "/barberia6.jpg", "/Logo.jpeg",
                                                                 "/static", "/resources",
                                                                 "/Fondo.jpeg", "/BuzzCut.jpeg", "/Ceradecabello.jpg",
                                                                 "/cortebarberia.jpeg",
                                                                 "/Cremadeafeitar.jpg", "/Cremaparaelcabello.jpg",
                                                                 "/Gelparaelcabello.jpg",
-                                                                "/TaperFade.jpg", "/Lowfadee.jpg", "/Mohicano.jpg",
+                                                                "/TaperFade.jpg", "/Lowfadee.jpg", "/reservas",
+                                                                "/Mohicano.jpg",
                                                                 "/templates", "/register",
                                                                 "/style.css", "/Barberia-moderna-ia-.webp",
                                                                 "/youtube.png", "/whatsapp.png", "/instagram.png",
-                                                                "/facebook.png",
+                                                                "/facebook.png", "/Barberia~3.mp4", "/Barbero1.jpg",
+                                                                "/Barbero2.jpg", "/Productos.webp",
                                                                 "/public/**")
                                                 .permitAll()
 
@@ -49,7 +52,8 @@ public class SecurityConfig {
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
-                                                .requestMatchers("/user/**").hasRole("usuario")
+                                                .requestMatchers("/user/**", "/reservas", "/listaReserva")
+                                                .hasRole("usuario")
 
                                                 // Rutas para barbero
                                                 .requestMatchers("/barbero/**", "/agregarrol", "/agregarreserva",
