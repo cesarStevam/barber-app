@@ -47,9 +47,11 @@ public class Persona {
     @Column(name = "contraseña")
     private String contraseña;
 
-    private String tokenRecuperacion; // Token único para la recuperación de contraseña
+    @Column(name = "token_recuperacion")
+    private String tokenRecuperacion;
 
-    private LocalDateTime tokenExpiracion; // Fecha y hora de expiración del token
+    @Column(name = "token_expiracion")
+    private LocalDateTime tokenExpiracion;
 
     @ManyToOne
     @JoinColumn(name = "idRol", nullable = false)  
@@ -77,7 +79,6 @@ public class Persona {
         this.tokenExpiracion = tokenExpiracion;
         this.rol = rol;
     }
-
 
 
     public long getIdPersonas() {
@@ -171,6 +172,10 @@ public class Persona {
     public Rol getRol() {
         return this.rol;
     }
+
+
+
+    
 
     
 

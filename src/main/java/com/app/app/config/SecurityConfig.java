@@ -34,7 +34,7 @@ public class SecurityConfig {
                                                                 "/templates", "/register",
                                                                 "/style.css", "/Barberia-moderna-ia-.webp",
                                                                 "/youtube.png", "/whatsapp.png", "/instagram.png",
-                                                                "/facebook.png",
+                                                                "/facebook.png","/recuperar-password/**","/reset-password/**",
                                                                 "/public/**")
                                                 .permitAll()
 

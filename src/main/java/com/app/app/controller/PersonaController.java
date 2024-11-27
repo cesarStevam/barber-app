@@ -3,7 +3,6 @@ package com.app.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +23,7 @@ public class PersonaController {
     @Autowired
     PersonaService personaService;
 
-    @PreAuthorize("hasRole('administrador')")
+
     @GetMapping
     public List<Persona> getAll() {
         return personaService.getPersonas();
@@ -41,5 +40,18 @@ public class PersonaController {
         redirectAttributes.addFlashAttribute("mensaje", "Persona eliminada con éxito");
         return "redirect:/personas";
     }
+
+
+
+    @PostMapping("/recuperar-password")
+    public String enviarCorreoRecuperacion(@RequestParam String email) {
+        boolean enviado = personaService.enviarEmailRecuperacion(email); // Usa el método existente
+        if (enviado) {
+            return "mensaje-envio"; // Página de éxito
+        } else {
+            return "error-envio"; // Página de error si el correo no se encuentra
+        }
+    }
+    
 
 }
