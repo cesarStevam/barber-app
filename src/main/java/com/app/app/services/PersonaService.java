@@ -1,7 +1,9 @@
 package com.app.app.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +25,9 @@ public class PersonaService {
 
     @Autowired
     private PasswordEncoder passwordEncoder; // Inyectar el PasswordEncoder
+
+    @Autowired
+    private EmailService emailService;
 
     public List<Persona> getPersonas() {
         return personaRepository.findAll();
@@ -82,6 +87,44 @@ public class PersonaService {
 
         // Guarda la persona con el rol asignado
         personaRepository.save(persona);
+    }
+
+     public boolean enviarEmailRecuperacion(String email) {
+        Optional<Persona> personaOpt = personaRepository.findByEmail(email);
+        if (personaOpt.isPresent()) {
+            Persona persona = personaOpt.get();
+            String token = UUID.randomUUID().toString(); // Generar un token único
+            persona.setTokenRecuperacion(token);
+            persona.setTokenExpiracion(LocalDateTime.now().plusHours(1)); // Token válido por 1 hora
+            personaRepository.save(persona);
+
+            String enlace = "http://localhost:8080/recuperar-password/reset?token=" + token;
+            String mensaje = "Haz clic en el siguiente enlace para restablecer tu contraseña: " + enlace;
+            emailService.enviarEmail(email, "Recuperación de contraseña", mensaje);
+
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validarToken(String token) {
+        Persona persona = personaRepository.findByTokenRecuperacion(token).orElse(null);
+        return persona != null && persona.getTokenExpiracion().isAfter(LocalDateTime.now());
+    }
+
+    public boolean resetPassword(String token, String nuevaPassword) {
+        Optional<Persona> personaOpt = personaRepository.findByTokenRecuperacion(token);
+        if (personaOpt.isPresent()) {
+            Persona persona = personaOpt.get();
+            if (persona.getTokenExpiracion().isAfter(LocalDateTime.now())) {
+                persona.setContraseña(passwordEncoder.encode(nuevaPassword));
+                persona.setTokenRecuperacion(null);
+                persona.setTokenExpiracion(null);
+                personaRepository.save(persona);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
