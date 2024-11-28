@@ -44,6 +44,7 @@ public class RecuperarPasswordController {
 
     @GetMapping("/reset")
     public String mostrarFormularioReset(@RequestParam("token") String token, Model model) {
+        System.out.println("Token recibido en la solicitud: " + token);
         if (!personaService.validarToken(token)) {
             model.addAttribute("error", "El token es inválido o ha expirado.");
             return "error";
@@ -51,6 +52,7 @@ public class RecuperarPasswordController {
         model.addAttribute("token", token);
         return "reset-password"; // Página HTML para establecer nueva contraseña
     }
+    
 
     @PostMapping("/reset")
     public String procesarResetPassword(@RequestParam("token") String token, 
@@ -87,19 +89,11 @@ public class RecuperarPasswordController {
     }
 
     @GetMapping("/recuperar-password/reset")
-    public String resetPassword(@RequestParam("token") String token, Model model) {
-    // Verifica si el token es válido
-    Optional<Persona> persona = personaRepository.findByTokenRecuperacion(token);
-    if (persona.isPresent()) {
-        model.addAttribute("token", token);  // Pasando el token al modelo
-        return "reset-password-form";  // El nombre del archivo HTML con Thymeleaf
-    } else {
-        return "error-token-invalid";  // Vista para cuando el token no es válido
-
+    public String showResetPasswordPage(@RequestParam("token") String token, Model model) {
+    model.addAttribute("token", token);  // Pasamos el token al modelo
+    return "recuperar-contraseña";  // Retornamos la vista que contiene el formulario
     }
 
-
-}
 
     
 
