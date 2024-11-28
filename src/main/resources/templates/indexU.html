@@ -327,7 +327,7 @@
         
             <nav class="navbar">
                 <li><a href="#" th:href="@{/productos}">Productos</a></li>
-                <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
+                <li><a href="/reservaU">Reservas</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
                         <button type="submit" class="btn btn-danger">Logout</button>
@@ -336,7 +336,7 @@
             </nav>
             
     </div>
-   
+
 
     <header class="content header">
         <div class="nos">

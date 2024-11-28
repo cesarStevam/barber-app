@@ -55,7 +55,7 @@ public class SecurityConfig {
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
-                                                .requestMatchers("/user/**", "/reservas", "/listaReserva")
+                                                .requestMatchers("/user/**", "/reservas", "/listaReserva", "/reservaU")
                                                 .hasRole("usuario")
 
                                                 // Rutas para barbero
