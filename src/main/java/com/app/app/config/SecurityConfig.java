@@ -40,7 +40,7 @@ public class SecurityConfig {
                                                                 "/facebook.png", "/Barberia~3.mp4", "/Barbero1.jpg",
                                                                 "/Barbero2.jpg", "/Productos.webp",
                                                                 "/recuperar-password/**", "/reset-password/**",
-                                                                "/eliminarReserva", "/reservaU",
+                                                                "/eliminarReserva", "/reservaU", "/agregarreserva",
 
                                                                 "/public/**")
                                                 .permitAll()
