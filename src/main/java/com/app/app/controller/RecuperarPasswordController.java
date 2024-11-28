@@ -52,12 +52,11 @@ public class RecuperarPasswordController {
         model.addAttribute("token", token);
         return "reset-password"; // Página HTML para establecer nueva contraseña
     }
-    
 
     @PostMapping("/reset")
-    public String procesarResetPassword(@RequestParam("token") String token, 
-                                         @RequestParam("nuevaPassword") String nuevaPassword, 
-                                         Model model) {
+    public String procesarResetPassword(@RequestParam("token") String token,
+            @RequestParam("nuevaPassword") String nuevaPassword,
+            Model model) {
         boolean actualizado = personaService.resetPassword(token, nuevaPassword);
         if (actualizado) {
             model.addAttribute("mensaje", "Tu contraseña ha sido restablecida con éxito.");
@@ -72,11 +71,11 @@ public class RecuperarPasswordController {
     public ResponseEntity<?> validarToken(@RequestParam("token") String token) {
         // Verificar y depurar el token recibido
         System.out.println("Token recibido (sin modificar): " + token);
-    
+
         // Eliminar cualquier espacio en blanco extra si es necesario
         token = token.trim();
         System.out.println("Token después de trim(): [" + token + "]");
-    
+
         // Realizar la consulta en la base de datos
         Optional<Persona> personaOpt = personaRepository.findByTokenRecuperacion(token);
         if (personaOpt.isPresent()) {
@@ -90,13 +89,8 @@ public class RecuperarPasswordController {
 
     @GetMapping("/recuperar-password/reset")
     public String showResetPasswordPage(@RequestParam("token") String token, Model model) {
-    model.addAttribute("token", token);  // Pasamos el token al modelo
-    return "recuperar-contraseña";  // Retornamos la vista que contiene el formulario
+        model.addAttribute("token", token); // Pasamos el token al modelo
+        return "recuperar-contraseña"; // Retornamos la vista que contiene el formulario
     }
 
-
-    
-
-
 }
-

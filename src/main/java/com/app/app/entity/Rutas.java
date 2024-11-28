@@ -86,6 +86,12 @@ public class Rutas {
 
     }
 
+    @GetMapping("/reservaU")
+    public String reservaU() {
+        return "reservaU";
+
+    }
+
     @GetMapping("/personas")
     public String mostrarPersonas(Model model) {
         List<Persona> personas = personaService.getPersonas();

@@ -38,8 +38,9 @@ public class SecurityConfig {
                                                                 "/youtube.png", "/whatsapp.png", "/instagram.png",
 
                                                                 "/facebook.png", "/Barberia~3.mp4", "/Barbero1.jpg",
-                                                                "/Barbero2.jpg", "/Productos.webp","/recuperar-password/**","/reset-password/**",
-                                                                "/eliminarReserva",
+                                                                "/Barbero2.jpg", "/Productos.webp",
+                                                                "/recuperar-password/**", "/reset-password/**",
+                                                                "/eliminarReserva", "/reservaU",
 
                                                                 "/public/**")
                                                 .permitAll()
