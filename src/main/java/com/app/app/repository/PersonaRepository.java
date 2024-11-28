@@ -16,10 +16,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
    Optional<Persona> findByEmail(String email);
 
-@Query(value = "SELECT * FROM personas WHERE token_recuperacion = :token", nativeQuery = true)
-Optional<Persona> findByTokenRecuperacion(@Param("token") String token);
-
-
-   
+   @Query(value = "SELECT * FROM personas WHERE token_recuperacion = :token", nativeQuery = true)
+   Optional<Persona> findByTokenRecuperacion(@Param("token") String token);
 
 }
