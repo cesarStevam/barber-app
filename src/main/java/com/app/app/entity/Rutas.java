@@ -286,7 +286,12 @@ public class Rutas {
     public String mostrarReservas(Model model) {
         List<Reserva> reservas = reservaService.getReservas();
         model.addAttribute("reservas", reservas);
+        String rol = reservaService.obtenerRol();
+
+        System.out.println("el rol del usuario es: " + rol);
+        model.addAttribute("rol",rol);
         return "listaReserva";
+
     }
 
     @GetMapping("/agregarreserva")

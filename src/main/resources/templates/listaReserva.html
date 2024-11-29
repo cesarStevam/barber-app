@@ -163,7 +163,7 @@
                     }
                 </script>
                 
-                <div class="btn-group">
+                <div class="btn-group" th:if="${rol== 'ROLE_administrador'}">
                     <a href="#" th:href="@{/agregarreserva}" class="btn2">Agregar Reserva</a>
                 </div>
             </center>
@@ -181,7 +181,7 @@
                 <tr th:each="reserva : ${reservas}">
                     <td th:text="${reserva.idReservas}"></td>
                     <td th:text="${reserva.FechaHora}"></td>
-                    <td>
+                    <td th:if="${rol== 'ROLE_administrador'}">
                         <a th:href="@{/editarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-edit">EDITAR</a>
                         <a th:href="@{/eliminarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-delete">ELIMINAR</a>
                     </td>

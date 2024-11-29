@@ -39,30 +39,33 @@ public class SecurityConfig {
 
                                                                 "/facebook.png", "/Barberia~3.mp4", "/Barbero1.jpg",
                                                                 "/Barbero2.jpg", "/Productos.webp",
-                                                                "/recuperar-password/**", "/reset-password/**",
-                                                                "/eliminarReserva", "/reservaU", "/agregarreserva",
+                                                                "/recuperar-password/", "/reset-password/",
+                                                                "/eliminarReserva", 
 
-                                                                "/public/**")
+                                                                "/public/")
                                                 .permitAll()
 
                                                 // Rutas para administrador
-                                                .requestMatchers("/admin/**", "/agregarreserva", "/editarRol/1",
+                                                .requestMatchers("/admin/", "/agregarreserva", "/editarRol/1",
                                                                 "/editarRol/{idRol}", "/personas", "/Agregarpersona",
                                                                 "/editarRol", "/agregarrol",
-                                                                "/reservas", "/roles", "/editarRol/idRol",
+                                                                "/roles", "/editarRol/idRol",
                                                                 "/AgregarReserva"
 
                                                 )
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
-                                                .requestMatchers("/user/**", "/reservas", "/listaReserva", "/reservaU")
+                                                .requestMatchers("/user/", "/reservas", "/listaReserva", "/reservaU")
                                                 .hasRole("usuario")
 
                                                 // Rutas para barbero
-                                                .requestMatchers("/barbero/**", "/agregarrol", "/agregarreserva",
-                                                                "/reservas")
+                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva"
+                                                                )
                                                 .hasRole("barbero")
+
+                                                .requestMatchers("/reservas")
+                                                .hasAnyRole("administrador","usuario","barbero")
 
                                                 // Cualquier otra ruta debe ser autenticada
                                                 .anyRequest().authenticated())
