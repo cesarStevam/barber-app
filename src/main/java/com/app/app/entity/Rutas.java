@@ -92,6 +92,12 @@ public class Rutas {
 
     }
 
+    @GetMapping("/productosU")
+    public String productosU() {
+        return "productosU";
+
+    }
+
     @GetMapping("/personas")
     public String mostrarPersonas(Model model) {
         List<Persona> personas = personaService.getPersonas();
@@ -289,7 +295,7 @@ public class Rutas {
         String rol = reservaService.obtenerRol();
 
         System.out.println("el rol del usuario es: " + rol);
-        model.addAttribute("rol",rol);
+        model.addAttribute("rol", rol);
         return "listaReserva";
 
     }

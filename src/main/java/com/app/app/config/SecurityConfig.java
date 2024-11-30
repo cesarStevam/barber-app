@@ -37,8 +37,9 @@ public class SecurityConfig {
                                                                 "/style.css", "/Barberia-moderna-ia-.webp",
                                                                 "/youtube.png", "/whatsapp.png", "/instagram.png",
                                                                 "/facebook.png", "/Barberia~3.mp4", "/Barbero1.jpg",
-                                                                "/Barbero2.jpg", "/Productos.webp", "/recuperar-password/**", "/reset-password/**",
-                                                                "/eliminarReserva",
+                                                                "/Barbero2.jpg", "/Productos.webp",
+                                                                "/recuperar-password/**", "/reset-password/**",
+                                                                "/eliminarReserva", "/agregarreserva", "/productosU",
                                                                 "/public/")
                                                 .permitAll()
 
@@ -53,16 +54,16 @@ public class SecurityConfig {
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
-                                                .requestMatchers("/user/", "/reservas", "/listaReserva", "/reservaU")
+                                                .requestMatchers("/user/", "/reservas", "/listaReserva", "/reservaU",
+                                                                "/agregarreserva", "/productosU")
                                                 .hasRole("usuario")
 
                                                 // Rutas para barbero
-                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva"
-                                                                )
+                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva")
                                                 .hasRole("barbero")
 
                                                 .requestMatchers("/reservas")
-                                                .hasAnyRole("administrador","usuario","barbero")
+                                                .hasAnyRole("administrador", "usuario", "barbero")
 
                                                 // Cualquier otra ruta debe ser autenticada
                                                 .anyRequest().authenticated())

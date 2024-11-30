@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= 'https://unpkg.com/boxicons@2.1.1/boxicons.min.css'>
+    <title>Productos</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-padding-top: 2rem;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        :root {
+            --main-color: red;
+            --text-color: rgb(255, 255, 255);
+            --bg-color: white;
+        }
+
+        body {
+            background: url('/Barberia-moderna-ia-.webp') no-repeat center center fixed;
+            background-size: cover;
+            padding-top: 100px; /* Esto evita que el contenido quede oculto debajo del header fijo */
+        }
+
+        .container {
+            max-width: 1068px;
+            margin: auto;
+            width: 100%;
+        }
+
+        section {
+            padding: 4rem 0 3rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999; /* Para asegurarse de que esté encima de todo */
+            background: var(--bg-color);
+        }
+
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            background: #000000;
+            position: fixed;
+            width: 100%;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            padding: 0 20px; /* Agrega un poco de espacio a los lados */
+        }
+
+        .logo {
+            padding: 12px 24px;
+            color: rgb(214, 157, 0);
+            font-size: 25px;
+            text-decoration: none;
+        }
+
+        .letrero {
+            flex: 1;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1000; /* Asegura que el letrero esté encima de otros elementos */
+        }
+
+        .letrero p {
+            color: #fff;
+            font-size: 21px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: letreroDeslizante 8s linear infinite;
+            margin-top: 5px; /* Ajusta para bajar el letrero */
+        }
+
+        @keyframes letreroDeslizante {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            color: #c9a509;
+        }
+
+        .shop {
+            margin-top: 2rem;
+        }
+
+        .shop-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+            gap: 1.5rem;
+        }
+
+        .product-box {
+            position: relative;
+            background: #000000a1;
+        }
+
+        .product-box:hover {
+            padding: 10px;
+            border: 1px solid var(--text-color);
+            transition: 0.4s;
+            background: #000000a1;
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #c9a509;
+        }
+
+        .price {
+            font-weight: 500;
+            color: white;
+        }
+
+        .btn1{
+            width: 100%;
+            padding: 11px;
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 80px; /* Aumenta el margen superior para evitar que el botón se solape con el letrero */
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+
+        .btn1:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="logo">
+                <h4>BarberApp</h4>
+            </div>
+            
+            <div class="letrero">
+                <p>¡Ve a nuestra barberia y pregunta por nuestros productos!</p>
+            </div>
+
+            <div class="btn-group">
+                <a href="javascript:void(0);" class="btn1" data-steps="-1" onclick="goBack(this)">INICIO</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="shop container">
+        <h2 class="section-title">Productos</h2>
+        <div class="shop-content">
+            <div class="product-box">
+                <img src="/Ceradecabello.jpg" alt="" class="product-img">
+                <h2 class="product-title">Cera</h2>
+                <span class="price">$40.000</span>
+            </div>
+
+            <div class="product-box">
+                <img src="/Cremadeafeitar.jpg" alt="" class="product-img">
+                <h2 class="product-title">Crema de afeitar</h2>
+                <span class="price">$30.000</span>
+            </div>
+
+            <div class="product-box">
+                <img src="/Cremaparaelcabello.jpg" alt="" class="product-img">
+                <h2 class="product-title">Crema para el cabello</h2>
+                <span class="price">$50.000</span>
+            </div>
+
+            <div class="product-box">
+                <img src="/Cremaparaelcabello.jpg" alt="" class="product-img">
+                <h2 class="product-title">Crema para el cabello</h2>
+                <span class="price">$50.000</span>
+            </div>
+
+            <div class="product-box">
+                <img src="/Cremaparaelcabello.jpg" alt="" class="product-img">
+                <h2 class="product-title">Crema para el cabello</h2>
+                <span class="price">$50.000</span>
+            </div>
+
+            <div class="product-box">
+                <img src="/Cremaparaelcabello.jpg" alt="" class="product-img">
+                <h2 class="product-title">Crema para el cabello</h2>
+                <span class="price">$50.000</span>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
