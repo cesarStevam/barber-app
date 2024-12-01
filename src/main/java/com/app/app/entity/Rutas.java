@@ -413,13 +413,14 @@ public class Rutas {
     public String mostrarRecibo(Model model) {
         List<Recibo> recibo = reciboService.getRecibo();
         model.addAttribute("recibo", recibo);
+       
         return "listaRecibo"; // Asegúrate de que este sea el nombre correcto de la vista (archivo HTML).
     }
 
     @GetMapping("/AgregarRecibo")
     public String agregarRecibo(Model model) {
         model.addAttribute("recibo", new Recibo());
-    
+        model.addAttribute("reserva", reservaService.getReservas());
         return "AgregarRecibo"; // Nombre de la plantilla HTML para agregar un Recibo
     }
 
@@ -435,6 +436,8 @@ public class Rutas {
         model.addAttribute("recibo", new Recibo());
         Optional<Recibo> recibo = reciboService.getReciboById(idRecibo); // Supone que tienes este método en tu service
         model.addAttribute("recibo", recibo.orElse(null));
+        List<Reserva> reserva = reservaService.getReservas();
+        model.addAttribute("reserva", reserva);
         return "editarrecibo"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
     }
 
