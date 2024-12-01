@@ -40,6 +40,11 @@ public class SecurityConfig {
                                                                 "/Barbero2.jpg", "/Productos.webp",
                                                                 "/recuperar-password/**", "/reset-password/**",
                                                                 "/eliminarReserva", "/agregarreserva", "/productosU",
+                                                                "/Cera American Crew.jpg", "/Fijador L'Oreal.webp",
+                                                                "/Balsamo L'Oreal.jpg", "/Shampoo HyS.jpeg",
+                                                                "AfterShave Clubman.webp/",
+                                                                "/Crema Afeitar Proraso.jpg", "/Aceite Proraso.jpg",
+                                                                "/Pomada Reuzel.webp",
                                                                 "/public/")
                                                 .permitAll()
 
