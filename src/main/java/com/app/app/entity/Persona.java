@@ -23,28 +23,28 @@ public class Persona {
     @Column(name = "idPersonas")
     private long idPersonas;
 
-    @Column(name = "primer_nombre")
+    @Column(name = "primer_nombre", length=15)
     private String primer_nombre;
 
-    @Column(name = "segundo_nombre")
+    @Column(name = "segundo_nombre", length=15)
     private String segundo_nombre;
 
-    @Column(name = "primer_apellido")
+    @Column(name = "primer_apellido", length=15)
     private String primer_apellido;
 
-    @Column(name = "segundo_apellido")
+    @Column(name = "segundo_apellido", length=15)
     private String segundo_apellido;
 
-    @Column(name = "numeroDocumento")
+    @Column(name = "numeroDocumento", length=10)
     private String numeroDocumento;
 
-    @Column(name = "numero_contacto")
+    @Column(name = "numero_contacto",length=10)
     private String numero_contacto;
 
-    @Column(name = "email")
+    @Column(name = "email", length=45)
     private String email;
 
-    @Column(name = "contraseña")
+    @Column(name = "contraseña", length=100)
     private String contraseña;
 
     @Column(name = "token_recuperacion")

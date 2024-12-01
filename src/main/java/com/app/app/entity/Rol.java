@@ -19,7 +19,7 @@ public class Rol {
 
 
     private Long idRol;
-    @Column(name="nombreRol")
+    @Column(name="nombreRol", length=15)
     private String nombreRol;
 
 

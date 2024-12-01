@@ -9,8 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,7 +23,7 @@ public class Inventario {
     @Column(name = "idInventario")
     private Long idInventario;
 
-    @Column(name = "producto")
+    @Column(name = "producto", length=25)
     private String producto;
 
     @Column(name = "cantidad")
@@ -40,24 +38,19 @@ public class Inventario {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime fecha_salida;
 
-    @ManyToOne
-    @JoinColumn(name = "idVentas")  
-    private Ventas ventas;
-
     public Inventario() {
     }
 
-
-    public Inventario(Long idInventario, String producto, Integer cantidad, LocalDateTime fecha_ingreso, LocalDateTime fecha_vencimiento, LocalDateTime fecha_salida, Ventas ventas) {
+    public Inventario(Long idInventario, String producto, Integer cantidad, LocalDateTime fecha_ingreso, LocalDateTime fecha_vencimiento, LocalDateTime fecha_salida) {
         this.idInventario = idInventario;
         this.producto = producto;
         this.cantidad = cantidad;
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_vencimiento = fecha_vencimiento;
         this.fecha_salida = fecha_salida;
-        this.ventas = ventas;
     }
 
+    
 
     public Long getIdInventario() {
         return this.idInventario;
@@ -107,15 +100,5 @@ public class Inventario {
         this.fecha_salida = fecha_salida;
     }
 
-    public Ventas getVentas() {
-        return this.ventas;
-    }
-
-    public void setVentas(Ventas ventas) {
-        this.ventas = ventas;
-    }
-
-
-
-
+   
 }

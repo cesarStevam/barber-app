@@ -7,5 +7,7 @@ import com.app.app.entity.Inventario;
 
 @Repository("inventarioRepository")
 public interface InventarioRepository extends JpaRepository<Inventario, Long> {
+
+    
 }
 

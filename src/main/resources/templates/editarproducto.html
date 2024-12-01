@@ -173,19 +173,16 @@
                     <input type="hidden" th:field="*{idProducto}" />
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" maxlength="25" required>
                     </div>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" required>
+                        <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" maxlength="25" required>
                     </div>
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" th:field="*{precio}" required>
+                        <input type="number" class="form-control" id="precio" th:field="*{precio}" min= "1" max="2147483647" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="cantidad" class="form-label">Cantidad</label>
-                        <input type="number" class="form-control" id="cantidad" th:field="*{cantidad}" required>
 
                         <br>
                         <div class="box-footer">
