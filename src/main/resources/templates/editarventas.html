@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Inventario</title>
+    <title>Editar venta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
@@ -79,6 +79,8 @@
             margin-right: 10px; /* Agregar espacio entre los botones */
             text-decoration: none;
             box-shadow: 0 0px 10px rgb(153, 117, 34);
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         .btn1:hover {
@@ -100,6 +102,8 @@
             margin-right: 10px; /* Agregar espacio entre los botones */
             text-decoration: none;
             box-shadow: 0 0px 10px rgb(153, 117, 34);
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         .btn2:hover {
@@ -109,26 +113,32 @@
         box-shadow: 0 0px 10px rgb(153, 117, 34);
     }
 
-    .btn3{
-            width: 40%;
+    .btn-group{
+        margin-top: 10px;
+        margin-bottom: -20px;
+    }
+
+    .btn-edit{
+            width: 100%;
             padding: 11px;
             background-color: rgb(0, 0, 0);
-            color: rgb(153, 117, 34);
-            box-shadow: 0 0px 10px rgb(153, 117, 34);
+            color: rgb(255, 255, 255);
+            border: none;
             border-radius: 10px;
             cursor: pointer;
             font-size: 13px;
             margin-right: 10px; /* Agregar espacio entre los botones */
-            margin-top: 10px; /* Aumenta el margen superior para moverlo más abajo */
-            margin-bottom: -20px;
             text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
 
-        .btn3:hover {
-        background-color: rgb(153, 117, 34);
-        color: rgb(0, 0, 0);
-        box-shadow: 0 0px 10px rgb(153, 117, 34);
+        .btn-edit:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(153, 117, 34);
+            text-decoration: none;
+            box-shadow: 0 0px 10px rgb(153, 117, 34);
         }
+
         .text-alert{
             color: rgb(255, 255, 255);
             font-size: 16px;
@@ -139,78 +149,76 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h1 class="text-title">AGREGAR INVENTARIO</h1>
-                <center><div class="btn-group">
-                    <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
-                </div>
-                <script>
-                    function goBack(element) {
-                        const steps = parseInt(element.getAttribute("data-steps"), 10);
-                        if (!isNaN(steps)) {
-                            window.history.go(steps); // Retrocede las páginas según "data-steps"
-                        } else {
-                            console.error("Número de pasos inválido en el botón VOLVER");
-                        }
-                    }
-                </script>
-                <div class="btn-group"></div>
-                    <a href="#" th:href="@{/inventario}" class="btn2">Lista Inventario</a>
-                </center>
+        <h1 class="text-title">EDITAR VENTAS</h1>
+        <center><div class="btn-group">
+            <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
+        </div>
+        <script>
+            function goBack(element) {
+                const steps = parseInt(element.getAttribute("data-steps"), 10);
+                if (!isNaN(steps)) {
+                    window.history.go(steps); // Retrocede las páginas según "data-steps"
+                } else {
+                    console.error("Número de pasos inválido en el botón VOLVER");
+                }
+            }
+        </script>
+        <div class="btn-group">
+            <a th:href="@{/ventas}" class="btn2">Lista Ventas</a>
+        </div></center>
 
-                <div class="card-body">
-                    <form th:action="@{/editarinventario/editInventario}" th:object="${inventario}" method="POST">
-                        <input type="hidden" th:field="*{idInventario}" />
-                
+        <div class="card-body">
+                    <form th:action="@{/editarventas/editVentas}" th:object="${ventas}" method="POST">
+                        <input type="hidden" th:field="*{idVentas}" />
                         <div class="form-group">
-                            <label>Producto</label>
-                            <input type="text" id="producto" name="producto" class="form-control" maxlength="25" required>
-                        </div>
+       
 
-                        <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="number" id="cantidad" name="cantidad" class="form-control" min= "1" max="2147483647" required>
-                        </div>
-                
-                        <div class="form-group">
-                            <label>Fecha de Ingreso</label>
-                            <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Fecha de Vencimiento</label>
-                            <input type="datetime-local" id="fecha_vencimiento" name="fecha_vencimiento" class="form-control" required>
-                        </div>
-                        
-                        <script>
-                            // Referencias a los campos de fecha
-                            const fechaIngreso = document.getElementById("fecha_ingreso");
-                            const fechaVencimiento = document.getElementById("fecha_vencimiento");
-                        
-                            // Actualiza la fecha mínima de vencimiento al seleccionar una fecha de ingreso
-                            fechaIngreso.addEventListener("change", function () {
-                                const fechaSeleccionada = fechaIngreso.value;
-                                if (fechaSeleccionada) {
-                                    // Establece la fecha mínima para el campo de vencimiento
-                                    fechaVencimiento.min = fechaSeleccionada;
-                                } else {
-                                    // Limpia la restricción si no hay fecha de ingreso
-                                    fechaVencimiento.min = "";
-                                }
-                            });
-                        </script>
-                        
-                  
-                        <div class="form-group">
-                            <label>Fecha de Salida</label>
-                            <input type="datetime-local" id="fecha_salida" name="fecha_salida" class="form-control" maxlength="10" required>
-                        </div>
+                            <div>
+                                <label>Nombre Venta</label>
+                                <input type="text" th:field="*{nombreVenta}" name="nombreVenta" class="form-control" maxlength="25" required>
+                                </div>
 
-                            <div class="alert alert-danger" th:if="${error}" th:text="${error}">
+                            <div>
+                                <label>Fecha Venta</label>
+                                <input type="datetime-local" th:field="*{fecha_venta}" name="fecha_venta-" class="form-control" maxlength="10" required>
                             </div>
+
+                            
+                            <div>
+                                <label>Cantidad</label>
+                                <input type="number" th:field="*{cantidad}" name="cantidad" class="form-control" min= "1" max="2147483647" required>
+                            </div>
+
+                            <div>
+                                <label>Producto de inventario</label>
+                                <select th:field="*{inventario}" name="inventario" class="form-control">
+                                    <option th:each="inventario : ${inventario}" th:value="${inventario.idInventario}" th:text="${inventario.producto}"></option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label>ID Recibo</label>
+                                <select th:field="*{recibo}" name="recibo" class="form-control">
+                                    <option th:each="recibo : ${recibo}" th:value="${recibo.idRecibo}" th:text="${recibo.idRecibo}"></option>
+                                </select>
+                            </div>
+
+                            
+                            <div>
+                                <label>Producto</label>
+                                <select th:field="*{producto}" name="producto" class="form-control">
+                                    <option th:each="producto : ${producto}" th:value="${producto.idProducto}" th:text="${producto.nombre}"></option>
+                                </select>
+                            </div>
+
                             <br>
-                            <center><div class="box-footer"></div>
-                                <button type="submit" class="btn3">GUARDAR</button>
-                            </center>
+                            <center><div class="btn-group">
+                                <button type="submit" class="btn-edit">GUARDAR</button>
+                            </div></center>
+                            <div class="alert alert-danger" th:if="${error}" th:text="${error}">
+
+                                
+                            
                         </div>
                     </form>
                 </div>

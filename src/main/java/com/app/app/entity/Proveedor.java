@@ -1,16 +1,10 @@
 package com.app.app.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,28 +19,21 @@ public class Proveedor {
     @Column(name = "idProveedor")
     private Long idProveedor;
 
-    @Column(name = "primer_nombre")
+    @Column(name = "primer_nombre", length=15)
     private String primer_nombre;
 
-    @Column(name = "segundo_nombre")
+    @Column(name = "segundo_nombre", length=15)
     private String segundo_nombre;
 
-    @Column(name = "primer_apellido")
+    @Column(name = "primer_apellido", length=15)
     private String primer_apellido;
 
-    @Column(name = "segundo_apellido")
+    @Column(name = "segundo_apellido", length=15)
     private String segundo_apellido;
 
-    @Column(name = "numeroDocumento")
+    @Column(name = "numeroDocumento", length=10)
     private String numeroDocumento;
 
-    @ManyToMany
-    @JoinTable(
-        name = "proveedor_compra", // Nombre de la tabla intermedia
-        joinColumns = @JoinColumn(name = "proveedor_id"), // Clave foránea hacia Proveedor
-        inverseJoinColumns = @JoinColumn(name = "compra_id") // Clave foránea hacia Compra
-    )
-    private Set<Compra> compras = new HashSet<>();
 
 
     public Proveedor() {
@@ -101,13 +88,7 @@ public class Proveedor {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public Set<Compra> getCompras() {
-        return this.compras;
-    }
 
-    public void setCompras(Set<Compra> compras) {
-        this.compras = compras;
-    }
 
 
 

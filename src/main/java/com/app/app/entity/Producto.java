@@ -1,11 +1,11 @@
 package com.app.app.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
@@ -18,28 +18,27 @@ public class Producto {
     @Column(name = "idProducto")
     private Long idProducto;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", length = 25)
     private String nombre;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", length = 25)
     private String descripcion;
 
     @Column(name = "precio")
-    private Double precio;
+    private Integer precio;
 
-    @Column(name = "cantidad")
-    private Integer cantidad;
 
     public Producto() {
     }
 
-    public Producto(Long idProducto, String nombre, String descripcion, Double precio, Integer cantidad) {
+
+    public Producto(Long idProducto, String nombre, String descripcion, Integer precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.cantidad = cantidad;
     }
+
 
     public Long getIdProducto() {
         return this.idProducto;
@@ -65,20 +64,13 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecio() {
+    public Integer getPrecio() {
         return this.precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(Integer precio) {
         this.precio = precio;
     }
-
-    public Integer getCantidad() {
-        return this.cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
+    
+    
 }

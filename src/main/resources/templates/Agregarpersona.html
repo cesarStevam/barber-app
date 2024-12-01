@@ -162,28 +162,28 @@
                         <div class="form-group">
                             <div>
                                 <label>Nombre</label>
-                                <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control"   required>
+                                <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control" maxlength="15" required>
                             </div>
                             <div>
                                 <label>Apellido</label>
-                                <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control"  required>
+                                <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control" maxlength="15" required>
                             </div>
                             <div>
                                 <label>Número de Documento</label>
-                                <input type="number" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control"  required>
+                                <input type="number" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control" min="1" max="9999999999" required>
                             </div>
                             <div>
                                 <label>Número de Contacto</label>
-                                <input type="number" th:field="*{numero_contacto}" name="numero_contacto" class="form-control"  required>
+                                <input type="number" th:field="*{numero_contacto}" name="numero_contacto" class="form-control" min="1" max="9999999999" required>
                             </div>
                             <div>
                                 <label>Correo Electrónico</label>
-                                <input type="email" th:field="*{email}" name="email" class="form-control"  required>
+                                <input type="email" th:field="*{email}" name="email" class="form-control" maxlength="45" required>
                             </div>
                             
                             <div>
                                 <label>Contraseña</label>
-                                <input type="text" th:field="*{contraseña}" name="contraseña" class="form-control"  required>
+                                <input type="text" th:field="*{contraseña}" name="contraseña" class="form-control" maxlength="15"  required>
                             </div>
                             
                             <div>
