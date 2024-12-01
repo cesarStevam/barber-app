@@ -201,29 +201,39 @@
 
                             <div class="form-group">
                                 <label for="estado_compra">Estado de compra</label>
-                                <select th:field="*{estado_compra}" name="estado_compra" class="form-control" required>
+                                <select th:field="*{estado_compra}" class="form-control" required>
                                     <option value="">Seleccione un estado</option>
-                                    <option value="Solicitado">Solicitado</option>
-                                    <option value="Devuelto">Devuelto</option>
-                                    <option value="Completado">Completado</option>
-                                    <option value="Cancelado">Cancelado</option>
+                                    <option value="Solicitado" th:selected="${compra.estado_compra == 'Solicitado'}">Solicitado</option>
+                                    <option value="Devuelto" th:selected="${compra.estado_compra == 'Devuelto'}">Devuelto</option>
+                                    <option value="Completado" th:selected="${compra.estado_compra == 'Completado'}">Completado</option>
+                                    <option value="Cancelado" th:selected="${compra.estado_compra == 'Cancelado'}">Cancelado</option>
                                 </select>
                             </div>
-
-                            <div>
-                                <label>Producto de inventario</label>
-                                <select th:field="*{inventario}" name="inventario" class="form-control">
-                                    <option th:each="inventario : ${inventario}" th:value="${inventario.idInventario}" th:text="${inventario.producto}"></option>
+                            
+                            <div class="form-group">
+                                <label for="inventario">Producto de inventario</label>
+                                <select th:field="*{inventario}" class="form-control" required>
+                                    <option value="" disabled selected>Selecciona un producto</option>
+                                    <option th:each="inventario : ${inventario}" 
+                                            th:value="${inventario.idInventario}" 
+                                            th:text="${inventario.producto}" 
+                                            th:selected="${compra.inventario != null && compra.inventario.idInventario == inventario.idInventario}">
+                                    </option>
                                 </select>
                             </div>
-
-                            <div>
-                                <label>Nombre Proveedor</label>
-                                <select th:field="*{proveedor}" name="proveedor" class="form-control">
-                                    <option th:each="proveedor : ${proveedor}" th:value="${proveedor.idProveedor}" th:text="${proveedor.primer_nombre}"></option>
+                            
+                            <div class="form-group">
+                                <label for="proveedor">Nombre Proveedor</label>
+                                <select th:field="*{proveedor}" class="form-control" required>
+                                    <option value="" disabled selected>Selecciona un proveedor</option>
+                                    <option th:each="proveedor : ${proveedor}" 
+                                            th:value="${proveedor.idProveedor}" 
+                                            th:text="${proveedor.primer_nombre}" 
+                                            th:selected="${compra.proveedor != null && compra.proveedor.idProveedor == proveedor.idProveedor}">
+                                    </option>
                                 </select>
                             </div>
-
+                            
                             <br>
                             <center><div class="btn-group">
                                 <button type="submit" class="btn-edit">GUARDAR</button>

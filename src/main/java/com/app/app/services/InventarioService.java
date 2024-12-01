@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.app.app.entity.Inventario;
 import com.app.app.repository.InventarioRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service("inventarioService")
 public class InventarioService {
 
@@ -33,4 +35,18 @@ public class InventarioService {
         }
     }
 
-}
+    
+        @Transactional
+        public void actualizarCantidadCompra(Long idInventario, int cantidadCompra) {
+            Inventario inventario = inventarioRepository.findById(idInventario)
+                    .orElseThrow(() -> new RuntimeException("Inventario no encontrado"));
+    
+            inventario.setCantidad(inventario.getCantidad() + cantidadCompra);
+    
+            inventarioRepository.save(inventario);
+        }
+    }
+    
+
+
+

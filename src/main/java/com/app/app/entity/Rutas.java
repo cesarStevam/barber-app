@@ -196,11 +196,22 @@ public class Rutas {
         return "AgregarCompra"; // Nombre de la plantilla HTML para agregar una compra
     }
 
-    @PostMapping("/AgregarCompra")
-    public String guardarCompra(@ModelAttribute("compra") Compra compra) {
-        compraService.saveOrUpdate(compra);
-        return "redirect:/compras"; // Redirige a la lista de compras después de guardar
+@PostMapping("/AgregarCompra")
+public String guardarCompra(@ModelAttribute("compra") Compra compra) {
+    // Verifica que la compra tenga asociado un inventario
+    if (compra.getInventario() == null || compra.getInventario().getIdInventario() == null) {
+        throw new RuntimeException("La compra no está asociada a un inventario válido.");
     }
+
+    // Guarda la compra
+    compraService.saveOrUpdate(compra);
+
+    // Actualiza la cantidad en el inventario
+    inventarioService.actualizarCantidadCompra(compra.getInventario().getIdInventario(), compra.getCantidad());
+
+    return "redirect:/compras";
+}
+
 
     // Método GET para mostrar el formulario de edición de compra
     @GetMapping("/editarcompra/{idCompras}")
