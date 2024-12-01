@@ -31,7 +31,7 @@ public class SecurityConfig {
                                                                 "/cortebarberia.jpeg",
                                                                 "/Cremadeafeitar.jpg", "/Cremaparaelcabello.jpg",
                                                                 "/Gelparaelcabello.jpg",
-                                                                "/TaperFade.jpg", "/Lowfadee.jpg", "/reservas",
+                                                                "/TaperFade.jpg", "/Lowfadee.jpg",
                                                                 "/Mohicano.jpg",
                                                                 "/templates", "/register",
                                                                 "/style.css", "/Barberia-moderna-ia-.webp",
@@ -40,6 +40,11 @@ public class SecurityConfig {
                                                                 "/Barbero2.jpg", "/Productos.webp",
                                                                 "/recuperar-password/**", "/reset-password/**",
                                                                 "/eliminarReserva", "/agregarreserva", "/productosU",
+                                                                "/Cera American Crew.jpg", "/Fijador L'Oreal.webp",
+                                                                "/Balsamo L'Oreal.jpg", "/Shampoo HyS.jpeg",
+                                                                "AfterShave Clubman.webp/",
+                                                                "/Crema Afeitar Proraso.jpg", "/Aceite Proraso.jpg",
+                                                                "/Pomada Reuzel.webp",
                                                                 "/public/")
                                                 .permitAll()
 
@@ -47,19 +52,20 @@ public class SecurityConfig {
                                                 .requestMatchers("/admin/", "/agregarreserva", "/editarRol/1",
                                                                 "/editarRol/{idRol}", "/personas", "/Agregarpersona",
                                                                 "/editarRol", "/agregarrol",
-                                                                "/roles", "/editarRol/idRol",
+                                                                "/roles", "/editarRol/idRol", "/reservas",
                                                                 "/AgregarReserva"
 
                                                 )
                                                 .hasRole("administrador")
 
                                                 // Rutas para usuario
-                                                .requestMatchers("/user/", "/reservas", "/listaReserva", "/reservaU",
+                                                .requestMatchers("/user/", "/listaReserva", "/reservaU",
                                                                 "/agregarreserva", "/productosU")
                                                 .hasRole("usuario")
 
                                                 // Rutas para barbero
-                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva")
+                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva",
+                                                                "/reservas")
                                                 .hasRole("barbero")
 
                                                 .requestMatchers("/reservas")

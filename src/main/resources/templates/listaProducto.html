@@ -175,7 +175,6 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Cantidad</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -185,7 +184,6 @@
                             <td th:text="${producto.nombre}"></td>
                             <td th:text="${producto.descripcion}"></td>
                             <td th:text="${producto.precio}"></td>
-                            <td th:text="${producto.cantidad}"></td>
                             <td>
                                     <a th:href="@{/editarproducto/{idProducto}(idProducto=${producto.idProducto})}" class="btn-edit">EDITAR</a>
                                     <a th:href="@{/eliminarproducto/{idProducto}(idProducto=${producto.idProducto})}" class="btn-delete">ELIMINAR</a>

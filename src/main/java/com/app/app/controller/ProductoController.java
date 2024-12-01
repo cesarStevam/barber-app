@@ -32,8 +32,8 @@ public class ProductoController {
     }
 
     @GetMapping("/eliminarproducto/{idProducto}")
-    public String eliminarproducto(@PathVariable("idProducto") Long idProduto, RedirectAttributes redirectAttributes) {
-        productoService.eliminarproducto(idProduto);
+    public String eliminarproducto(@PathVariable("idProducto") Long idProducto, RedirectAttributes redirectAttributes) {
+        productoService.eliminarproducto(idProducto);
         redirectAttributes.addFlashAttribute("mensaje", "Persona eliminada con éxito");
         return "redirect:/productos";
     }

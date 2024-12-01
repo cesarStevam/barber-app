@@ -9,8 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -40,24 +38,19 @@ public class Recibo {
     @Column(name = "total")
     private Integer total;
 
-    @ManyToOne
-    @JoinColumn(name = "idVentas")  
-    private Ventas ventas;
-
 
     public Recibo() {
     }
 
 
 
-    public Recibo(Long idRecibo, LocalDateTime fecha_recibo, String tipo_servicio, Integer cantidad, Integer sub_total, Integer total, Ventas ventas) {
+    public Recibo(Long idRecibo, LocalDateTime fecha_recibo, String tipo_servicio, Integer cantidad, Integer sub_total, Integer total) {
         this.idRecibo = idRecibo;
         this.fecha_recibo = fecha_recibo;
         this.tipo_servicio = tipo_servicio;
         this.cantidad = cantidad;
         this.sub_total = sub_total;
         this.total = total;
-        this.ventas = ventas;
     }
 
 
@@ -108,16 +101,5 @@ public class Recibo {
     public void setTotal(Integer total) {
         this.total = total;
     }
-
-    public Ventas getVentas() {
-        return this.ventas;
-    }
-
-    public void setVentas(Ventas ventas) {
-        this.ventas = ventas;
-    }
-
-
-
 
 }

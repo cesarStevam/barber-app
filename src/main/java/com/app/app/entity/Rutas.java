@@ -23,6 +23,7 @@ import com.app.app.services.ProveedorService;
 import com.app.app.services.ReciboService;
 import com.app.app.services.ReservaService;
 import com.app.app.services.RolService;
+import com.app.app.services.VentasService;
 
 @Controller
 public class Rutas {
@@ -53,6 +54,9 @@ public class Rutas {
 
     @Autowired
     private InventarioService inventarioService;
+
+    @Autowired
+    private VentasService ventasService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -108,7 +112,6 @@ public class Rutas {
     @PostMapping("/AgregarPersona")
     public String savePersona(@ModelAttribute("persona") Persona persona) {
         personaService.saveOrUpdate(persona);
-
         System.out.println("Se registró la persona!!!!" + persona);
         return "redirect:/personas";
     }
@@ -188,6 +191,8 @@ public class Rutas {
     @GetMapping("/AgregarCompra")
     public String agregarCompra(Model model) {
         model.addAttribute("compra", new Compra());
+        model.addAttribute("inventario", inventarioService.getInventario());
+        model.addAttribute("proveedor", proveedorService.getProveedor());
         return "AgregarCompra"; // Nombre de la plantilla HTML para agregar una compra
     }
 
@@ -203,7 +208,11 @@ public class Rutas {
         model.addAttribute("compra", new Compra());
         Optional<Compra> compra = compraService.getCompraById(idCompras); // Supone que tienes este método en tu service
         model.addAttribute("compra", compra.orElse(null));
-        return "editarcompra"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
+        List<Inventario> inventario = inventarioService.getInventario();
+        model.addAttribute("inventario", inventario);
+        List<Proveedor> proveedor = proveedorService.getProveedor();
+        model.addAttribute("proveedor", proveedor);
+        return "editarcompra"; 
     }
 
     // Método POST para actualizar la compra
@@ -390,6 +399,7 @@ public class Rutas {
     @GetMapping("/AgregarRecibo")
     public String agregarRecibo(Model model) {
         model.addAttribute("recibo", new Recibo());
+    
         return "AgregarRecibo"; // Nombre de la plantilla HTML para agregar un Recibo
     }
 
@@ -461,6 +471,57 @@ public class Rutas {
     public String eliminarinventario(Model model, @PathVariable Long idInventario) {
         inventarioService.eliminarinventario(idInventario);
         return "redirect:/inventario";
+    }
+
+
+
+    
+    @GetMapping("/ventas")
+    public String mostrarVentas(Model model) {
+        List<Ventas> ventas = ventasService.getVentas();
+        model.addAttribute("ventas", ventas);
+        return "listaVentas"; // Asegúrate de que este sea el nombre correcto de la vista (archivo HTML).
+    }
+
+    @GetMapping("/AgregarVentas")
+    public String agregarVentas(Model model) {
+        model.addAttribute("ventas", new Ventas());
+        model.addAttribute("inventario", inventarioService.getInventario());
+        model.addAttribute("recibo", reciboService.getRecibo());
+        model.addAttribute("producto", productoService.getProductos());
+        return "AgregarVentas"; // Nombre de la plantilla HTML para agregar un ventas
+    }
+
+    @PostMapping("/AgregarVentas")
+    public String guardarVentas(@ModelAttribute("ventas") Ventas ventas) {
+        ventasService.saveOrUpdate(ventas);
+        return "redirect:/ventas"; // Redirige a la lista de recibos después de guardar
+    }
+
+    // Método GET para mostrar el formulario de edición de venta
+    @GetMapping("/editarventas/{idVentas}")
+    public String editarVentas(@PathVariable("idVentas") Long idVentas, ModelMap model) {
+        model.addAttribute("ventas", new Ventas());
+        Optional<Ventas>    ventas = ventasService.getVentasById(idVentas); // Supone que tienes este                                                                                     // método en tu service
+        model.addAttribute("ventas", ventas.orElse(null));
+        List<Inventario> inventario = inventarioService.getInventario();
+        model.addAttribute("inventario", inventario);
+        List<Recibo> recibo = reciboService.getRecibo();
+        model.addAttribute("recibo", recibo);
+        return "editarventas"; // Asegúrate de que este es el nombre correcto de la vista (archivo HTML)
+    }
+
+    // Método POST para actualizar la venta
+    @PostMapping("/editarventas/editVentas")
+    public String metodPostEdit(@ModelAttribute("ventas") Ventas ventas) {
+        ventasService.saveOrUpdate(ventas); // Guardar o actualizar la venta
+        return "redirect:/ventas"; // Redirigir de vuelta a la lista de venta
+    }
+
+    @GetMapping("/eliminarventas/{idVentas}")
+    public String eliminarventas(Model model, @PathVariable Long idVentas) {
+        ventasService.eliminarventas(idVentas);
+        return "redirect:/ventas";
     }
 
 }

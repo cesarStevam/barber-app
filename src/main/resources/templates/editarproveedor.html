@@ -191,9 +191,15 @@
                                 <input type="text" th:field="*{segundo_apellido}" name="segundo_apellido" class="form-control" maxlength="10">
                             </div>
 
-                            <div>
-                                <label>Numero documento</label>
-                                <input type="text" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control" maxlength="10" required>
+                            <div class="form-group">
+                                <label for="numeroDocumento">Número de Documento</label>
+                                <input type="text" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control"
+                                       required minlength="5" maxlength="10" pattern="\d{5,10}"
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                       placeholder="Ingresa tu número de documento"
+                                       style="height: 40px; font-size: 16px; padding: 8px;"
+                                       title="Debe ingresar un numero de documento minimo de 5 cifras">
+                                <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                             </div>
 
                             <br>

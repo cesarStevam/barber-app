@@ -178,20 +178,20 @@
                             </div>
                             <div>
                                 <label>Cantidad</label>
-                                <input type="number" th:field="*{cantidad}" name="cantidad" class="form-control" maxlength="10" required>
+                                <input type="number" th:field="*{cantidad}" name="cantidad" class="form-control" min= "1" max="2147483647" required>
                                 </div>
                             <div>
                                 <label>Descripción producto</label>
-                                <input type="text" th:field="*{descripcion_producto}" name="descripcion_producto" class="form-control" maxlength="70" required>
+                                <input type="text" th:field="*{descripcion_producto}" name="descripcion_producto" class="form-control" maxlength="25" required>
                             </div>
 
                             <div>
                                 <label>Valor Unitario</label>
-                                <input type="number" th:field="*{valor_unitario}" name="valor_unitario" class="form-control" maxlength="10" required>
+                                <input type="number" th:field="*{valor_unitario}" name="valor_unitario" class="form-control"min= "1" max="2147483647" required>
                             </div>
                             <div>
                                 <label>Valor Total</label>
-                                <input type="number" th:field="*{valor_total}" name="valor_total" class="form-control" maxlength="10" required>
+                                <input type="number" th:field="*{valor_total}" name="valor_total" class="form-control" min= "1" max="2147483647" required>
                             </div>
 
                             <div>
@@ -209,6 +209,21 @@
                                     <option value="Cancelado">Cancelado</option>
                                 </select>
                             </div>
+
+                            <div>
+                                <label>Producto de inventario</label>
+                                <select th:field="*{inventario}" name="inventario" class="form-control">
+                                    <option th:each="inventario : ${inventario}" th:value="${inventario.idInventario}" th:text="${inventario.producto}"></option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label>Nombre Proveedor</label>
+                                <select th:field="*{proveedor}" name="proveedor" class="form-control">
+                                    <option th:each="proveedor : ${proveedor}" th:value="${proveedor.idProveedor}" th:text="${proveedor.primer_nombre}"></option>
+                                </select>
+                            </div>
+
                             <br>
                             <center><div class="btn-group">
                                 <button type="submit" class="btn-edit">GUARDAR</button>
