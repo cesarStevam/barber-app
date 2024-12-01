@@ -68,7 +68,7 @@
 
         .btn1{
             width: 100%;
-            padding: 11px;
+            padding: 12px;
             background-color: rgb(153, 117, 34);
             color: rgb(0, 0, 0);
             border: none;
@@ -89,7 +89,7 @@
 
         .btn2{
             width: 100%;
-            padding: 11px;
+            padding: 14px;
             background-color: rgb(153, 117, 34);
             color: rgb(0, 0, 0);
             border: none;
@@ -141,8 +141,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h1 class="text-title">AGREGAR PRODUCTO</h1>
-                <center><div class="btn-group"></div>
-                    <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
+                <center><div class="btn-group">
+                    <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">INICIO</a>
                 </div>
                 <script>
                     function goBack(element) {
@@ -154,8 +154,9 @@
                         }
                     }
                 </script>
+
                 <div class="btn-group"></div>
-                    <a href="#" th:href="@{/productos}" class="btn2">Lista Productos</a>
+                <a href="#" th:href="@{/productos}" class="btn2">Lista Productos</a>
                 </center>
 
                 <div class="card-body">

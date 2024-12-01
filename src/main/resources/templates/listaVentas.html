@@ -175,8 +175,8 @@
                         <th scope="col">Fecha de Venta</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Producto de inventario</th>
-                        <th scope="col">ID Recibo</th> 
-                        <th scope="col">Producto</th> 
+                        <th scope="col">ID Recibo</th>
+                        <th scope="col">Producto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -189,8 +189,8 @@
                             <td th:text="${ventas.recibo != null ? ventas.recibo.idRecibo : 'N/A'}"></td>
                             <td th:text="${ventas.producto != null ? ventas.producto.nombre : 'N/A'}"></td>
                             <td>
-                                <a th:href="@{/editarventas/{idVentas}(idVentas=${ventas.idVentas})}" class="btn-edit">Editar</a>
-                                <a th:href="@{/eliminarventas/{idVentas}(idVentas=${ventas.idVentas})}" class="btn-delete">Eliminar</a>
+                                <a th:href="@{/editarventas/{idVentas}(idVentas=${ventas.idVentas})}" class="btn-edit">EDITAR</a>
+                                <a th:href="@{/eliminarventas/{idVentas}(idVentas=${ventas.idVentas})}" class="btn-delete">ELIMINAR</a>
                             </td>
                         </tr>
                     </tbody>
