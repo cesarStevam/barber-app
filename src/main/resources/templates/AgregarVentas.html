@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar ventas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/CSS/estilostabalas.css">
     <style>
         body {
-            margin: 0%;
+            margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background: url('Barberia-moderna-ia-.webp') no-repeat center center fixed;
@@ -25,198 +25,134 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            width: 100%;
             max-width: 500px;
-            position: relative;
-            box-shadow: 0 0px 10px rgb(153, 117, 34);
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .card {
-            background: none; /* Sin fondo para la tarjeta */
         }
 
         .card-body {
             padding: 20px;
-            margin-top: 10px;
-            margin-bottom: 10px;
         }
 
         .form-group label {
             font-weight: bold;
+        }
+
+        .form-control {
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
-        .form-control{
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
-        .box-footer {
-            text-align: center;
-        }
-
-        .text-title{
-            margin-top: 10px; /* Aumenta el margen superior para moverlo más abajo */
+        .text-title {
             margin-bottom: 40px;
-            color: #fafafa; /* Cambia el color si lo deseas */
-            font-size: 40px; /* Ajusta el tamaño de la fuente */
+            color: #fafafa;
+            font-size: 40px;
             text-align: center;
-            text-decoration: none;
         }
 
-        .btn1{
-            width: 100%;
-            padding: 11px;
-            background-color: rgb(153, 117, 34);
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            margin-right: 10px; /* Agregar espacio entre los botones */
-            text-decoration: none;
-            box-shadow: 0 0px 10px rgb(153, 117, 34);
-        }
-
-        .btn1:hover {
-        background-color: #000000;
-        color: white;
-        text-decoration: none;
-        box-shadow: 0 0px 10px rgb(153, 117, 34);
-    }
-
-        .btn2{
-            width: 100%;
-            padding: 11px;
-            background-color: rgb(153, 117, 34);
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            margin-right: 10px; /* Agregar espacio entre los botones */
-            text-decoration: none;
-            box-shadow: 0 0px 10px rgb(153, 117, 34);
-        }
-
-        .btn2:hover {
-        background-color: #000000;
-        color: white;
-        text-decoration: none;
-        box-shadow: 0 0px 10px rgb(153, 117, 34);
-    }
-
-    .btn3{
+        .btn3 {
             width: 40%;
             padding: 11px;
             background-color: rgb(0, 0, 0);
             color: rgb(153, 117, 34);
-            box-shadow: 0 0px 10px rgb(153, 117, 34);
             border-radius: 10px;
             cursor: pointer;
             font-size: 13px;
-            margin-right: 10px; /* Agregar espacio entre los botones */
-            margin-top: 10px; /* Aumenta el margen superior para moverlo más abajo */
+            margin-top: 10px;
             margin-bottom: -20px;
-            text-decoration: none;
         }
 
         .btn3:hover {
-        background-color: rgb(153, 117, 34);
-        color: rgb(0, 0, 0);
-        box-shadow: 0 0px 10px rgb(153, 117, 34);
+            background-color: rgb(153, 117, 34);
+            color: rgb(0, 0, 0);
         }
-        .text-alert{
-            color: rgb(255, 255, 255);
-            font-size: 16px;
+
+        .alert-danger {
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <h1 class="text-title">AGREGAR VENTAS</h1>
-                <center><div class="btn-group">
-                    <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
-                </div>
-                <script>
-                    function goBack(element) {
-                        const steps = parseInt(element.getAttribute("data-steps"), 10);
-                        if (!isNaN(steps)) {
-                            window.history.go(steps); // Retrocede las páginas según "data-steps"
-                        } else {
-                            console.error("Número de pasos inválido en el botón VOLVER");
-                        }
-                    }
-                </script>
-                <div class="btn-group"></div>
-                    <a href="#" th:href="@{/ventas}" class="btn2">Lista Ventas</a>
-                </center>
-
-                <div class="card-body">
-                    <form th:action="@{/editarventas/editVentas}" th:object="${ventas}" method="POST">
-                        <input type="hidden" th:field="*{idVentas}" />
-                        
-  
-                
-                        <div class="form-group">
-                            <label>Nombre Venta</label>
-                            <input type="text" id="nombreVenta" name="nombreVenta" class="form-control" maxlength="25" required>
-                        </div>
- 
-                        <div class="form-group">
-                            <label>Fecha venta</label>
-                            <input type="datetime-local" id="fecha_venta" name="fecha_venta" class="form-control" maxlength="10" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="number" id="cantidad" name="cantidad" class="form-control" min= "1" max="2147483647" required>
-                        </div>
-
-                        <div>
-                            <label>Producto de inventario</label>
-                            <select th:field="*{inventario}" name="inventario" class="form-control">
-                                <option th:each="inventario : ${inventario}" th:value="${inventario.idInventario}" th:text="${inventario.producto}"></option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>ID Recibo</label>
-                            <select th:field="*{recibo}" name="recibo" class="form-control">
-                                <option th:each="recibo : ${recibo}" th:value="${recibo.idRecibo}" th:text="${recibo.idRecibo}"></option>
-                            </select>
-                        </div>
-                
-                        <div>
-                            <label>Producto</label>
-                            <select th:field="*{producto}" name="producto" class="form-control">
-                                <option th:each="producto : ${producto}" th:value="${producto.idProducto}" th:text="${producto.nombre}"></option>
-                            </select>
-                        </div>
-
-                            <div class="alert alert-danger" th:if="${error}" th:text="${error}">
-                            </div>
-                            <br>
-                            <center><div class="box-footer"></div>
-                                <button type="submit" class="btn3">GUARDAR</button>
-                            </center>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <h1 class="text-title">AGREGAR VENTAS</h1>
+        <center><div class="btn-group">
+            <a href="javascript:void(0);" class="btn1" data-steps="-2" onclick="goBack(this)">VOLVER</a>
         </div>
+        <script>
+            function goBack(element) {
+                const steps = parseInt(element.getAttribute("data-steps"), 10);
+                if (!isNaN(steps)) {
+                    window.history.go(steps); // Retrocede las páginas según "data-steps"
+                } else {
+                    console.error("Número de pasos inválido en el botón VOLVER");
+                }
+            }
+        </script>
+        <form th:action="@{/editarventas/editVentas}" th:object="${ventas}" method="POST">
+            <!-- Campo oculto para el ID de ventas -->
+            <input type="hidden" th:field="*{idVentas}" />
+
+            <!-- Nombre Venta -->
+            <div class="form-group">
+                <label for="nombreVenta">Nombre Venta</label>
+                <input type="text" th:field="*{nombreVenta}" class="form-control" maxlength="25" required />
+            </div>
+
+            <!-- Fecha Venta -->
+            <div class="form-group">
+                <label for="fecha_venta">Fecha venta</label>
+                <input type="datetime-local" th:field="*{fecha_venta}" class="form-control" required />
+            </div>
+
+            <!-- Select de Inventarios -->
+            <div class="form-group">
+                <label for="inventario">Producto Inventario</label>
+                <select th:field="*{inventario}" class="form-control" required>
+                    <option value="" disabled selected>Selecciona un producto</option>
+                    <option th:each="inventario : ${inventario}" 
+                            th:value="${inventario.idInventario}" 
+                            th:text="${inventario.producto}"></option>
+                </select>
+            </div>
+
+            <!-- Cantidad -->
+            <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" th:field="*{cantidad}" class="form-control" min="1" 
+                       th:attr="max=${ventas.inventario != null && ventas.inventario.cantidad != null ? ventas.inventario.cantidad : 9999}" required />
+            </div>
+
+            <!-- Select de Recibos -->
+            <div class="form-group">
+                <label for="recibo">ID Recibo</label>
+                <select th:field="*{recibo}" class="form-control" required>
+                    <option value="" disabled selected>Selecciona un recibo</option>
+                    <option th:each="recibo : ${recibo}" 
+                            th:value="${recibo.idRecibo}" 
+                            th:text="${recibo.idRecibo}"></option>
+                </select>
+            </div>
+
+            <div>
+                <label>Producto</label>
+                <select th:field="*{producto}" name="producto" class="form-control">
+                    <option th:each="producto : ${producto}" th:value="${producto.idProducto}" th:text="${producto.nombre}"></option>
+                </select>
+            </div>
+
+            <!-- Mensaje de error -->
+            <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+
+            <!-- Botón de submit -->
+            <center>
+                <button type="submit" class="btn3">GUARDAR</button>
+            </center>
+        </form>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="/static/JS/formularios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

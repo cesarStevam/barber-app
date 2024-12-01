@@ -34,8 +34,6 @@ public class InventarioService {
             inventarioRepository.deleteById(idInventario);
         }
     }
-
-    
         @Transactional
         public void actualizarCantidadCompra(Long idInventario, int cantidadCompra) {
             Inventario inventario = inventarioRepository.findById(idInventario)
@@ -45,8 +43,28 @@ public class InventarioService {
     
             inventarioRepository.save(inventario);
         }
+
+        // Método para reducir la cantidad de un producto en el inventario
+        public void reducirCantidad(Long idInventario, int cantidadVendida) {
+        Inventario inventario = inventarioRepository.findById(idInventario)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado en el inventario"));
+
+    // Restar la cantidad vendida al inventario
+    if (inventario.getCantidad() >= cantidadVendida) {
+        inventario.setCantidad(inventario.getCantidad() - cantidadVendida);
+        inventarioRepository.save(inventario); // Guardamos la actualización
+    } else {
+        throw new RuntimeException("No hay suficiente cantidad en el inventario para esta venta");
+    }
+}
+
+        @Transactional
+        public void realizarVenta(Long idInventario, int cantidadVendida) {
+            // Primero, actualizamos el inventario restando la cantidad vendida
+            inventarioRepository.actualizarCantidad(idInventario, cantidadVendida);
+       
     }
     
-
+}
 
 

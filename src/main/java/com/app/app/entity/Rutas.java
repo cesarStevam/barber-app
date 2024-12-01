@@ -196,8 +196,8 @@ public class Rutas {
         return "AgregarCompra"; // Nombre de la plantilla HTML para agregar una compra
     }
 
-@PostMapping("/AgregarCompra")
-public String guardarCompra(@ModelAttribute("compra") Compra compra) {
+    @PostMapping("/AgregarCompra")
+    public String guardarCompra(@ModelAttribute("compra") Compra compra) {
     // Verifica que la compra tenga asociado un inventario
     if (compra.getInventario() == null || compra.getInventario().getIdInventario() == null) {
         throw new RuntimeException("La compra no está asociada a un inventario válido.");
@@ -226,10 +226,19 @@ public String guardarCompra(@ModelAttribute("compra") Compra compra) {
         return "editarcompra"; 
     }
 
-    // Método POST para actualizar la compra
     @PostMapping("/editarcompra/editCompra")
     public String metodPostEdit(@ModelAttribute("compra") Compra compra) {
-        compraService.saveOrUpdate(compra); // Guardar o actualizar la compra
+        // Verifica que la compra tenga asociado un inventario
+        if (compra.getInventario() == null || compra.getInventario().getIdInventario() == null) {
+            throw new RuntimeException("La compra no está asociada a un inventario válido.");
+        }
+    
+        // Guarda o actualiza la compra
+        compraService.saveOrUpdate(compra);
+    
+        // Actualiza la cantidad en el inventario
+        inventarioService.actualizarCantidadCompra(compra.getInventario().getIdInventario(), compra.getCantidad());
+    
         return "redirect:/compras"; // Redirigir de vuelta a la lista de compras
     }
 
@@ -503,11 +512,24 @@ public String guardarCompra(@ModelAttribute("compra") Compra compra) {
         return "AgregarVentas"; // Nombre de la plantilla HTML para agregar un ventas
     }
 
+    // Método POST para guardar una venta
     @PostMapping("/AgregarVentas")
     public String guardarVentas(@ModelAttribute("ventas") Ventas ventas) {
+        // Verifica que la venta tenga asociado un inventario
+        if (ventas.getInventario() == null || ventas.getInventario().getIdInventario() == null) {
+            throw new RuntimeException("La venta no está asociada a un inventario válido.");
+        }
+
+        // Restar la cantidad vendida del inventario
+        inventarioService.reducirCantidad(ventas.getInventario().getIdInventario(), ventas.getCantidad());
+
+        // Guarda la venta en la base de datos
         ventasService.saveOrUpdate(ventas);
-        return "redirect:/ventas"; // Redirige a la lista de recibos después de guardar
+
+        return "redirect:/ventas"; // Redirige a la lista de ventas o a otra vista
     }
+
+
 
     // Método GET para mostrar el formulario de edición de venta
     @GetMapping("/editarventas/{idVentas}")
@@ -525,14 +547,15 @@ public String guardarCompra(@ModelAttribute("compra") Compra compra) {
     // Método POST para actualizar la venta
     @PostMapping("/editarventas/editVentas")
     public String metodPostEdit(@ModelAttribute("ventas") Ventas ventas) {
-        ventasService.saveOrUpdate(ventas); // Guardar o actualizar la venta
-        return "redirect:/ventas"; // Redirigir de vuelta a la lista de venta
-    }
+        // Primero, restamos la cantidad vendida del inventario anterior (si se modifica)
+        if (ventas.getInventario() != null && ventas.getInventario().getIdInventario() != null) {
+            inventarioService.reducirCantidad(ventas.getInventario().getIdInventario(), ventas.getCantidad());
+        }
 
-    @GetMapping("/eliminarventas/{idVentas}")
-    public String eliminarventas(Model model, @PathVariable Long idVentas) {
-        ventasService.eliminarventas(idVentas);
-        return "redirect:/ventas";
+        // Guarda o actualiza la venta
+        ventasService.saveOrUpdate(ventas);
+
+        return "redirect:/ventas"; // Redirigir de vuelta a la lista de ventas
     }
 
 }
