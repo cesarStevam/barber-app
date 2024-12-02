@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -31,6 +32,10 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name="idPersonas")
     private Persona id_Personas;
+
+    // Relación inversa One-to-One con Recibo
+    @OneToOne(mappedBy = "reserva")
+    private Recibo recibo;
 
 
     public Reserva() {

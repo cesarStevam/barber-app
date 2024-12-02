@@ -175,6 +175,7 @@
                         <th scope="col">Cantidad</th>
                         <th scope="col">Subtotal</th>
                         <th scope="col">Total</th>
+                        <th scope="col">Dia de Reserva</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -186,6 +187,7 @@
                             <td th:text="${recibo.cantidad}"></td>
                             <td th:text="${recibo.sub_total}"></td>
                             <td th:text="${recibo.total}"></td>
+                            <td th:text="${recibo.reserva != null ? recibo.reserva.fechaHora : 'N/A'}"></td>
                             <td>
                                 <a th:href="@{/editarrecibo/{idRecibo}(idRecibo=${recibo.idRecibo})}" class="btn-edit">EDITAR</a>
                                 <a th:href="@{/eliminarrecibo/{idRecibo}(idRecibo=${recibo.idRecibo})}" class="btn-delete">ELIMINAR</a>

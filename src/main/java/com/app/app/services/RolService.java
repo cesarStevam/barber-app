@@ -32,4 +32,10 @@ public class RolService {
         Optional<Rol> rol = rolRepository.findById(idRol);
         return rol.orElseThrow(() -> new IllegalArgumentException("Rol no encontrado con id: " + idRol));
     }
+    public void eliminarRol(Long idRol) {
+        if (rolRepository.existsById(idRol)) {
+            rolRepository.deleteById(idRol);
+        }
+    }
+
 }
