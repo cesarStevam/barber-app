@@ -176,18 +176,44 @@
                         </div>
                 
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="number" id="cantidad" name="cantidad" class="form-control" min= "1" max="2147483647" required>
+                            <label for="cantidad">Cantidad</label>
+                            <input 
+                                type="number" 
+                                id="cantidad" 
+                                name="cantidad" 
+                                class="form-control" 
+                                min="1" 
+                                max="99999999" 
+                                placeholder="Ingresa la cantidad" 
+                                required 
+                                oninput="if(this.value.length > 8) this.value = this.value.slice(0, 8);">
                         </div>
-                  
                         <div class="form-group">
-                            <label>Sub Total</label>
-                            <input type="number" id="sub_total" name="sub_total" class="form-control" min= "1" max="2147483647" required>
+                            <label for="sub_total">Sub Total</label>
+                            <input 
+                                type="number" 
+                                id="sub_total" 
+                                name="sub_total" 
+                                class="form-control" 
+                                min="1" 
+                                max="99999999" 
+                                placeholder="Ingresa el sub total" 
+                                required 
+                                oninput="if(this.value.length > 8) this.value = this.value.slice(0, 8);">
                         </div>
 
                         <div class="form-group">
-                            <label>Total</label>
-                            <input type="number" id="total" name="total" class="form-control" min= "1" max="2147483647" required>
+                            <label for="total">Total</label>
+                            <input 
+                                type="number" 
+                                id="total" 
+                                name="total" 
+                                class="form-control" 
+                                min="1" 
+                                max="99999999" 
+                                placeholder="Ingresa el total" 
+                                required 
+                                oninput="if(this.value.length > 8) this.value = this.value.slice(0, 8);">
                         </div>
 
                         <div>

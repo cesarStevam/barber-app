@@ -162,7 +162,13 @@
             <!-- Nombre Venta -->
             <div class="form-group">
                 <label for="nombreVenta">Nombre Venta</label>
-                <input type="text" th:field="*{nombreVenta}" class="form-control" maxlength="25" required />
+                <input 
+                    type="text" 
+                    th:field="*{nombreVenta}" 
+                    class="form-control" 
+                    maxlength="25" 
+                    placeholder="Ingresa el nombre de la venta" 
+                    required>
             </div>
 
             <!-- Fecha Venta -->

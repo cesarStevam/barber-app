@@ -174,23 +174,42 @@
                         <div class="form-group">
                             <div>
                                 <label>Nombre</label>
-                                <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control">
+                                <input type="text" th:field="*{primer_nombre}" name="primer_nombre" class="form-control" maxlength="15" required>
                             </div>
                             <div>
                                 <label>Apellido</label>
-                                <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control">
+                                <input type="text" th:field="*{primer_apellido}" name="primer_apellido" class="form-control" maxlength="15" required>
                             </div>
                             <div>
-                                <label>Número de Documento</label>
-                                <input type="text" th:field="*{numeroDocumento}" name="numeroDocumento" class="form-control">
+                                <label for="numeroDocumento">Número de Documento</label>
+                                <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control"
+                                    required minlength="5" maxlength="10" pattern="\d{5,10}"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                    placeholder="Ingresa tu número de documento"
+                                    style="height: 40px; font-size: 16px; padding: 8px;"
+                                    title="Debe ingresar un numero de documento minimo de 5 cifras">
+                                <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                             </div>
                             <div>
-                                <label>Número de Contacto</label>
-                                <input type="text" th:field="*{numero_contacto}" name="numero_contacto" class="form-control">
+                                <label for="numero_contacto">Número de Contacto</label>
+                                <input 
+                                    type="text" 
+                                    id="numero_contacto" 
+                                    name="numero_contacto" 
+                                    class="form-control"
+                                    placeholder="Ingresa tu número de contacto" 
+                                    style="height: 40px; font-size: 16px; padding: 8px;" 
+                                    required 
+                                    minlength="10" 
+                                    maxlength="10" 
+                                    pattern="3\d{9}" 
+                                    title="Debe ingresar un número de celular colombiano válido que comience con 3 y tenga 10 dígitos."
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+                                <small class="form-text text-muted">Ingrese un número de celular colombiano válido (ejemplo: 3XX XXX XXXX).</small>
                             </div>
                             <div>
                                 <label>Correo Electrónico</label>
-                                <input type="text" th:field="*{email}" name="email" class="form-control">
+                                <input type="email" th:field="*{email}" name="email" class="form-control" maxlength="25" required>
                             </div>
                             <div>
                                 <label>Roles</label>

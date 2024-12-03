@@ -181,7 +181,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" th:field="*{precio}" min= "1" max="2147483647" required>
+                        <input 
+                            type="number" 
+                            id="precio" 
+                            name="precio" 
+                            class="form-control" 
+                            th:value="${producto.precio}" 
+                            min="1" 
+                            max="99999999" 
+                            placeholder="Ingresa el precio" 
+                            required 
+                            oninput="if(this.value.length > 8) this.value = this.value.slice(0, 8);">
                     </div>
 
                         <br>
