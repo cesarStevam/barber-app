@@ -52,7 +52,7 @@ public class SecurityConfig {
                                                 .requestMatchers("/admin/", "/agregarreserva", "/editarRol/1",
                                                                 "/editarRol/{idRol}", "/personas", "/Agregarpersona",
                                                                 "/editarRol", "/agregarrol",
-                                                                "/roles", "/editarRol/idRol", "/reservas",
+                                                                "/roles", "/editarRol/idRol",
                                                                 "/AgregarReserva"
 
                                                 )
@@ -64,8 +64,7 @@ public class SecurityConfig {
                                                 .hasRole("usuario")
 
                                                 // Rutas para barbero
-                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva",
-                                                                "/reservas")
+                                                .requestMatchers("/barbero/", "/agregarrol", "/agregarreserva")
                                                 .hasRole("barbero")
 
                                                 .requestMatchers("/reservas")
