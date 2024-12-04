@@ -23,8 +23,8 @@ public class Persona {
     @Column(name = "idPersonas")
     private long idPersonas;
 
-    @Column(name = "primer_nombre", length=15)
-    private String primer_nombre;
+    @Column(name = "primerNombre", length=15)
+    private String primerNombre;
 
     @Column(name = "segundo_nombre", length=15)
     private String segundo_nombre;
@@ -65,9 +65,10 @@ public class Persona {
     }
 
 
-    public Persona(long idPersonas, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, String numeroDocumento, String numero_contacto, String email, String contraseña, String tokenRecuperacion, LocalDateTime tokenExpiracion, Rol rol) {
+
+    public Persona(long idPersonas, String primerNombre, String segundo_nombre, String primer_apellido, String segundo_apellido, String numeroDocumento, String numero_contacto, String email, String contraseña, String tokenRecuperacion, LocalDateTime tokenExpiracion, Rol rol) {
         this.idPersonas = idPersonas;
-        this.primer_nombre = primer_nombre;
+        this.primerNombre = primerNombre;
         this.segundo_nombre = segundo_nombre;
         this.primer_apellido = primer_apellido;
         this.segundo_apellido = segundo_apellido;
@@ -89,12 +90,12 @@ public class Persona {
         this.idPersonas = idPersonas;
     }
 
-    public String getPrimer_nombre() {
-        return this.primer_nombre;
+    public String getPrimerNombre() {
+        return this.primerNombre;
     }
 
-    public void setPrimer_nombre(String primer_nombre) {
-        this.primer_nombre = primer_nombre;
+    public void setPrimerNombre(String primerNombre) {
+        this.primerNombre = primerNombre;
     }
 
     public String getSegundo_nombre() {
@@ -171,13 +172,6 @@ public class Persona {
 
     public Rol getRol() {
         return this.rol;
-    }
-
-
-
-    
-
-    
-
+    }    
 
 }

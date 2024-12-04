@@ -14,10 +14,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
+
 @Data
 @Entity
 @Table(name = "reservas")
 public class Reserva {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,22 +31,29 @@ public class Reserva {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime FechaHora;
 
+
     @ManyToOne
-    @JoinColumn(name="idPersonas")
-    private Persona id_Personas;
+    @JoinColumn(name="idCliente")
+    private Persona idCliente;
+
+    @ManyToOne
+    @JoinColumn(name="persona_barbero_id")
+    private Persona personaBarbero;
+
 
 
     public Reserva() {
     }
+    
 
-
-    public Reserva(long idReservas, LocalDateTime FechaHora, Persona id_Personas) {
+    public Reserva(long idReservas, LocalDateTime FechaHora, Persona idCliente, Persona personaBarbero) {
         this.idReservas = idReservas;
         this.FechaHora = FechaHora;
-        this.id_Personas = id_Personas;
+        this.idCliente = idCliente;
+        this.personaBarbero = personaBarbero;
     }
 
-    
+   
 
     public long getIdReservas() {
         return this.idReservas;
@@ -61,14 +71,22 @@ public class Reserva {
         this.FechaHora = FechaHora;
     }
 
-    public Persona getId_Personas() {
-        return this.id_Personas;
+
+    public Persona getIdCliente() {
+        return this.idCliente;
     }
 
-    public void setId_Personas(Persona id_Personas) {
-        this.id_Personas = id_Personas;
+    public void setIdCliente(Persona idCliente) {
+        this.idCliente = idCliente;
     }
 
+    public Persona getPersonaBarbero() {
+        return this.personaBarbero;
+    }
+
+    public void setPersonaBarbero(Persona personaBarbero) {
+        this.personaBarbero = personaBarbero;
+    }
 
 
 

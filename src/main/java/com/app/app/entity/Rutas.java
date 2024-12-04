@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.app.app.controller.ReservaController;
 import com.app.app.repository.PersonaRepository;
+import com.app.app.repository.ReservaRepository;
 import com.app.app.repository.RolRepository;
 import com.app.app.services.CompraService;
 import com.app.app.services.InventarioService;
@@ -39,6 +42,12 @@ public class Rutas {
 
     @Autowired
     private ReservaService reservaService;
+
+    @Autowired
+    private ReservaController reservaController;
+
+    @Autowired
+    private ReservaRepository reservaRepository;
 
     @Autowired
     private CompraService compraService;
@@ -329,10 +338,32 @@ public class Rutas {
 
     }
 
+     @PostMapping("/asignarUsuario")
+    public String asignarUsuario(@RequestParam Long reservaId){
+       Optional<Persona> usuarioLogueadoOpt = reservaController.getLoggerUser();
+
+       if(usuarioLogueadoOpt.isEmpty()){
+        throw new RuntimeException("No se pudo determinar el usaurio actual");
+       }
+        Persona usuarioLogueado = usuarioLogueadoOpt.get();
+        Reserva reserva = reservaRepository.findById(reservaId)
+            .orElseThrow(()-> new RuntimeException("Reserva no encontrada"));
+        
+        usuarioLogueado.getIdPersonas();
+        reserva.setIdCliente(usuarioLogueado);
+
+
+        reservaService.saveOrUpdate(reserva);
+        return "redirect:/reservas";
+
+    }
+
     @GetMapping("/agregarreserva")
     public String AgregarReserva(ModelMap model) {
         model.addAttribute("reserva", new Reserva());
-        model.addAttribute("personas", personaService.getPersonas());
+
+        List<Persona> idrol = personaRepository.findByRol_IdRol(3);
+        model.addAttribute("persona",idrol);
         return "agregarreserva";
     }
 
