@@ -44,7 +44,7 @@ public class SecurityConfig {
                                                                 "/Balsamo L'Oreal.jpg", "/Shampoo HyS.jpeg",
                                                                 "AfterShave Clubman.webp/",
                                                                 "/Crema Afeitar Proraso.jpg", "/Aceite Proraso.jpg",
-                                                                "/Pomada Reuzel.webp",
+                                                                "/Pomada Reuzel.webp", "/AfterShave Clubman.webp",
                                                                 "/public/")
                                                 .permitAll()
 
