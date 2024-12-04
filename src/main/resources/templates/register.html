@@ -140,6 +140,9 @@
                                     title="Debe ingresar un numero de documento minimo de 5 cifras">
                                 <small class="form-text text-muted">Ingrese un número de documento entre 5 y 10 dígitos.</small>
                             </div>
+                            <div th:if="${error}" style="color: red;">
+                                <p th:text="${error}"></p>
+                            </div>
 
                             <div class="mb-3">
                                 <label for="numero_contacto">Número de Contacto</label>

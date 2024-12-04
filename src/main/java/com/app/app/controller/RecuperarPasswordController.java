@@ -39,7 +39,7 @@ public class RecuperarPasswordController {
         } else {
             model.addAttribute("error", "No se encontró una cuenta con ese correo.");
         }
-        return "login";
+        return "recuperar-password";
     }
 
     @GetMapping("/reset")
