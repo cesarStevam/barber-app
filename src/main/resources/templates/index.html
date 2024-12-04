@@ -408,33 +408,35 @@
         <div class="logo">
             <h4>BarberApp</h4>
         </div>
-        
+    
         <div class="letrero">
             <p>¡Bienvenido a BarberApp! Reserva tu turno ahora para lucir increíble.</p>
         </div>
-        
-        
-        
-            <nav class="navbar">
-                <li><a href="#" th:href="@{/productos}">Productos</a></li>
-                <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
-                <li><h5><a href="#" th:href="@{/login}">ACCEDER</a></h5></li>
-                
-            </nav>
-
+    
+        <nav class="navbar">
+            <!-- Botones para redirigir a secciones del mismo índice -->
+            <li><a href="#nos">Nosotros</a></li>
+            <li><a href="#barberos">Barberos</a></li>
+            <li><a href="#cortes">Cortes</a></li>
+            <li><a href="#productos">Productos</a></li>
+    
+            <!-- Botones existentes -->
+            
+            <li><a href="#" th:href="@{/reservas}">Reservas</a></li>
+            <li><h5><a href="#" th:href="@{/login}">ACCEDER</a></h5></li>
+        </nav>
     </div>
     
-
-    <header class="content header">
+    <header class="content header" id="nos">
         <div class="nos">
-        <h2 class="title">NOSOTROS</h2>
-        <p>
-            Somos una barbería dedicada a ofrecer cortes de cabello y servicios
-            de afeitado de calidad, con un enfoque personalizado para cada cliente.
-            Nos apasiona el arte de la barbería y buscamos brindarte una experiencia
-            única, en un ambiente cómodo y moderno, donde la tradición y las últimas
-            tendencias se fusionan para resaltar tu estilo.
-        </p>
+            <h2 class="title">NOSOTROS</h2>
+            <p>
+                Somos una barbería dedicada a ofrecer cortes de cabello y servicios
+                de afeitado de calidad, con un enfoque personalizado para cada cliente.
+                Nos apasiona el arte de la barbería y buscamos brindarte una experiencia
+                única, en un ambiente cómodo y moderno, donde la tradición y las últimas
+                tendencias se fusionan para resaltar tu estilo.
+            </p>
         </div>
         <div>
             <video muted autoplay loop class="video">
@@ -443,8 +445,8 @@
             <div class="capa"></div>
         </div>
     </header>
-
-    <section class="content sau">
+    
+    <section class="content sau" id="barberos">
         <h2 class="title">BARBEROS</h2>
         <p>
             Nuestros barberos se encargarán de brindarte la mejor experiencia, ofreciéndote
@@ -454,22 +456,24 @@
             mantenimiento de tu look, siempre con un enfoque profesional y amigable. Ven y
             disfruta de un servicio de alta calidad en manos expertas.
         </p>
-
+    
         <div class="box-container">
             <div class="box">
                 <img src="Barbero1.jpg"></img>
             </div>
             <div class="box-container">
-            <div class="box">
-                <img src="Barbero2.jpg"></img>
+                <div class="box">
+                    <img src="Barbero2.jpg"></img>
+                </div>
+                <div class="box-container"></div>
+                <div class="box">
+                    <img src="Barbero1.jpg"></img>
+                </div>
             </div>
-            <div class="box-container"></div>
-            <div class="box">
-                <img src="Barbero1.jpg"></img>
-            </div>
+        </div>
     </section>
-
-    <section class="content about">
+    
+    <section class="content about" id="cortes">
         <h2 class="title">CORTES</h2>
         <p>
             En nuestra barbería, te ofrecemos una variedad de cortes de pelo personalizados para resaltar
@@ -478,22 +482,24 @@
             garantizamos precisión y atención al detalle para que salgas con un look fresco y renovado.
             Ven y disfruta de un corte de calidad, hecho a tu medida.
         </p>
-
+    
         <div class="box-cortes">
             <div class="box1">
                 <img src="BuzzCut.jpeg"></img>
             </div>
             <div class="box-cortes">
-            <div class="box1">
-                <img src="Mohicano.jpg"></img>
+                <div class="box1">
+                    <img src="Mohicano.jpg"></img>
+                </div>
+                <div class="box-cortes"></div>
+                <div class="box1">
+                    <img src="Lowfadee.jpg"></img>
+                </div>
             </div>
-            <div class="box-cortes"></div>
-            <div class="box1">
-                <img src="Lowfadee.jpg"></img>
-            </div>
+        </div>
     </section>
-
-    <section class="content price">
+    
+    <section class="content price" id="productos">
         <article class="contain">
             <h2 class="title">PRODUCTOS</h2>
             <p>
@@ -505,21 +511,24 @@
                 tónicos capilares estimulan la circulación y fortalecen el cabello. Todo lo que necesitas
                 para el cuidado de tu cabello, barba y piel masculina.
             </p>
-
+    
             <div class="box-productos">
                 <div class="box2">
                     <img src="Pomada Reuzel.webp"></img>
                 </div>
                 <div class="box-productos">
-                <div class="box2">
-                    <img src="Crema Afeitar Proraso.jpg"></img>
+                    <div class="box2">
+                        <img src="Crema Afeitar Proraso.jpg"></img>
+                    </div>
+                    <div class="box-productos"></div>
+                    <div class="box2">
+                        <img src="Cera American Crew.jpg"></img>
+                    </div>
                 </div>
-                <div class="box-productos"></div>
-                <div class="box2">
-                    <img src="Cera American Crew.jpg"></img>
-                </div>
+            </div>
         </article>
     </section>
+    
 
     <footer class="pie-pagina">
         <div class="grupo-1">
