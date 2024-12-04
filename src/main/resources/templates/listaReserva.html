@@ -176,7 +176,7 @@
                     <th scope="col">Fecha y Hora</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Barbero</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col" th:if="${rol== 'ROLE_administrador' || rol== 'ROLE_usuario'}">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -188,7 +188,6 @@
                     <td th:text="${reserva.personaBarbero.primerNombre ?: 'N/A'}"></td>
                     <td th:if="${rol== 'ROLE_administrador'}">
                         <a th:href="@{/editarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-edit">EDITAR</a>
-                        <a th:href="@{/eliminarreserva/{idReservas}(idReservas=${reserva.idReservas})}" class="btn-delete">ELIMINAR</a>
                     </td>
                     <td th:if="${rol== 'ROLE_usuario'}">
                         <form th:action="@{/asignarUsuario}" method="post" th:if="${reserva.idCliente == null}">
